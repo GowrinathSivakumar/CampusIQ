@@ -1,0 +1,157 @@
+.footer {
+  padding: 4rem 2rem 2rem;
+  background: #FFFFFF;
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.brand {
+  max-width: 320px;
+}
+
+.logo {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #111111;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+
+.logoAccent {
+  color: #C9A227;
+}
+
+.brandDesc {
+  font-size: 0.9rem;
+  color: #2E2E2E;
+  line-height: 1.7;
+  opacity: 0.7;
+  margin-bottom: 1.5rem;
+}
+
+.socialLinks {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.socialLink {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: #F8F6F2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: #111111;
+  transition: all 0.3s ease;
+}
+
+.socialLink:hover {
+  background: #111111;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.columnTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #111111;
+  margin-bottom: 1.25rem;
+}
+
+.columnLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.columnLink {
+  font-size: 0.9rem;
+  color: #2E2E2E;
+  opacity: 0.7;
+  transition: all 0.2s ease;
+}
+
+.columnLink:hover {
+  color: #C9A227;
+  opacity: 1;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.06);
+  margin-bottom: 1.5rem;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.copyright {
+  font-size: 0.85rem;
+  color: #2E2E2E;
+  opacity: 0.6;
+}
+
+.bottomLinks {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.bottomLink {
+  font-size: 0.85rem;
+  color: #2E2E2E;
+  opacity: 0.6;
+  transition: color 0.2s ease;
+}
+
+.bottomLink:hover {
+  color: #C9A227;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 3rem 1.25rem 1.5rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .brand {
+    grid-column: 1 / -1;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}

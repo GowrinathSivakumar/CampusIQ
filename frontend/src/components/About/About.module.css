@@ -1,0 +1,188 @@
+.section {
+  padding: 6rem 2rem;
+  background: #FFFFFF;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.content {
+  max-width: 560px;
+}
+
+.label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #C9A227;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #111111;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.description {
+  font-size: 1rem;
+  color: #2E2E2E;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  opacity: 0.85;
+}
+
+.comparison {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.comparisonItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: #F8F6F2;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.comparisonItem:hover {
+  transform: translateX(6px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.comparisonIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(201, 162, 39, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: #C9A227;
+  flex-shrink: 0;
+}
+
+.comparisonText h4 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #111111;
+  margin-bottom: 0.25rem;
+}
+
+.comparisonText p {
+  font-size: 0.85rem;
+  color: #2E2E2E;
+  opacity: 0.75;
+  line-height: 1.5;
+}
+
+.visual {
+  display: flex;
+  justify-content: center;
+}
+
+.insightCard {
+  background: #F8F6F2;
+  border-radius: 20px;
+  padding: 2.5rem;
+  max-width: 420px;
+  position: relative;
+}
+
+.cardLabel {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #2E2E2E;
+  opacity: 0.5;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.5rem;
+}
+
+.cardTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111111;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.cardDivider {
+  width: 100%;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.06);
+  margin: 1.5rem 0;
+}
+
+.cardStat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+}
+
+.cardStatName {
+  font-size: 0.9rem;
+  color: #2E2E2E;
+}
+
+.cardStatValue {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111111;
+}
+
+.cardStatBar {
+  width: 100%;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 4px;
+  margin-top: 0.5rem;
+}
+
+.cardStatFill {
+  height: 100%;
+  border-radius: 4px;
+  background: #C9A227;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 4rem 1.25rem;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .content {
+    max-width: 100%;
+  }
+
+  .heading {
+    font-size: 1.8rem;
+  }
+
+  .insightCard {
+    padding: 1.75rem;
+  }
+}
