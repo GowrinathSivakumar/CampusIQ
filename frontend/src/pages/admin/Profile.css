@@ -1,0 +1,129 @@
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.profile-page h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-dark);
+}
+
+.profile-page > p {
+  font-size: 14px;
+  color: var(--color-dark-secondary);
+  margin-top: 2px;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.profile-card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-gray-100);
+  box-shadow: var(--shadow-sm);
+  padding: 24px;
+}
+
+.profile-card-centered {
+  text-align: center;
+}
+
+.profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-700));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  color: var(--color-white);
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.profile-name {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-bottom: 4px;
+}
+
+.profile-role {
+  font-size: 14px;
+  color: var(--color-dark-secondary);
+  margin-bottom: 16px;
+}
+
+.profile-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  background: var(--color-emerald-50);
+  color: var(--color-emerald-700);
+  border-radius: 999px;
+}
+
+.profile-section-title {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-dark);
+  margin-bottom: 16px;
+}
+
+.profile-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.profile-info-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+}
+
+.profile-info-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: var(--color-primary-50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.profile-info-icon svg {
+  color: var(--color-primary-600);
+}
+
+.profile-info-label {
+  font-size: 12px;
+  color: var(--color-dark-secondary);
+}
+
+.profile-info-value {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-dark);
+}
+
+@media (min-width: 1024px) {
+  .profile-grid {
+    grid-template-columns: 1fr 2fr;
+  }
+}

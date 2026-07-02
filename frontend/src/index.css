@@ -5,6 +5,86 @@
 @import '@fontsource/inter/500.css';
 @import '@fontsource/inter/600.css';
 
+:root {
+  --color-primary-50: #f0fdf0;
+  --color-primary-100: #dcfce7;
+  --color-primary-200: #bbf7d0;
+  --color-primary-300: #86efac;
+  --color-primary-400: #4ade80;
+  --color-primary-500: #22c55e;
+  --color-primary-600: #00A300;
+  --color-primary-700: #008a00;
+  --color-primary-800: #006f00;
+  --color-primary-900: #005500;
+
+  --color-gold: #C9A227;
+  --color-gold-light: #E8C54A;
+  --color-gold-dark: #A8831E;
+
+  --color-cream: #F8F6F2;
+  --color-dark: #111111;
+  --color-dark-secondary: #2E2E2E;
+  --color-white: #FFFFFF;
+
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+
+  --color-emerald-50: #ecfdf5;
+  --color-emerald-200: #a7f3d0;
+  --color-emerald-600: #059669;
+  --color-emerald-700: #047857;
+
+  --color-red-50: #fef2f2;
+  --color-red-200: #fecaca;
+  --color-red-500: #ef4444;
+  --color-red-600: #dc2626;
+  --color-red-700: #b91c1c;
+
+  --color-amber-50: #fffbeb;
+  --color-amber-200: #fde68a;
+  --color-amber-600: #d97706;
+  --color-amber-700: #b45309;
+
+  --color-blue-50: #eff6ff;
+  --color-blue-200: #bfdbfe;
+  --color-blue-700: #1d4ed8;
+
+  --color-purple-50: #f5f3ff;
+  --color-purple-200: #ddd6fe;
+  --color-purple-600: #9333ea;
+
+  --color-teal-50: #f0fdfa;
+
+  --color-orange-50: #fff7ed;
+
+  --color-pink-50: #fdf2f8;
+
+  --color-cyan-50: #ecfeff;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.03);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.06), 0 4px 10px rgba(0, 0, 0, 0.04);
+  --shadow-premium: 0 20px 40px rgba(0, 163, 0, 0.15), 0 8px 20px rgba(0, 163, 0, 0.1);
+
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  --sidebar-width: 240px;
+  --sidebar-collapsed-width: 64px;
+  --navbar-height: 64px;
+}
+
 *,
 *::before,
 *::after {
@@ -20,9 +100,9 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
-  background-color: #F8F6F2;
-  color: #111111;
+  font-family: var(--font-body);
+  background-color: var(--color-cream);
+  color: var(--color-dark);
   line-height: 1.6;
   overflow-x: hidden;
 }
@@ -55,12 +135,16 @@ ul, ol {
   list-style: none;
 }
 
+input, textarea, select {
+  font-family: inherit;
+}
+
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-heading);
   line-height: 1.2;
 }
 
 ::selection {
-  background-color: #C9A227;
-  color: #FFFFFF;
+  background-color: var(--color-gold);
+  color: var(--color-white);
 }

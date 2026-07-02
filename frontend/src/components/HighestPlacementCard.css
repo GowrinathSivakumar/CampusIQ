@@ -1,0 +1,111 @@
+.highest-placement-card {
+  position: relative;
+  background: linear-gradient(135deg, var(--color-primary-600), var(--color-primary-700), var(--color-primary-900));
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-premium);
+  padding: 20px;
+  overflow: hidden;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.highest-placement-card:hover {
+  box-shadow: var(--shadow-premium);
+  transform: scale(1.01);
+}
+
+.highest-placement-bg-1 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 128px;
+  height: 128px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  transform: translate(40px, -40px);
+}
+
+.highest-placement-bg-2 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 96px;
+  height: 96px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  transform: translate(-32px, 32px);
+}
+
+.highest-placement-content {
+  position: relative;
+  z-index: 10;
+}
+
+.highest-placement-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.highest-placement-header-icon {
+  color: var(--color-gold);
+}
+
+.highest-placement-header-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(201, 162, 39, 0.9);
+}
+
+.highest-placement-company {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.highest-placement-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.highest-placement-logo-icon {
+  color: var(--color-white);
+}
+
+.highest-placement-name {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-white);
+}
+
+.highest-placement-role {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.highest-placement-package {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4px);
+  border-radius: var(--radius-md);
+}
+
+.highest-placement-package-value {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-gold);
+}

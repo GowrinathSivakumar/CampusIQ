@@ -1,0 +1,218 @@
+.companies-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.companies-header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.companies-header-top {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.companies-header h1 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-dark);
+}
+
+.companies-header p {
+  font-size: 14px;
+  color: var(--color-dark-secondary);
+  margin-top: 2px;
+}
+
+.companies-add-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-white);
+  background: var(--color-primary-600);
+  border-radius: var(--radius-md);
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.companies-add-btn:hover {
+  background: var(--color-primary-700);
+}
+
+.companies-toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.companies-search-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.companies-search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-gray-400);
+  pointer-events: none;
+}
+
+.companies-search {
+  width: 100%;
+  padding: 9px 14px 9px 38px;
+  font-size: 13px;
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.companies-search:focus {
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px rgba(0, 163, 0, 0.1);
+}
+
+.companies-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-dark-secondary);
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-md);
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.companies-filter-btn:hover {
+  background: var(--color-gray-50);
+}
+
+.companies-table-wrapper {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-gray-100);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.companies-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.companies-table th {
+  text-align: left;
+  padding: 12px 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-gray-400);
+  background: rgba(249, 250, 251, 0.8);
+  border-bottom: 1px solid var(--color-gray-100);
+}
+
+.companies-table td {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--color-gray-50);
+}
+
+.companies-table tbody tr {
+  transition: background 0.15s;
+}
+
+.companies-table tbody tr:hover {
+  background: rgba(249, 250, 251, 0.8);
+}
+
+.company-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.company-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  background: var(--color-primary-50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.company-icon svg {
+  color: var(--color-primary-600);
+}
+
+.company-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-dark);
+}
+
+.company-stat {
+  font-size: 13px;
+  color: var(--color-dark-secondary);
+}
+
+.company-package {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-emerald-700);
+}
+
+.company-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 999px;
+  border: 1px solid;
+}
+
+.company-badge.active {
+  background: var(--color-emerald-50);
+  color: var(--color-emerald-700);
+  border-color: var(--color-emerald-200);
+}
+
+.company-badge.inactive {
+  background: var(--color-gray-50);
+  color: var(--color-gray-600);
+  border-color: var(--color-gray-200);
+}
+
+@media (min-width: 640px) {
+  .companies-header-top {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .companies-toolbar {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .companies-table-wrapper {
+    overflow-x: auto;
+  }
+}

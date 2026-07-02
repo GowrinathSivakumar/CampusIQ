@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { HiMenu, HiX } from 'react-icons/hi'
 import styles from './Navbar.module.css'
 
@@ -11,6 +12,7 @@ const NAV_LINKS = [
 ]
 
 export default function Navbar() {
+  const navigate = useNavigate()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
 
@@ -41,7 +43,7 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
-            <button className={styles.loginBtn}>Login</button>
+            <button className={styles.loginBtn} onClick={() => navigate('/login')}>Login</button>
           </div>
 
           <button
@@ -72,7 +74,7 @@ export default function Navbar() {
             {link.label}
           </a>
         ))}
-        <button className={styles.mobileLoginBtn} onClick={handleLinkClick}>
+        <button className={styles.mobileLoginBtn} onClick={() => { handleLinkClick(); navigate('/login') }}>
           Login
         </button>
       </div>
