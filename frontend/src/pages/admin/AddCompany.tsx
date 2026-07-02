@@ -1,4 +1,4 @@
- import { Building2, Upload } from 'lucide-react'
+  import { Building2, Upload } from 'lucide-react'
 import './AddCompany.css'
 
 export default function AddCompany() {

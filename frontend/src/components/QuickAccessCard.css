@@ -1,0 +1,99 @@
+.quick-access-card {
+  position: relative;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-gray-100);
+  box-shadow: var(--shadow-sm);
+  padding: 24px 20px;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+  transition: box-shadow 0.25s, transform 0.25s;
+  overflow: hidden;
+}
+
+.quick-access-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+
+.quick-access-card-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  opacity: 0;
+  transition: opacity 0.25s, height 0.25s;
+  pointer-events: none;
+}
+
+.quick-access-card:hover .quick-access-card-bg {
+  opacity: 1;
+  height: 100%;
+  opacity: 0.04;
+}
+
+.quick-access-card-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.quick-access-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+  transition: transform 0.25s;
+  background: linear-gradient(135deg, var(--student-500), var(--student-600));
+  color: var(--color-white);
+}
+
+.quick-access-card:hover .quick-access-card-icon {
+  transform: scale(1.08);
+}
+
+.quick-access-card-title {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-dark);
+  transition: color 0.15s;
+}
+
+.quick-access-card:hover .quick-access-card-title {
+  color: var(--student-700);
+}
+
+.quick-access-card-desc {
+  font-size: 12px;
+  color: var(--color-dark-secondary);
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
+.quick-access-card-arrow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--student-500);
+  margin-top: 4px;
+  transition: gap 0.2s;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity 0.2s, transform 0.2s, gap 0.2s;
+}
+
+.quick-access-card:hover .quick-access-card-arrow {
+  opacity: 1;
+  transform: translateX(0);
+  gap: 8px;
+}

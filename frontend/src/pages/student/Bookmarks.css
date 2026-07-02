@@ -1,0 +1,208 @@
+.bookmarks-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.bookmarks-page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.bookmarks-page-title {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-bottom: 4px;
+}
+
+.bookmarks-page-subtitle {
+  font-size: 14px;
+  color: var(--color-dark-secondary);
+}
+
+.bookmarks-page-count {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--student-50);
+  color: var(--student-700);
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.bookmarks-page-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.bookmarks-page-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-dark-secondary);
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: 10px;
+  transition: all 0.15s;
+  cursor: pointer;
+}
+
+.bookmarks-page-tab:hover {
+  border-color: var(--student-300);
+  color: var(--student-700);
+}
+
+.bookmarks-page-tab.active {
+  background: var(--student-500);
+  color: var(--color-white);
+  border-color: var(--student-500);
+}
+
+.bookmarks-page-tab-count {
+  padding: 1px 6px;
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--color-gray-100);
+  border-radius: 4px;
+  color: var(--color-dark-secondary);
+}
+
+.bookmarks-page-tab.active .bookmarks-page-tab-count {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--color-white);
+}
+
+.bookmarks-page-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.bookmarks-page-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-gray-100);
+  box-shadow: var(--shadow-xs);
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.bookmarks-page-item:hover {
+  box-shadow: var(--shadow-sm);
+  border-color: var(--student-200);
+}
+
+.bookmarks-page-item-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.bookmarks-page-item-icon.company {
+  background: var(--student-50);
+  color: var(--student-600);
+}
+
+.bookmarks-page-item-icon.question {
+  background: var(--color-amber-50);
+  color: var(--color-amber-600);
+}
+
+.bookmarks-page-item-icon.guide {
+  background: var(--color-emerald-50);
+  color: var(--color-emerald-600);
+}
+
+.bookmarks-page-item-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bookmarks-page-item-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-dark);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.bookmarks-page-item-title:hover {
+  color: var(--student-600);
+}
+
+.bookmarks-page-item-title svg {
+  opacity: 0;
+  transition: opacity 0.15s;
+  flex-shrink: 0;
+}
+
+.bookmarks-page-item-title:hover svg {
+  opacity: 1;
+}
+
+.bookmarks-page-item-meta {
+  font-size: 12px;
+  color: var(--color-gray-400);
+}
+
+.bookmarks-page-item-remove {
+  padding: 8px;
+  border-radius: var(--radius-md);
+  color: var(--color-gray-400);
+  transition: all 0.15s;
+  flex-shrink: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.bookmarks-page-item-remove:hover {
+  color: var(--color-red-500);
+  background: var(--color-red-50);
+}
+
+.bookmarks-page-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  color: var(--color-gray-400);
+  gap: 12px;
+}
+
+.bookmarks-page-empty h3 {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-dark-secondary);
+}
+
+.bookmarks-page-empty p {
+  font-size: 14px;
+}

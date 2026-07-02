@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { LogIn, Mail, Lock, Eye, EyeOff } from 'lucide-react'
+import { LogIn, Mail, Lock, Eye, EyeOff, GraduationCap, Shield } from 'lucide-react'
 import './Login.css'
 
 export default function Login() {
@@ -8,6 +8,7 @@ export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
+  const [role, setRole] = useState<'student' | 'admin'>('student')
   const [error, setError] = useState('')
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -18,7 +19,9 @@ export default function Login() {
       return
     }
 
-    if (email === 'admin@campusiq.com' && password === 'admin123') {
+    if (role === 'student' && email.endsWith('@student.edu') && password === 'student123') {
+      navigate('/student/dashboard')
+    } else if (role === 'admin' && email === 'admin@campusiq.com' && password === 'admin123') {
       navigate('/admin/dashboard')
     } else {
       setError('Invalid email or password.')
@@ -40,10 +43,29 @@ export default function Login() {
               <span className="login-logo-c">C</span>
               <span className="login-logo-text">ampus</span>
               <span className="login-logo-c">IQ</span>
-              <span className="login-badge">Admin</span>
+              <span className={`login-badge ${role}`}>{role === 'admin' ? 'Admin' : 'Student'}</span>
             </div>
             <h1 className="login-title">Welcome Back</h1>
-            <p className="login-subtitle">Sign in to your admin dashboard</p>
+            <p className="login-subtitle">Sign in to your {role} dashboard</p>
+
+            <div className="login-role-toggle">
+              <button
+                type="button"
+                className={`login-role-btn ${role === 'student' ? 'active' : ''}`}
+                onClick={() => { setRole('student'); setError('') }}
+              >
+                <GraduationCap size={16} />
+                Student
+              </button>
+              <button
+                type="button"
+                className={`login-role-btn ${role === 'admin' ? 'active' : ''}`}
+                onClick={() => { setRole('admin'); setError('') }}
+              >
+                <Shield size={16} />
+                Admin
+              </button>
+            </div>
           </div>
 
           <form className="login-form" onSubmit={handleSubmit}>
@@ -62,7 +84,7 @@ export default function Login() {
                   type="email"
                   value={email}
                   onChange={(e) => { setEmail(e.target.value); setError('') }}
-                  placeholder="admin@campusiq.com"
+                  placeholder={role === 'student' ? 'you@student.edu' : 'admin@campusiq.com'}
                   className="login-input"
                 />
               </div>
@@ -96,7 +118,10 @@ export default function Login() {
             </button>
 
             <p className="login-hint">
-              Demo: admin@campusiq.com / admin123
+              {role === 'student'
+                ? 'Demo: any@student.edu / student123'
+                : 'Demo: admin@campusiq.com / admin123'
+              }
             </p>
           </form>
         </div>

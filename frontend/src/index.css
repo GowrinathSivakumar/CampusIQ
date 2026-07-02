@@ -83,6 +83,20 @@
   --sidebar-width: 240px;
   --sidebar-collapsed-width: 64px;
   --navbar-height: 64px;
+
+  /* Student Module - Blue Theme */
+  --student-50: #eff6ff;
+  --student-100: #dbeafe;
+  --student-200: #bfdbfe;
+  --student-300: #93c5fd;
+  --student-400: #60a5fa;
+  --student-500: #3b82f6;
+  --student-600: #2563eb;
+  --student-700: #1d4ed8;
+  --student-800: #1e40af;
+  --student-900: #1e3a8a;
+
+  --shadow-blue: 0 20px 40px rgba(37, 99, 235, 0.15), 0 8px 20px rgba(37, 99, 235, 0.1);
 }
 
 *,

@@ -1,0 +1,305 @@
+.preparation-guide {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.preparation-guide-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.preparation-guide-title {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-bottom: 4px;
+}
+
+.preparation-guide-subtitle {
+  font-size: 14px;
+  color: var(--color-dark-secondary);
+}
+
+.preparation-guide-count {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--student-50);
+  color: var(--student-700);
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.preparation-guide-section {
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-gray-100);
+  padding: 24px;
+  box-shadow: var(--shadow-xs);
+}
+
+.preparation-guide-section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.preparation-guide-section-header svg {
+  color: var(--student-600);
+}
+
+.preparation-guide-section-title {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+.preparation-guide-topics {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.preparation-guide-topic-card {
+  padding: 16px;
+  border: 1px solid var(--color-gray-100);
+  border-radius: var(--radius-md);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.preparation-guide-topic-card:hover {
+  border-color: var(--student-200);
+  box-shadow: var(--shadow-xs);
+}
+
+.preparation-guide-topic-title {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-dark);
+  margin-bottom: 10px;
+}
+
+.preparation-guide-topic-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.preparation-guide-topic-list li {
+  font-size: 13px;
+  color: var(--color-dark-secondary);
+  padding-left: 16px;
+  position: relative;
+  line-height: 1.5;
+}
+
+.preparation-guide-topic-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--student-400);
+}
+
+.preparation-guide-faqs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.preparation-guide-faq {
+  border: 1px solid var(--color-gray-100);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.preparation-guide-faq[open] {
+  border-color: var(--student-200);
+}
+
+.preparation-guide-faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-dark);
+  cursor: pointer;
+  list-style: none;
+  transition: background 0.15s;
+}
+
+.preparation-guide-faq-question:hover {
+  background: var(--color-gray-50);
+}
+
+.preparation-guide-faq-question::-webkit-details-marker {
+  display: none;
+}
+
+.preparation-guide-faq[open] .preparation-guide-faq-question svg {
+  transform: rotate(90deg);
+}
+
+.preparation-guide-faq-question svg {
+  color: var(--color-gray-400);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.preparation-guide-faq-answer {
+  padding: 0 16px 14px;
+  font-size: 14px;
+  color: var(--color-dark-secondary);
+  line-height: 1.6;
+}
+
+.preparation-guide-strategy {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.preparation-guide-strategy-card {
+  display: flex;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid var(--color-gray-100);
+  border-radius: var(--radius-md);
+  transition: border-color 0.2s;
+}
+
+.preparation-guide-strategy-card:hover {
+  border-color: var(--student-200);
+}
+
+.preparation-guide-strategy-step {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--student-500);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.preparation-guide-strategy-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.preparation-guide-strategy-title {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+.preparation-guide-strategy-desc {
+  font-size: 13px;
+  color: var(--color-dark-secondary);
+  line-height: 1.5;
+}
+
+.preparation-guide-resources {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.preparation-guide-resource-card {
+  padding: 18px;
+  border: 1px solid var(--color-gray-100);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.preparation-guide-resource-card:hover {
+  border-color: var(--student-200);
+  box-shadow: var(--shadow-xs);
+  transform: translateY(-2px);
+}
+
+.preparation-guide-resource-title {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+.preparation-guide-resource-desc {
+  font-size: 13px;
+  color: var(--color-dark-secondary);
+  line-height: 1.5;
+}
+
+.preparation-guide-resource-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--student-600);
+  margin-top: auto;
+}
+
+.preparation-guide-tips {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+}
+
+.preparation-guide-tip-card {
+  display: flex;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 1px solid var(--color-gray-100);
+  border-radius: var(--radius-md);
+  align-items: flex-start;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.preparation-guide-tip-card:hover {
+  border-color: var(--student-200);
+  background: var(--student-50);
+}
+
+.preparation-guide-tip-number {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--student-500);
+  flex-shrink: 0;
+  min-width: 24px;
+}
+
+.preparation-guide-tip-text {
+  font-size: 13px;
+  color: var(--color-dark-secondary);
+  line-height: 1.5;
+}

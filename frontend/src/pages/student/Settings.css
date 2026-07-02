@@ -1,0 +1,205 @@
+.settings-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.settings-page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.settings-page-title {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-bottom: 4px;
+}
+
+.settings-page-subtitle {
+  font-size: 14px;
+  color: var(--color-dark-secondary);
+}
+
+.settings-page-icon-header {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background: var(--student-50);
+  color: var(--student-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.settings-page-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 1024px) {
+  .settings-page-grid {
+    grid-template-columns: 1fr 300px;
+  }
+}
+
+.settings-page-main {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.settings-page-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-gray-100);
+  box-shadow: var(--shadow-xs);
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.settings-page-card:hover {
+  box-shadow: var(--shadow-sm);
+  border-color: var(--student-200);
+}
+
+.settings-page-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.settings-page-card-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.settings-page-card-title {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-dark);
+  margin-bottom: 2px;
+}
+
+.settings-page-card-desc {
+  font-size: 13px;
+  color: var(--color-dark-secondary);
+  line-height: 1.4;
+}
+
+.settings-page-card-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--student-600);
+  background: var(--student-50);
+  border-radius: 8px;
+  transition: all 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.settings-page-card-btn:hover {
+  background: var(--student-100);
+  color: var(--student-700);
+  gap: 10px;
+}
+
+.settings-page-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.settings-page-sidebar-card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  border: 1px solid var(--color-gray-100);
+  box-shadow: var(--shadow-xs);
+}
+
+.settings-page-sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.settings-page-sidebar-header svg {
+  color: var(--student-600);
+}
+
+.settings-page-sidebar-title {
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+.settings-page-sidebar-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.settings-page-sidebar-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--color-gray-50);
+}
+
+.settings-page-sidebar-row:last-child {
+  border-bottom: none;
+}
+
+.settings-page-sidebar-label {
+  font-size: 13px;
+  color: var(--color-dark-secondary);
+}
+
+.settings-page-sidebar-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+.settings-page-sidebar-card.logout {
+  padding: 12px 20px;
+}
+
+.settings-page-logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-red-600);
+  text-decoration: none;
+  transition: gap 0.2s;
+}
+
+.settings-page-logout-btn:hover {
+  gap: 14px;
+}

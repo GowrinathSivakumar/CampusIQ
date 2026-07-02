@@ -1,0 +1,215 @@
+.previous-drives {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.previous-drives-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.previous-drives-title {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-bottom: 4px;
+}
+
+.previous-drives-subtitle {
+  font-size: 14px;
+  color: var(--color-dark-secondary);
+}
+
+.previous-drives-count {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--student-50);
+  color: var(--student-700);
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.previous-drives-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.previous-drives-filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: 10px;
+  color: var(--color-gray-400);
+  min-width: 160px;
+  flex: 1;
+}
+
+.previous-drives-filter-group select {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 13px;
+  color: var(--color-dark);
+  background: transparent;
+  cursor: pointer;
+}
+
+.previous-drives-filter-group select option {
+  color: var(--color-dark);
+}
+
+.previous-drives-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.previous-drives-card {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-gray-100);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: box-shadow 0.25s, transform 0.25s;
+  display: flex;
+  flex-direction: column;
+}
+
+.previous-drives-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.previous-drives-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 16px 0;
+}
+
+.previous-drives-card-company-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: var(--student-100);
+  color: var(--student-700);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.previous-drives-card-company-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.previous-drives-card-company {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-dark);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.previous-drives-card-role {
+  font-size: 12px;
+  color: var(--color-dark-secondary);
+}
+
+.previous-drives-card-year {
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--student-600);
+  background: var(--student-50);
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.previous-drives-card-body {
+  padding: 14px 16px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.previous-drives-card-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.previous-drives-card-label {
+  font-size: 11px;
+  color: var(--color-gray-400);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  font-weight: 500;
+}
+
+.previous-drives-card-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+.previous-drives-card-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--student-600);
+  background: var(--student-50);
+  text-decoration: none;
+  transition: background 0.2s, gap 0.2s;
+  margin-top: auto;
+  border-top: 1px solid var(--color-gray-100);
+}
+
+.previous-drives-card-btn:hover {
+  background: var(--student-100);
+  gap: 10px;
+}
+
+.previous-drives-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  color: var(--color-gray-400);
+  gap: 12px;
+}
+
+.previous-drives-empty h3 {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-dark-secondary);
+}
+
+.previous-drives-empty p {
+  font-size: 14px;
+}

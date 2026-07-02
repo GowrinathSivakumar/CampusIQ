@@ -1,0 +1,231 @@
+.student-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.student-dashboard-welcome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, var(--student-600), var(--student-800));
+  border-radius: var(--radius-xl);
+  padding: 28px 32px;
+  color: var(--color-white);
+  box-shadow: 0 8px 32px rgba(37, 99, 235, 0.2);
+  overflow: hidden;
+  position: relative;
+}
+
+.student-dashboard-welcome::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+}
+
+.student-dashboard-welcome::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: 60%;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  pointer-events: none;
+}
+
+.student-dashboard-welcome-text {
+  position: relative;
+  z-index: 1;
+}
+
+.student-dashboard-greeting {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.student-dashboard-wave {
+  display: inline-block;
+  animation: wave 2s infinite;
+  transform-origin: 70% 70%;
+}
+
+@keyframes wave {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(15deg); }
+  50% { transform: rotate(-5deg); }
+  75% { transform: rotate(10deg); }
+}
+
+.student-dashboard-subtitle {
+  font-size: 14px;
+  opacity: 0.85;
+  font-weight: 400;
+  line-height: 1.5;
+  max-width: 480px;
+}
+
+.student-dashboard-welcome-illustration {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.student-dashboard-illustration-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+}
+
+.student-dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.student-dashboard-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.student-dashboard-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.student-dashboard-section-title {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+.student-dashboard-view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--student-600);
+  text-decoration: none;
+  transition: gap 0.2s;
+}
+
+.student-dashboard-view-all:hover {
+  gap: 8px;
+}
+
+.student-dashboard-quick-access {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+}
+
+.student-dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+
+@media (min-width: 1024px) {
+  .student-dashboard-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.student-dashboard-recent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.student-dashboard-recent-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-gray-100);
+  text-decoration: none;
+  transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+}
+
+.student-dashboard-recent-card:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateX(4px);
+  border-color: var(--student-200);
+}
+
+.student-dashboard-recent-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.student-dashboard-recent-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: var(--student-100);
+  color: var(--student-700);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.student-dashboard-recent-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.student-dashboard-recent-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+.student-dashboard-recent-time {
+  font-size: 12px;
+  color: var(--color-gray-400);
+}
+
+.student-dashboard-recent-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--student-600);
+  transition: gap 0.2s;
+}
+
+.student-dashboard-recent-card:hover .student-dashboard-recent-cta {
+  gap: 8px;
+}
+
+.student-dashboard-featured {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 14px;
+}
