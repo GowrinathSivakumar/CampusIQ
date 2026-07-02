@@ -56,6 +56,7 @@ export default function Hero() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut', delay: 0.4 }}
         >
+          <div className={styles.dashboardGlow} />
           <div className={styles.dashboardMock}>
             <div className={styles.floatingBadge}>Analytics Preview</div>
 

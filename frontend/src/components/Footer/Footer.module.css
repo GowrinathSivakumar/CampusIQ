@@ -1,6 +1,6 @@
 .footer {
   padding: 4rem 2rem 2rem;
-  background: #FFFFFF;
+  background: var(--color-surface);
   border-top: 1px solid rgba(0, 0, 0, 0.04);
 }
 
@@ -25,20 +25,22 @@
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 1.3rem;
-  color: #111111;
+  color: var(--color-text-primary);
   margin-bottom: 1rem;
   display: inline-block;
 }
 
 .logoAccent {
-  color: #C9A227;
+  background: var(--color-brand-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .brandDesc {
   font-size: 0.9rem;
-  color: #2E2E2E;
+  color: var(--color-text-secondary);
   line-height: 1.7;
-  opacity: 0.7;
   margin-bottom: 1.5rem;
 }
 
@@ -51,18 +53,18 @@
   width: 38px;
   height: 38px;
   border-radius: 10px;
-  background: #F8F6F2;
+  background: var(--color-bg);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.1rem;
-  color: #111111;
+  color: var(--color-text-secondary);
   transition: all 0.3s ease;
 }
 
 .socialLink:hover {
-  background: #111111;
-  color: #FFFFFF;
+  background: var(--color-primary-600);
+  color: var(--color-white);
   transform: translateY(-2px);
 }
 
@@ -70,7 +72,7 @@
   font-family: 'Poppins', sans-serif;
   font-size: 0.85rem;
   font-weight: 600;
-  color: #111111;
+  color: var(--color-text-primary);
   margin-bottom: 1.25rem;
 }
 
@@ -82,14 +84,12 @@
 
 .columnLink {
   font-size: 0.9rem;
-  color: #2E2E2E;
-  opacity: 0.7;
+  color: var(--color-text-secondary);
   transition: all 0.2s ease;
 }
 
 .columnLink:hover {
-  color: #C9A227;
-  opacity: 1;
+  color: var(--color-primary-500);
 }
 
 .divider {
@@ -109,8 +109,7 @@
 
 .copyright {
   font-size: 0.85rem;
-  color: #2E2E2E;
-  opacity: 0.6;
+  color: var(--color-text-muted);
 }
 
 .bottomLinks {
@@ -120,13 +119,12 @@
 
 .bottomLink {
   font-size: 0.85rem;
-  color: #2E2E2E;
-  opacity: 0.6;
+  color: var(--color-text-muted);
   transition: color 0.2s ease;
 }
 
 .bottomLink:hover {
-  color: #C9A227;
+  color: var(--color-primary-500);
 }
 
 @media (max-width: 768px) {

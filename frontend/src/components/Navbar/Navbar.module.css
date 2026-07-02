@@ -12,10 +12,10 @@
 }
 
 .scrolled {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   padding: 0.75rem 2rem;
 }
 
@@ -32,12 +32,15 @@
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 1.4rem;
-  color: #111111;
+  color: var(--color-text-primary);
   letter-spacing: -0.02em;
 }
 
 .logoAccent {
-  color: #C9A227;
+  background: var(--color-brand-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .navLinks {
@@ -49,7 +52,7 @@
 .navLink {
   font-size: 0.9rem;
   font-weight: 500;
-  color: #2E2E2E;
+  color: var(--color-text-secondary);
   transition: color 0.2s ease;
   position: relative;
 }
@@ -61,12 +64,12 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: #C9A227;
+  background: var(--color-primary-500);
   transition: width 0.3s ease;
 }
 
 .navLink:hover {
-  color: #C9A227;
+  color: var(--color-primary-500);
 }
 
 .navLink:hover::after {
@@ -75,8 +78,8 @@
 
 .loginBtn {
   padding: 0.6rem 1.5rem;
-  background: #111111;
-  color: #FFFFFF;
+  background: var(--color-primary-600);
+  color: var(--color-white);
   border-radius: 8px;
   font-size: 0.9rem;
   font-weight: 600;
@@ -84,15 +87,15 @@
 }
 
 .loginBtn:hover {
-  background: #C9A227;
+  background: var(--color-primary-500);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(201, 162, 39, 0.3);
+  box-shadow: 0 4px 14px rgba(108, 92, 231, 0.3);
 }
 
 .menuBtn {
   display: none;
   font-size: 1.5rem;
-  color: #111111;
+  color: var(--color-text-primary);
   background: none;
   border: none;
   cursor: pointer;
@@ -106,7 +109,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(248, 246, 242, 0.98);
+  background: rgba(248, 249, 251, 0.98);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   z-index: 999;
@@ -125,7 +128,7 @@
   top: 1.5rem;
   right: 2rem;
   font-size: 1.8rem;
-  color: #111111;
+  color: var(--color-text-primary);
 }
 
 @media (max-width: 768px) {
@@ -148,19 +151,19 @@
   .mobileNavLink {
     font-size: 1.2rem;
     font-weight: 500;
-    color: #2E2E2E;
+    color: var(--color-text-secondary);
     transition: color 0.2s ease;
   }
 
   .mobileNavLink:hover {
-    color: #C9A227;
+    color: var(--color-primary-500);
   }
 
   .mobileLoginBtn {
     margin-top: 1rem;
     padding: 0.75rem 2rem;
-    background: #111111;
-    color: #FFFFFF;
+    background: var(--color-primary-600);
+    color: var(--color-white);
     border-radius: 8px;
     font-size: 1rem;
     font-weight: 600;
@@ -168,6 +171,7 @@
   }
 
   .mobileLoginBtn:hover {
-    background: #C9A227;
+    background: var(--color-primary-500);
+    box-shadow: 0 4px 14px rgba(108, 92, 231, 0.3);
   }
 }

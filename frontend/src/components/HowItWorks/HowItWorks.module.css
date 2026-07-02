@@ -1,6 +1,6 @@
 .section {
   padding: 6rem 2rem;
-  background: #FFFFFF;
+  background: var(--color-surface);
 }
 
 .container {
@@ -18,7 +18,7 @@
 .label {
   font-size: 0.8rem;
   font-weight: 600;
-  color: #C9A227;
+  color: var(--color-primary-500);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 1rem;
@@ -27,15 +27,14 @@
 .heading {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #111111;
+  color: var(--color-text-primary);
   letter-spacing: -0.02em;
   margin-bottom: 1rem;
 }
 
 .subtitle {
   font-size: 1rem;
-  color: #2E2E2E;
-  opacity: 0.75;
+  color: var(--color-text-secondary);
   line-height: 1.7;
 }
 
@@ -53,7 +52,7 @@
   left: 3rem;
   right: 3rem;
   height: 2px;
-  background: linear-gradient(to right, #C9A227 0%, rgba(201, 162, 39, 0.15) 100%);
+  background: linear-gradient(to right, var(--color-primary-500) 0%, rgba(108, 92, 231, 0.1) 100%);
   z-index: 0;
 }
 
@@ -67,8 +66,8 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: #111111;
-  color: #FFFFFF;
+  background: var(--color-primary-600);
+  color: var(--color-white);
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   font-size: 1.2rem;
@@ -81,14 +80,14 @@
 }
 
 .step:hover .stepNumber {
-  background: #C9A227;
+  background: var(--color-primary-500);
   transform: scale(1.1);
-  box-shadow: 0 8px 24px rgba(201, 162, 39, 0.3);
+  box-shadow: var(--shadow-primary-glow);
 }
 
 .stepIcon {
   font-size: 1.8rem;
-  color: #C9A227;
+  color: var(--color-accent-500);
   display: block;
   margin-bottom: 0.5rem;
 }
@@ -97,15 +96,14 @@
   font-family: 'Poppins', sans-serif;
   font-size: 1.05rem;
   font-weight: 600;
-  color: #111111;
+  color: var(--color-text-primary);
   margin-bottom: 0.75rem;
 }
 
 .stepDesc {
   font-size: 0.9rem;
-  color: #2E2E2E;
+  color: var(--color-text-secondary);
   line-height: 1.7;
-  opacity: 0.75;
   max-width: 260px;
   margin: 0 auto;
 }
