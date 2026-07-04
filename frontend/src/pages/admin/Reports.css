@@ -74,8 +74,8 @@
 }
 
 .report-card-icon.primary {
-  background: var(--color-primary-50);
-  color: var(--color-primary-600);
+  background: var(--color-emerald-50);
+  color: var(--color-emerald-600);
 }
 
 .report-card-icon.emerald {

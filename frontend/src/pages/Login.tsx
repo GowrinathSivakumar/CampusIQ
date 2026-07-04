@@ -19,12 +19,10 @@ export default function Login() {
       return
     }
 
-    if (role === 'student' && email.endsWith('@student.edu') && password === 'student123') {
+    if (role === 'student') {
       navigate('/student/dashboard')
-    } else if (role === 'admin' && email === 'admin@campusiq.com' && password === 'admin123') {
+    } else if (role === 'admin') {
       navigate('/admin/dashboard')
-    } else {
-      setError('Invalid email or password.')
     }
   }
 
@@ -118,10 +116,7 @@ export default function Login() {
             </button>
 
             <p className="login-hint">
-              {role === 'student'
-                ? 'Demo: any@student.edu / student123'
-                : 'Demo: admin@campusiq.com / admin123'
-              }
+              Enter any email and password to sign in
             </p>
           </form>
         </div>

@@ -63,8 +63,8 @@
 
 .add-company-field input:focus,
 .add-company-field textarea:focus {
-  border-color: var(--color-primary-500);
-  box-shadow: 0 0 0 3px rgba(0, 163, 0, 0.1);
+  border-color: var(--color-emerald-500);
+  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
 }
 
 .add-company-field textarea {
@@ -82,7 +82,7 @@
 }
 
 .add-company-upload:hover {
-  border-color: var(--color-primary-400);
+  border-color: var(--color-emerald-400);
 }
 
 .add-company-upload-icon {
@@ -116,13 +116,13 @@
   font-size: 13px;
   font-weight: 600;
   color: var(--color-white);
-  background: var(--color-primary-600);
+  background: var(--color-emerald-600);
   border-radius: var(--radius-md);
   transition: background 0.15s;
 }
 
 .add-company-submit:hover {
-  background: var(--color-primary-700);
+  background: var(--color-emerald-700);
 }
 
 .add-company-cancel {

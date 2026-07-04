@@ -38,7 +38,7 @@
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--color-primary-500), var(--color-primary-700));
+  background: linear-gradient(135deg, var(--color-emerald-600), var(--color-emerald-700));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -100,7 +100,7 @@
   width: 36px;
   height: 36px;
   border-radius: var(--radius-md);
-  background: var(--color-primary-50);
+  background: var(--color-emerald-50);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -108,7 +108,7 @@
 }
 
 .profile-info-icon svg {
-  color: var(--color-primary-600);
+  color: var(--color-emerald-600);
 }
 
 .profile-info-label {
