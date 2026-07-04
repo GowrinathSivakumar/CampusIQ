@@ -187,26 +187,6 @@
   line-height: 1.2;
 }
 
-.student-navbar-logout {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  font-size: 13px;
-  color: var(--color-dark-secondary);
-  border-radius: var(--radius-md);
-  transition: color 0.15s, background 0.15s;
-}
-
-.student-navbar-logout:hover {
-  color: var(--color-red-600);
-  background: var(--color-red-50);
-}
-
-.student-navbar-logout-label {
-  display: none;
-}
-
 @media (min-width: 640px) {
   .student-navbar-inner {
     padding: 0 24px;
@@ -214,10 +194,6 @@
 
   .student-navbar-profile {
     display: flex;
-  }
-
-  .student-navbar-logout-label {
-    display: inline;
   }
 }
 

@@ -5,8 +5,6 @@ import {
   HelpCircle,
   Bookmark,
   Briefcase,
-  Code2,
-  Users,
   Bot,
   BookOpen,
   ChevronRight,
@@ -67,21 +65,9 @@ const quickAccessItems = [
     path: '/student/drives',
   },
   {
-    title: 'Technical Questions',
-    description: 'Practice technical interview questions',
-    icon: Code2,
-    path: '/student/questions',
-  },
-  {
-    title: 'Coding Questions',
-    description: 'Solve coding problems from previous drives',
-    icon: Briefcase,
-    path: '/student/questions',
-  },
-  {
-    title: 'HR Questions',
-    description: 'Prepare for HR interview rounds',
-    icon: Users,
+    title: 'Interview Questions',
+    description: 'Practice common interview questions for technical and HR rounds',
+    icon: HelpCircle,
     path: '/student/questions',
   },
   {

@@ -1,4 +1,4 @@
-import { Search, Bell, Bookmark, LogOut, Menu } from 'lucide-react'
+import { Search, Bell, Bookmark, Menu } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import './StudentNavbar.css'
 
@@ -59,11 +59,6 @@ export default function StudentNavbar({ onToggleSidebar }: StudentNavbarProps) {
               <p className="student-navbar-profile-role">Student</p>
             </div>
           </div>
-
-          <button className="student-navbar-logout" aria-label="Logout">
-            <LogOut size={18} />
-            <span className="student-navbar-logout-label">Logout</span>
-          </button>
         </div>
       </div>
     </header>

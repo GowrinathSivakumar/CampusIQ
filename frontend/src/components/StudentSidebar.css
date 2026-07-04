@@ -204,18 +204,24 @@
   flex: 1;
 }
 
-.student-sidebar-logout:hover {
-  color: var(--color-red-600);
-  background: var(--color-red-50);
+.student-sidebar-logout.logout-btn {
+  background: var(--color-red-500);
+  color: var(--color-white);
+  font-weight: 600;
+  margin-top: 4px;
 }
 
-.student-sidebar-logout .student-sidebar-link-icon {
-  color: var(--color-gray-400);
-  transition: color 0.15s;
+.student-sidebar-logout.logout-btn:hover {
+  background: var(--color-red-600);
+  color: var(--color-white);
 }
 
-.student-sidebar-logout:hover .student-sidebar-link-icon {
-  color: var(--color-red-500);
+.student-sidebar-logout.logout-btn .student-sidebar-link-icon {
+  color: var(--color-white);
+}
+
+.student-sidebar-logout.logout-btn:hover .student-sidebar-link-icon {
+  color: var(--color-white);
 }
 
 .student-sidebar-toggle {
