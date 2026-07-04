@@ -2,13 +2,11 @@ import { NavLink, useLocation } from 'react-router-dom'
 import {
   LayoutDashboard,
   Building2,
-  PlusCircle,
   History,
   HelpCircle,
   Lightbulb,
   BarChart3,
   UserCircle,
-  Settings,
   LogOut,
   ChevronLeft,
   ChevronRight,
@@ -26,13 +24,11 @@ interface AdminSidebarProps {
 const menuItems = [
   { icon: LayoutDashboard, label: 'Dashboard', path: '/admin/dashboard' },
   { icon: Building2, label: 'Companies', path: '/admin/companies' },
-  { icon: PlusCircle, label: 'Add Company', path: '/admin/add-company' },
   { icon: History, label: 'Previous Drives', path: '/admin/drives' },
   { icon: HelpCircle, label: 'Interview Questions', path: '/admin/questions' },
   { icon: Lightbulb, label: 'Preparation Tips', path: '/admin/preparation' },
   { icon: BarChart3, label: 'Reports', path: '/admin/reports' },
   { icon: UserCircle, label: 'Profile', path: '/admin/profile' },
-  { icon: Settings, label: 'Settings', path: '/admin/settings' },
 ]
 
 export default function AdminSidebar({ collapsed, onToggle, mobileOpen, onMobileClose }: AdminSidebarProps) {

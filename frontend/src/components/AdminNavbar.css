@@ -102,7 +102,7 @@
 
 .admin-navbar-search:focus {
   border-color: var(--color-emerald-500);
-  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+  box-shadow: 0 0 0 3px rgba(0, 163, 0, 0.1);
   background: var(--color-white);
 }
 
@@ -175,26 +175,6 @@
   color: var(--color-dark-secondary);
 }
 
-.admin-navbar-logout {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  font-size: 13px;
-  color: var(--color-dark-secondary);
-  border-radius: var(--radius-md);
-  transition: color 0.15s, background 0.15s;
-}
-
-.admin-navbar-logout:hover {
-  color: var(--color-red-600);
-  background: var(--color-red-50);
-}
-
-.admin-navbar-logout-label {
-  display: none;
-}
-
 @media (min-width: 640px) {
   .admin-navbar-inner {
     padding: 0 24px;
@@ -207,10 +187,6 @@
 
   .admin-navbar-profile {
     display: flex;
-  }
-
-  .admin-navbar-logout-label {
-    display: inline;
   }
 }
 

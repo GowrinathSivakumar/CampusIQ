@@ -73,7 +73,7 @@
 
 .questions-search:focus {
   border-color: var(--color-emerald-500);
-  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+  box-shadow: 0 0 0 3px rgba(0, 163, 0, 0.1);
 }
 
 .questions-filter-btn {
@@ -155,9 +155,9 @@
   font-weight: 500;
   border-radius: 999px;
   border: 1px solid;
-  background: var(--color-blue-50);
-  color: var(--color-blue-700);
-  border-color: var(--color-blue-200);
+  background: var(--color-emerald-50);
+  color: var(--color-emerald-700);
+  border-color: var(--color-emerald-200);
 }
 
 .question-difficulty-badge {

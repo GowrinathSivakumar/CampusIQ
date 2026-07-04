@@ -4,16 +4,39 @@
   gap: 24px;
 }
 
-.profile-page h1 {
+.profile-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.profile-header-row h1 {
   font-size: 22px;
   font-weight: 700;
   color: var(--color-dark);
 }
 
-.profile-page > p {
+.profile-header-row p {
   font-size: 14px;
   color: var(--color-dark-secondary);
-  margin-top: 2px;
+  margin-top: 4px;
+}
+
+.profile-settings-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  color: var(--color-dark-secondary);
+  transition: background 0.15s, color 0.15s;
+  flex-shrink: 0;
+}
+
+.profile-settings-btn:hover {
+  background: var(--color-gray-100);
+  color: var(--color-dark);
 }
 
 .profile-grid {

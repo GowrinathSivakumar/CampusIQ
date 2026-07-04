@@ -2,7 +2,6 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import AdminLayout from '../layouts/AdminLayout'
 import Dashboard from '../pages/admin/Dashboard'
 import Companies from '../pages/admin/Companies'
-import AddCompany from '../pages/admin/AddCompany'
 import PreviousDrives from '../pages/admin/PreviousDrives'
 import Questions from '../pages/admin/Questions'
 import Preparation from '../pages/admin/Preparation'
@@ -18,7 +17,6 @@ export default function AdminRoutes() {
         <Route index element={<Navigate to="/admin/dashboard" replace />} />
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="companies" element={<Companies />} />
-        <Route path="add-company" element={<AddCompany />} />
         <Route path="drives" element={<PreviousDrives />} />
         <Route path="questions" element={<Questions />} />
         <Route path="preparation" element={<Preparation />} />

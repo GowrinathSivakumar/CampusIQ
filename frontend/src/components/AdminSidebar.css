@@ -176,24 +176,21 @@
   padding: 12px 12px;
   border-radius: var(--radius-md);
   font-size: 14px;
-  font-weight: 500;
-  color: var(--color-dark-secondary);
-  transition: color 0.15s, background 0.15s;
+  font-weight: 600;
+  color: var(--color-white);
+  background: var(--color-red-600);
+  transition: background 0.15s;
   text-decoration: none;
+  margin-top: auto;
 }
 
 .sidebar-logout:hover {
-  color: var(--color-red-600);
-  background: var(--color-red-50);
+  background: var(--color-red-700);
 }
 
 .sidebar-logout .sidebar-link-icon {
-  color: var(--color-gray-400);
-  transition: color 0.15s;
-}
-
-.sidebar-logout:hover .sidebar-link-icon {
-  color: var(--color-red-500);
+  color: var(--color-white);
+  transition: none;
 }
 
 .sidebar-toggle-btn {

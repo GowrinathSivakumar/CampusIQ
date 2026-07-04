@@ -2,7 +2,7 @@ import { Building2, CheckCircle2, BookOpen } from 'lucide-react'
 import DashboardCard from '../../components/DashboardCard'
 import HighestPlacementCard from '../../components/HighestPlacementCard'
 import QuickActionCard from '../../components/QuickActionCard'
-import RecentActivityTable from '../../components/RecentActivityTable'
+
 import './Dashboard.css'
 
 const stats = [
@@ -13,20 +13,9 @@ const stats = [
 
 const quickActions = [
   { title: 'View Companies', description: 'Browse and manage registered companies', icon: Building2, path: '/admin/companies' },
-  { title: 'Add Company', description: 'Register a new placement company', icon: Building2, path: '/admin/add-company' },
   { title: 'Upload Previous Drive', description: 'Add previous placement drive data', icon: Building2, path: '/admin/drives' },
   { title: 'Upload Questions', description: 'Add interview questions to database', icon: BookOpen, path: '/admin/questions' },
   { title: 'Add Preparation Tips', description: 'Share preparation tips and resources', icon: BookOpen, path: '/admin/preparation' },
-]
-
-const recentActivities = [
-  { company: 'Zoho', uploadedBy: 'Admin', uploadDate: '12-07-2026', status: 'Published' as const },
-  { company: 'TCS', uploadedBy: 'Admin', uploadDate: '10-07-2026', status: 'Published' as const },
-  { company: 'Infosys', uploadedBy: 'Admin', uploadDate: '08-07-2026', status: 'Pending' as const },
-  { company: 'Amazon', uploadedBy: 'Admin', uploadDate: '05-07-2026', status: 'Published' as const },
-  { company: 'Google', uploadedBy: 'Admin', uploadDate: '01-07-2026', status: 'Draft' as const },
-  { company: 'Microsoft', uploadedBy: 'Admin', uploadDate: '28-06-2026', status: 'Published' as const },
-  { company: 'Accenture', uploadedBy: 'Admin', uploadDate: '25-06-2026', status: 'Pending' as const },
 ]
 
 export default function Dashboard() {
@@ -53,7 +42,6 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <RecentActivityTable activities={recentActivities} />
     </div>
   )
 }

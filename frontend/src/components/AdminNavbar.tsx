@@ -1,4 +1,4 @@
-import { Search, Bell, Menu, LogOut } from 'lucide-react'
+import { Search, Bell, Menu } from 'lucide-react'
 import './AdminNavbar.css'
 
 interface AdminNavbarProps {
@@ -49,11 +49,6 @@ export default function AdminNavbar({ onToggleSidebar }: AdminNavbarProps) {
               <p className="admin-navbar-profile-email">admin@campusiq.com</p>
             </div>
           </div>
-
-          <button className="admin-navbar-logout">
-            <LogOut size={18} />
-            <span className="admin-navbar-logout-label">Logout</span>
-          </button>
         </div>
       </div>
     </header>

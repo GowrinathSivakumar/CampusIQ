@@ -67,7 +67,7 @@
 
 .settings-field input:focus {
   border-color: var(--color-emerald-500);
-  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+  box-shadow: 0 0 0 3px rgba(0, 163, 0, 0.1);
 }
 
 .settings-preference {

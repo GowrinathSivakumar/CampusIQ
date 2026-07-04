@@ -66,13 +66,13 @@
 .dashboard-card-icon {
   padding: 10px;
   border-radius: var(--radius-md);
-  background: var(--color-primary-50);
-  color: var(--color-primary-600);
+  background: var(--color-emerald-50);
+  color: var(--color-emerald-600);
   transition: background 0.2s, transform 0.2s;
   flex-shrink: 0;
 }
 
 .dashboard-card:hover .dashboard-card-icon {
-  background: var(--color-primary-100);
+  background: var(--color-emerald-100);
   transform: scale(1.1);
 }
