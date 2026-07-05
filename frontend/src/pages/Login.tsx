@@ -31,13 +31,7 @@ export default function Login() {
   }
 
   return (
-    <div className="login-page">
-      <div className="login-bg-shapes">
-        <div className="login-shape login-shape-1" />
-        <div className="login-shape login-shape-2" />
-        <div className="login-shape login-shape-3" />
-      </div>
-
+    <div className={`login-page ${role === 'admin' ? 'admin-theme' : ''}`}>
       <div className="login-container">
         <div className="login-card">
           <div className="login-header">
@@ -48,7 +42,7 @@ export default function Login() {
               <span className={`login-badge ${role}`}>{role === 'admin' ? 'Admin' : 'Student'}</span>
             </div>
             <h1 className="login-title">Welcome Back</h1>
-            <p className="login-subtitle">Sign in to your {role} dashboard</p>
+            <p className="login-subtitle">Login to your {role} dashboard</p>
 
             <div className="login-role-toggle">
               <button
@@ -116,11 +110,11 @@ export default function Login() {
 
             <button type="submit" className="login-button">
               <LogIn size={18} />
-              Sign In
+              Login
             </button>
 
             <p className="login-hint">
-              Enter any email and password to sign in
+              Enter any email and password to login
             </p>
           </form>
         </div>
