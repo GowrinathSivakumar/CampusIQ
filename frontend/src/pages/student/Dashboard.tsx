@@ -11,14 +11,8 @@ import {
 } from 'lucide-react'
 import StudentCard from '../../components/StudentCard'
 import QuickAccessCard from '../../components/QuickAccessCard'
-import CompanyCard from '../../components/CompanyCard'
-import './Dashboard.css'
 
-interface RecentCompany {
-  id: number
-  name: string
-  lastViewed: string
-}
+import './Dashboard.css'
 
 const stats = [
   {
@@ -84,23 +78,6 @@ const quickAccessItems = [
   },
 ]
 
-const recentCompanies: RecentCompany[] = [
-  { id: 1, name: 'Zoho Corporation', lastViewed: '2 hours ago' },
-  { id: 2, name: 'TCS Digital', lastViewed: 'Yesterday' },
-  { id: 3, name: 'Amazon', lastViewed: '2 days ago' },
-  { id: 4, name: 'Google', lastViewed: '5 days ago' },
-  { id: 5, name: 'Microsoft', lastViewed: '1 week ago' },
-]
-
-const featuredCompanies = [
-  { id: 1, name: 'Zoho Corporation', drives: 4 },
-  { id: 2, name: 'TCS', drives: 6 },
-  { id: 3, name: 'Amazon', drives: 3 },
-  { id: 4, name: 'Google', drives: 2 },
-  { id: 5, name: 'Microsoft', drives: 3 },
-  { id: 6, name: 'Infosys', drives: 5 },
-]
-
 export default function Dashboard() {
   return (
     <div className="student-dashboard">
@@ -154,60 +131,6 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <div className="student-dashboard-grid">
-        <div className="student-dashboard-section">
-          <div className="student-dashboard-section-header">
-            <h2 className="student-dashboard-section-title">Recently Viewed</h2>
-            <Link to="/student/companies" className="student-dashboard-view-all">
-              View All
-              <ChevronRight size={16} />
-            </Link>
-          </div>
-          <div className="student-dashboard-recent">
-            {recentCompanies.map((company) => (
-              <Link
-                key={company.id}
-                to={`/student/company/${company.id}`}
-                className="student-dashboard-recent-card"
-              >
-                <div className="student-dashboard-recent-card-header">
-                  <div className="student-dashboard-recent-avatar">
-                    {company.name.charAt(0)}
-                  </div>
-                  <div className="student-dashboard-recent-info">
-                    <span className="student-dashboard-recent-name">{company.name}</span>
-                    <span className="student-dashboard-recent-time">{company.lastViewed}</span>
-                  </div>
-                </div>
-                <span className="student-dashboard-recent-cta">
-                  View Details
-                  <ChevronRight size={14} />
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        <div className="student-dashboard-section">
-          <div className="student-dashboard-section-header">
-            <h2 className="student-dashboard-section-title">Featured Companies</h2>
-            <Link to="/student/companies" className="student-dashboard-view-all">
-              View All
-              <ChevronRight size={16} />
-            </Link>
-          </div>
-          <div className="student-dashboard-featured">
-            {featuredCompanies.map((company) => (
-              <CompanyCard
-                key={company.id}
-                id={company.id}
-                name={company.name}
-                drives={company.drives}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
     </div>
   )
 }

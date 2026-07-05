@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
+import ProtectedRoute from '../components/ProtectedRoute'
 import AdminLayout from '../layouts/AdminLayout'
 import Dashboard from '../pages/admin/Dashboard'
 import Companies from '../pages/admin/Companies'
@@ -13,17 +14,19 @@ import NotFound from '../pages/NotFound'
 export default function AdminRoutes() {
   return (
     <Routes>
-      <Route element={<AdminLayout />}>
-        <Route index element={<Navigate to="/admin/dashboard" replace />} />
-        <Route path="dashboard" element={<Dashboard />} />
-        <Route path="companies" element={<Companies />} />
-        <Route path="drives" element={<PreviousDrives />} />
-        <Route path="questions" element={<Questions />} />
-        <Route path="preparation" element={<Preparation />} />
-        <Route path="reports" element={<Reports />} />
-        <Route path="settings" element={<Settings />} />
-        <Route path="profile" element={<Profile />} />
-        <Route path="*" element={<NotFound />} />
+      <Route element={<ProtectedRoute />}>
+        <Route element={<AdminLayout />}>
+          <Route index element={<Navigate to="/admin/dashboard" replace />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="companies" element={<Companies />} />
+          <Route path="drives" element={<PreviousDrives />} />
+          <Route path="questions" element={<Questions />} />
+          <Route path="preparation" element={<Preparation />} />
+          <Route path="reports" element={<Reports />} />
+          <Route path="settings" element={<Settings />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
       </Route>
     </Routes>
   )

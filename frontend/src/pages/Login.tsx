@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { LogIn, Mail, Lock, Eye, EyeOff, GraduationCap, Shield } from 'lucide-react'
+import { useAuth } from '../context/AuthContext'
 import './Login.css'
 
 export default function Login() {
   const navigate = useNavigate()
+  const { login } = useAuth()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
@@ -18,6 +20,8 @@ export default function Login() {
       setError('Please enter both email and password.')
       return
     }
+
+    login(email, role)
 
     if (role === 'student') {
       navigate('/student/dashboard')

@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import {
   LayoutDashboard,
   Building2,
@@ -14,6 +14,7 @@ import {
   ChevronRight,
   GraduationCap,
 } from 'lucide-react'
+import { useAuth } from '../context/AuthContext'
 import './StudentSidebar.css'
 
 interface StudentSidebarProps {
@@ -37,6 +38,13 @@ const menuItems = [
 
 export default function StudentSidebar({ collapsed, onToggle, mobileOpen, onMobileClose }: StudentSidebarProps) {
   const location = useLocation()
+  const navigate = useNavigate()
+  const { logout } = useAuth()
+
+  const handleLogout = () => {
+    logout()
+    navigate('/login')
+  }
 
   const sidebarContent = (
     <div className="student-sidebar-inner">
@@ -82,14 +90,13 @@ export default function StudentSidebar({ collapsed, onToggle, mobileOpen, onMobi
       </nav>
 
       <div className="student-sidebar-footer">
-        <NavLink
-          to="/"
-          onClick={onMobileClose}
+        <button
+          onClick={() => { handleLogout(); onMobileClose() }}
           className={`student-sidebar-logout logout-btn ${collapsed ? 'justify-center' : ''}`}
         >
           <LogOut size={20} />
           {!collapsed && <span className="student-sidebar-link-label">Logout</span>}
-        </NavLink>
+        </button>
 
         <button
           onClick={onToggle}
