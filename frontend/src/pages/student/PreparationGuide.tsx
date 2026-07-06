@@ -1,4 +1,5 @@
-import { BookOpen, ListChecks, HelpCircle, Target, ExternalLink, Lightbulb, ChevronRight } from 'lucide-react'
+import { useState } from 'react'
+import { ListChecks, HelpCircle, Target, ExternalLink, Lightbulb, ChevronRight, ArrowLeft } from 'lucide-react'
 import './PreparationGuide.css'
 
 const topics = [
@@ -42,56 +43,105 @@ const tips = [
   'Maintain a healthy work-life balance during preparation.',
 ]
 
+const subjectColors: Record<string, string> = {
+  'Data Structures & Algorithms': '#7c3aed',
+  'Object-Oriented Programming': '#2563eb',
+  'Database Management Systems': '#059669',
+  'Operating Systems': '#d97706',
+  'Computer Networks': '#dc2626',
+  'Programming Languages': '#0891b2',
+}
+
 export default function PreparationGuide() {
+  const [selectedSubject, setSelectedSubject] = useState<string | null>(null)
+
+  const currentTopic = selectedSubject
+    ? topics.find((t) => t.title === selectedSubject)
+    : null
+
   return (
     <div className="preparation-guide">
-      <div className="preparation-guide-header">
-        <div>
-          <h1 className="preparation-guide-title">Preparation Guide</h1>
-          <p className="preparation-guide-subtitle">Comprehensive resources to help you ace your placement interviews</p>
-        </div>
-        <div className="preparation-guide-count">
-          <BookOpen size={18} />
-          <span>Guide & Resources</span>
-        </div>
-      </div>
+      <div className="preparation-guide-top-row">
+        <section className="preparation-guide-section">
+          <div className="preparation-guide-section-header">
+            <ListChecks size={20} />
+            <h2 className="preparation-guide-section-title">Important Topics</h2>
+          </div>
 
-      <section className="preparation-guide-section">
-        <div className="preparation-guide-section-header">
-          <ListChecks size={20} />
-          <h2 className="preparation-guide-section-title">Important Topics</h2>
-        </div>
-        <div className="preparation-guide-topics">
-          {topics.map((topic) => (
-            <div key={topic.title} className="preparation-guide-topic-card">
-              <h3 className="preparation-guide-topic-title">{topic.title}</h3>
-              <ul className="preparation-guide-topic-list">
-                {topic.items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
+          {selectedSubject === null ? (
+            <div className="preparation-guide-topics">
+              {topics.map((topic) => (
+                <button
+                  key={topic.title}
+                  className="preparation-guide-topic-card"
+                  onClick={() => setSelectedSubject(topic.title)}
+                >
+                  <div
+                    className="preparation-guide-topic-icon"
+                    style={{ background: subjectColors[topic.title] }}
+                  >
+                    <topic.icon size={22} />
+                  </div>
+                  <h3 className="preparation-guide-topic-title">{topic.title}</h3>
+                  <span className="preparation-guide-topic-count">
+                    {topic.items.length} topics
+                  </span>
+                </button>
+              ))}
             </div>
-          ))}
-        </div>
-      </section>
+          ) : (
+            <div className="preparation-guide-subject-detail">
+              <button
+                className="preparation-guide-back-btn"
+                onClick={() => setSelectedSubject(null)}
+              >
+                <ArrowLeft size={16} />
+                <span>All Subjects</span>
+              </button>
 
-      <section className="preparation-guide-section">
-        <div className="preparation-guide-section-header">
-          <HelpCircle size={20} />
-          <h2 className="preparation-guide-section-title">Frequently Asked Questions</h2>
-        </div>
-        <div className="preparation-guide-faqs">
-          {faqs.map((faq) => (
-            <details key={faq.question} className="preparation-guide-faq">
-              <summary className="preparation-guide-faq-question">
-                <span>{faq.question}</span>
-                <ChevronRight size={16} />
-              </summary>
-              <p className="preparation-guide-faq-answer">{faq.answer}</p>
-            </details>
-          ))}
-        </div>
-      </section>
+              {currentTopic && (
+                <div className="preparation-guide-subject-card">
+                  <div className="preparation-guide-subject-header">
+                    <div
+                      className="preparation-guide-subject-icon"
+                      style={{ background: subjectColors[currentTopic.title] }}
+                    >
+                      <currentTopic.icon size={24} />
+                    </div>
+                    <h3 className="preparation-guide-subject-title">{currentTopic.title}</h3>
+                  </div>
+                  <ul className="preparation-guide-subject-list">
+                    {currentTopic.items.map((item) => (
+                      <li key={item}>
+                        <span className="preparation-guide-subject-bullet" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          )}
+        </section>
+
+        <section className="preparation-guide-section">
+          <div className="preparation-guide-section-header">
+            <HelpCircle size={20} />
+            <h2 className="preparation-guide-section-title">Frequently Asked Questions</h2>
+          </div>
+          <div className="preparation-guide-faqs">
+            {faqs.map((faq) => (
+              <details key={faq.question} className="preparation-guide-faq">
+                <summary className="preparation-guide-faq-question">
+                  <span>{faq.question}</span>
+                  <ChevronRight size={16} />
+                </summary>
+                <p className="preparation-guide-faq-answer">{faq.answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      </div>
 
       <section className="preparation-guide-section">
         <div className="preparation-guide-section-header">
