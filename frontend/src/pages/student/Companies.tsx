@@ -80,17 +80,6 @@ export default function Companies() {
 
   return (
     <div className="companies-page">
-      <div className="companies-page-header">
-        <div>
-          <h1 className="companies-page-title">Companies</h1>
-          <p className="companies-page-subtitle">Browse all recruiting companies and their placement details</p>
-        </div>
-        <div className="companies-page-count">
-          <Building2 size={18} />
-          <span>{companies.length} Companies</span>
-        </div>
-      </div>
-
       <div className="companies-page-filters">
         <div className="companies-page-search">
           <Search size={16} />

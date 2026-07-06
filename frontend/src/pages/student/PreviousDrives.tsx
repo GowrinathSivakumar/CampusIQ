@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { History, Calendar, Building2, Briefcase, GraduationCap, ChevronRight } from 'lucide-react'
+import { History, Calendar, Building2, Briefcase, GraduationCap, ChevronRight, ArrowUpDown, ArrowUp, ArrowDown } from 'lucide-react'
 import './PreviousDrives.css'
 
 interface Drive {
@@ -33,11 +33,20 @@ const years = ['All Years', ...new Set(drives.map((d) => d.year))]
 const roles = ['All Roles', ...new Set(drives.map((d) => d.role))]
 const departments = ['All Departments', ...new Set(drives.map((d) => d.department))]
 
+function parsePackage(pkg: string): number {
+  const num = parseFloat(pkg)
+  return isNaN(num) ? 0 : num
+}
+
+type SortKey = 'company' | 'role' | 'year' | 'package' | 'rounds' | 'department'
+
 export default function PreviousDrives() {
   const [company, setCompany] = useState('All Companies')
   const [year, setYear] = useState('All Years')
   const [role, setRole] = useState('All Roles')
   const [department, setDepartment] = useState('All Departments')
+  const [sortKey, setSortKey] = useState<SortKey>('year')
+  const [sortDir, setSortDir] = useState<'asc' | 'desc'>('desc')
 
   const filtered = drives.filter((d) => {
     return (
@@ -48,19 +57,47 @@ export default function PreviousDrives() {
     )
   })
 
+  const sorted = [...filtered].sort((a, b) => {
+    let cmp = 0
+    switch (sortKey) {
+      case 'company':
+        cmp = a.company.localeCompare(b.company)
+        break
+      case 'role':
+        cmp = a.role.localeCompare(b.role)
+        break
+      case 'year':
+        cmp = a.year - b.year
+        break
+      case 'package':
+        cmp = parsePackage(a.package) - parsePackage(b.package)
+        break
+      case 'rounds':
+        cmp = a.rounds - b.rounds
+        break
+      case 'department':
+        cmp = a.department.localeCompare(b.department)
+        break
+    }
+    return sortDir === 'asc' ? cmp : -cmp
+  })
+
+  function toggleSort(key: SortKey) {
+    if (sortKey === key) {
+      setSortDir(sortDir === 'asc' ? 'desc' : 'asc')
+    } else {
+      setSortKey(key)
+      setSortDir('asc')
+    }
+  }
+
+  function SortIcon({ column }: { column: SortKey }) {
+    if (sortKey !== column) return <ArrowUpDown size={14} />
+    return sortDir === 'asc' ? <ArrowUp size={14} /> : <ArrowDown size={14} />
+  }
+
   return (
     <div className="previous-drives">
-      <div className="previous-drives-header">
-        <div>
-          <h1 className="previous-drives-title">Previous Drives</h1>
-          <p className="previous-drives-subtitle">Browse all past placement drives with complete details</p>
-        </div>
-        <div className="previous-drives-count">
-          <History size={18} />
-          <span>{drives.length} Drives</span>
-        </div>
-      </div>
-
       <div className="previous-drives-filters">
         <div className="previous-drives-filter-group">
           <Building2 size={16} />
@@ -96,51 +133,74 @@ export default function PreviousDrives() {
         </div>
       </div>
 
-      <div className="previous-drives-grid">
-        {filtered.map((drive) => (
-          <div key={drive.id} className="previous-drives-card">
-            <div className="previous-drives-card-header">
-              <div className="previous-drives-card-company-icon">
-                {drive.company.charAt(0)}
-              </div>
-              <div className="previous-drives-card-company-info">
-                <h3 className="previous-drives-card-company">{drive.company}</h3>
-                <span className="previous-drives-card-role">{drive.role}</span>
-              </div>
-              <span className="previous-drives-card-year">{drive.year}</span>
-            </div>
-            <div className="previous-drives-card-body">
-              <div className="previous-drives-card-detail">
-                <span className="previous-drives-card-label">Package</span>
-                <span className="previous-drives-card-value">{drive.package}</span>
-              </div>
-              <div className="previous-drives-card-detail">
-                <span className="previous-drives-card-label">Rounds</span>
-                <span className="previous-drives-card-value">{drive.rounds}</span>
-              </div>
-              <div className="previous-drives-card-detail">
-                <span className="previous-drives-card-label">Department</span>
-                <span className="previous-drives-card-value">{drive.department}</span>
-              </div>
-            </div>
-            <Link
-              to={`/student/company/${drive.id}`}
-              className="previous-drives-card-btn"
-            >
-              View Details
-              <ChevronRight size={16} />
-            </Link>
-          </div>
-        ))}
+      <div className="previous-drives-table-wrapper">
+        <table className="previous-drives-table">
+          <thead>
+            <tr>
+              <th className="col-sno">#</th>
+              <th className="col-sortable" onClick={() => toggleSort('company')}>
+                <span>Company</span>
+                <SortIcon column="company" />
+              </th>
+              <th className="col-sortable" onClick={() => toggleSort('role')}>
+                <span>Role</span>
+                <SortIcon column="role" />
+              </th>
+              <th className="col-sortable" onClick={() => toggleSort('year')}>
+                <span>Year</span>
+                <SortIcon column="year" />
+              </th>
+              <th className="col-sortable" onClick={() => toggleSort('package')}>
+                <span>Package</span>
+                <SortIcon column="package" />
+              </th>
+              <th className="col-sortable" onClick={() => toggleSort('rounds')}>
+                <span>Rounds</span>
+                <SortIcon column="rounds" />
+              </th>
+              <th className="col-sortable" onClick={() => toggleSort('department')}>
+                <span>Department</span>
+                <SortIcon column="department" />
+              </th>
+              <th className="col-action">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sorted.length === 0 ? (
+              <tr>
+                <td colSpan={8} className="previous-drives-empty-cell">
+                  <div className="previous-drives-empty">
+                    <History size={48} />
+                    <h3>No drives found</h3>
+                    <p>Try adjusting your filter criteria</p>
+                  </div>
+                </td>
+              </tr>
+            ) : (
+              sorted.map((drive, idx) => (
+                <tr key={drive.id}>
+                  <td className="col-sno">{idx + 1}</td>
+                  <td className="col-company">{drive.company}</td>
+                  <td className="col-role">{drive.role}</td>
+                  <td className="col-year">{drive.year}</td>
+                  <td className="col-package">{drive.package}</td>
+                  <td className="col-rounds">{drive.rounds}</td>
+                  <td className="col-dept">{drive.department}</td>
+                  <td className="col-action">
+                    <Link
+                      to={`/student/company/${drive.id}`}
+                      className="previous-drives-table-btn"
+                    >
+                      View Details
+                      <ChevronRight size={14} />
+                    </Link>
+                  </td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
       </div>
-
-      {filtered.length === 0 && (
-        <div className="previous-drives-empty">
-          <History size={48} />
-          <h3>No drives found</h3>
-          <p>Try adjusting your filter criteria</p>
-        </div>
-      )}
     </div>
   )
 }

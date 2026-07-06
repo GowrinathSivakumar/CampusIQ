@@ -8,7 +8,6 @@ import {
   Bot,
   Bookmark,
   UserCircle,
-  Settings,
   LogOut,
   ChevronLeft,
   ChevronRight,
@@ -33,7 +32,6 @@ const menuItems = [
   { icon: Bot, label: 'AI Mentor', path: '/student/ai' },
   { icon: Bookmark, label: 'Bookmarks', path: '/student/bookmarks' },
   { icon: UserCircle, label: 'Profile', path: '/student/profile' },
-  { icon: Settings, label: 'Settings', path: '/student/settings' },
 ]
 
 export default function StudentSidebar({ collapsed, onToggle, mobileOpen, onMobileClose }: StudentSidebarProps) {

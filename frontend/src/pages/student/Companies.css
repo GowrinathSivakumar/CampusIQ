@@ -4,43 +4,12 @@
   gap: 24px;
 }
 
-.companies-page-header {
+.companies-page-filters {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 16px;
   flex-wrap: wrap;
-}
-
-.companies-page-title {
-  font-family: var(--font-heading);
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--color-dark);
-  margin-bottom: 4px;
-}
-
-.companies-page-subtitle {
-  font-size: 14px;
-  color: var(--color-dark-secondary);
-}
-
-.companies-page-count {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  background: var(--student-50);
-  color: var(--student-700);
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.companies-page-filters {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
 }
 
 .companies-page-search {
@@ -51,7 +20,9 @@
   background: var(--color-white);
   border: 1px solid var(--color-gray-200);
   border-radius: 10px;
-  max-width: 400px;
+  flex: 1;
+  max-width: 420px;
+  min-width: 200px;
   color: var(--color-gray-400);
   transition: border-color 0.2s, box-shadow 0.2s;
 }
@@ -78,7 +49,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  flex-wrap: wrap;
+  flex-shrink: 0;
 }
 
 .companies-page-filter-select {

@@ -1,4 +1,4 @@
-import { UserCircle, Mail, GraduationCap, Calendar, Target, Bookmark, History, Building2 } from 'lucide-react'
+import { Mail, GraduationCap, Calendar, Target, Bookmark, History, Building2, Settings as SettingsIcon, Lock, Palette, Bell, Shield, LogOut, ChevronRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import './Profile.css'
 
@@ -8,12 +8,48 @@ const recentCompanies = [
   { id: 3, name: 'TCS' },
 ]
 
+const settingsSections = [
+  {
+    title: 'Change Password',
+    description: 'Update your account password to keep your account secure',
+    icon: Lock,
+    action: 'Update Password',
+    color: 'var(--student-500)',
+  },
+  {
+    title: 'Theme Settings',
+    description: 'Customize the appearance of your dashboard',
+    icon: Palette,
+    action: 'Customize Theme',
+    color: 'var(--color-purple-600)',
+  },
+  {
+    title: 'Notification Preferences',
+    description: 'Manage email and push notification preferences',
+    icon: Bell,
+    action: 'Manage Notifications',
+    color: 'var(--color-amber-600)',
+  },
+  {
+    title: 'Privacy Settings',
+    description: 'Control your privacy and data sharing preferences',
+    icon: Shield,
+    action: 'Privacy Settings',
+    color: 'var(--color-emerald-600)',
+  },
+]
+
 export default function Profile() {
   return (
     <div className="profile-page">
       <div className="profile-page-header">
-        <h1 className="profile-page-title">My Profile</h1>
-        <p className="profile-page-subtitle">Manage your student profile and preferences</p>
+        <div>
+          <h1 className="profile-page-title">My Profile</h1>
+          <p className="profile-page-subtitle">Manage your student profile and preferences</p>
+        </div>
+        <Link to="/student/settings" className="profile-page-settings-btn" title="Settings">
+          <SettingsIcon size={20} />
+        </Link>
       </div>
 
       <div className="profile-page-grid">
@@ -83,6 +119,30 @@ export default function Profile() {
               ))}
             </div>
           </div>
+
+          <div className="profile-page-card">
+            <h3 className="profile-page-card-title">Settings</h3>
+            <div className="profile-page-settings-list">
+              {settingsSections.map((section) => {
+                const Icon = section.icon
+                return (
+                  <div key={section.title} className="profile-page-settings-item">
+                    <div className="profile-page-settings-icon" style={{ background: `${section.color}15`, color: section.color }}>
+                      <Icon size={20} />
+                    </div>
+                    <div className="profile-page-settings-content">
+                      <span className="profile-page-settings-title">{section.title}</span>
+                      <span className="profile-page-settings-desc">{section.description}</span>
+                    </div>
+                    <button className="profile-page-settings-btn">
+                      <span>{section.action}</span>
+                      <ChevronRight size={14} />
+                    </button>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
         </div>
 
         <div className="profile-page-sidebar">
@@ -126,11 +186,25 @@ export default function Profile() {
                 <Bookmark size={16} />
                 View Bookmarks
               </Link>
-              <Link to="/student/settings" className="profile-page-link">
-                <UserCircle size={16} />
-                Account Settings
-              </Link>
             </div>
+          </div>
+
+          <div className="profile-page-card">
+            <h3 className="profile-page-card-title">Account</h3>
+            <div className="profile-page-account-info">
+              <div className="profile-page-account-row">
+                <span className="profile-page-account-label">Plan</span>
+                <span className="profile-page-account-value">Free Student</span>
+              </div>
+              <div className="profile-page-account-row">
+                <span className="profile-page-account-label">Joined</span>
+                <span className="profile-page-account-value">August 2024</span>
+              </div>
+            </div>
+            <Link to="/" className="profile-page-logout-btn">
+              <LogOut size={16} />
+              <span>Logout</span>
+            </Link>
           </div>
         </div>
       </div>

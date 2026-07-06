@@ -4,39 +4,6 @@
   gap: 24px;
 }
 
-.previous-drives-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.previous-drives-title {
-  font-family: var(--font-heading);
-  font-size: 24px;
-  font-weight: 700;
-  color: var(--color-dark);
-  margin-bottom: 4px;
-}
-
-.previous-drives-subtitle {
-  font-size: 14px;
-  color: var(--color-dark-secondary);
-}
-
-.previous-drives-count {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  background: var(--student-50);
-  color: var(--student-700);
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: 600;
-}
-
 .previous-drives-filters {
   display: flex;
   flex-wrap: wrap;
@@ -70,126 +37,132 @@
   color: var(--color-dark);
 }
 
-.previous-drives-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
-}
-
-.previous-drives-card {
-  background: var(--color-white);
+.previous-drives-table-wrapper {
+  overflow-x: auto;
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-gray-100);
   box-shadow: var(--shadow-sm);
-  overflow: hidden;
-  transition: box-shadow 0.25s, transform 0.25s;
-  display: flex;
-  flex-direction: column;
+  background: var(--color-white);
 }
 
-.previous-drives-card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+.previous-drives-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
 }
 
-.previous-drives-card-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 16px 16px 0;
+.previous-drives-table thead {
+  background: var(--student-50);
+  border-bottom: 1px solid var(--color-gray-200);
 }
 
-.previous-drives-card-company-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-md);
-  background: var(--student-100);
+.previous-drives-table th {
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--color-dark-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.previous-drives-table th.col-sortable {
+  cursor: pointer;
+  display: table-cell;
+  gap: 6px;
+  transition: color 0.15s;
+}
+
+.previous-drives-table th.col-sortable:hover {
   color: var(--student-700);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-heading);
-  font-size: 16px;
-  font-weight: 700;
+}
+
+.previous-drives-table th.col-sortable svg {
+  display: inline;
+  vertical-align: middle;
+  margin-left: 4px;
+  color: var(--color-gray-400);
   flex-shrink: 0;
 }
 
-.previous-drives-card-company-info {
-  flex: 1;
-  min-width: 0;
+.previous-drives-table th.col-sno {
+  width: 48px;
+  text-align: center;
 }
 
-.previous-drives-card-company {
-  font-family: var(--font-heading);
-  font-size: 14px;
+.previous-drives-table th.col-action {
+  width: 130px;
+  text-align: center;
+}
+
+.previous-drives-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--color-gray-100);
+  color: var(--color-dark);
+}
+
+.previous-drives-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.previous-drives-table tbody tr:hover {
+  background: var(--color-gray-50);
+}
+
+.previous-drives-table td.col-sno {
+  text-align: center;
+  color: var(--color-gray-400);
+  font-weight: 500;
+}
+
+.previous-drives-table td.col-company {
   font-weight: 600;
   color: var(--color-dark);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
-.previous-drives-card-role {
-  font-size: 12px;
-  color: var(--color-dark-secondary);
+.previous-drives-table td.col-year {
+  font-weight: 500;
 }
 
-.previous-drives-card-year {
-  padding: 4px 10px;
+.previous-drives-table td.col-package {
+  font-weight: 600;
+  color: var(--color-emerald-700);
+}
+
+.previous-drives-table td.col-rounds {
+  text-align: left;
+}
+
+.previous-drives-table td.col-action {
+  text-align: center;
+}
+
+.previous-drives-table-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 14px;
   font-size: 12px;
   font-weight: 600;
   color: var(--student-600);
   background: var(--student-50);
   border-radius: 6px;
-  flex-shrink: 0;
+  text-decoration: none;
+  transition: background 0.2s, gap 0.2s;
+  white-space: nowrap;
 }
 
-.previous-drives-card-body {
-  padding: 14px 16px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+.previous-drives-table-btn:hover {
+  background: var(--student-100);
+  color: var(--student-700);
   gap: 8px;
 }
 
-.previous-drives-card-detail {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.previous-drives-card-label {
-  font-size: 11px;
-  color: var(--color-gray-400);
-  text-transform: uppercase;
-  letter-spacing: 0.3px;
-  font-weight: 500;
-}
-
-.previous-drives-card-value {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--color-dark);
-}
-
-.previous-drives-card-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 12px;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--student-600);
-  background: var(--student-50);
-  text-decoration: none;
-  transition: background 0.2s, gap 0.2s;
-  margin-top: auto;
-  border-top: 1px solid var(--color-gray-100);
-}
-
-.previous-drives-card-btn:hover {
-  background: var(--student-100);
-  gap: 10px;
+.previous-drives-empty-cell {
+  padding: 0 !important;
+  border-bottom: none !important;
 }
 
 .previous-drives-empty {
@@ -212,4 +185,27 @@
 
 .previous-drives-empty p {
   font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .previous-drives-table th,
+  .previous-drives-table td {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .previous-drives-table th.col-sno,
+  .previous-drives-table td.col-sno {
+    width: 36px;
+  }
+
+  .previous-drives-table th.col-action,
+  .previous-drives-table td.col-action {
+    width: 110px;
+  }
+
+  .previous-drives-table-btn {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
 }
