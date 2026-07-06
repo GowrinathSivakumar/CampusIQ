@@ -3,47 +3,14 @@ import {
   Building2,
   History,
   HelpCircle,
-  Bookmark,
   Briefcase,
   Bot,
   BookOpen,
   ChevronRight,
 } from 'lucide-react'
-import StudentCard from '../../components/StudentCard'
 import QuickAccessCard from '../../components/QuickAccessCard'
 
 import './Dashboard.css'
-
-const stats = [
-  {
-    title: 'Companies Available',
-    value: 10,
-    icon: Building2,
-    description: 'Active recruiting partners',
-    accentColor: 'var(--student-500)',
-  },
-  {
-    title: 'Completed Drives',
-    value: 6,
-    icon: History,
-    description: 'Past placement drives',
-    accentColor: 'var(--color-emerald-600)',
-  },
-  {
-    title: 'Interview Questions',
-    value: 48,
-    icon: HelpCircle,
-    description: 'Across all categories',
-    accentColor: 'var(--color-amber-600)',
-  },
-  {
-    title: 'Bookmarked Companies',
-    value: 4,
-    icon: Bookmark,
-    description: 'Saved for later',
-    accentColor: 'var(--color-purple-600)',
-  },
-]
 
 const quickAccessItems = [
   {
@@ -95,19 +62,6 @@ export default function Dashboard() {
             <Briefcase size={32} />
           </div>
         </div>
-      </div>
-
-      <div className="student-dashboard-stats">
-        {stats.map((stat) => (
-          <StudentCard
-            key={stat.title}
-            title={stat.title}
-            value={stat.value}
-            icon={stat.icon}
-            description={stat.description}
-            accentColor={stat.accentColor}
-          />
-        ))}
       </div>
 
       <div className="student-dashboard-section">

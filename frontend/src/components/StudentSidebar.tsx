@@ -11,7 +11,6 @@ import {
   LogOut,
   ChevronLeft,
   ChevronRight,
-  GraduationCap,
 } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 import './StudentSidebar.css'
@@ -25,7 +24,6 @@ interface StudentSidebarProps {
 
 const menuItems = [
   { icon: LayoutDashboard, label: 'Dashboard', path: '/student/dashboard' },
-  { icon: Building2, label: 'Companies', path: '/student/companies' },
   { icon: History, label: 'Previous Drives', path: '/student/drives' },
   { icon: HelpCircle, label: 'Interview Questions', path: '/student/questions' },
   { icon: BookOpen, label: 'Preparation Guide', path: '/student/preparation' },
@@ -46,27 +44,6 @@ export default function StudentSidebar({ collapsed, onToggle, mobileOpen, onMobi
 
   const sidebarContent = (
     <div className="student-sidebar-inner">
-      <div className="student-sidebar-header">
-        {!collapsed ? (
-          <div className="student-sidebar-header-content">
-            <div className="student-sidebar-logo">
-              <span className="student-sidebar-c-wrapper">
-                <GraduationCap className="student-sidebar-cap" />
-                <span className="student-sidebar-logo-icon">C</span>
-              </span>
-              <span className="student-sidebar-logo-text">ampusIQ</span>
-            </div>
-          </div>
-        ) : (
-          <div className="student-sidebar-header-center">
-            <span className="student-sidebar-c-wrapper">
-              <GraduationCap className="student-sidebar-cap mini" />
-              <span className="student-sidebar-mini-logo">C</span>
-            </span>
-          </div>
-        )}
-      </div>
-
       <nav className="student-sidebar-nav">
         {menuItems.map((item) => {
           const Icon = item.icon

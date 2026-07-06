@@ -4,6 +4,77 @@
   gap: 24px;
 }
 
+.previous-drives-nav-card {
+  display: block;
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--student-50) 0%, var(--student-100) 100%);
+  border: 1px solid var(--student-200);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  transition: all 0.25s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.previous-drives-nav-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--student-300);
+}
+
+.previous-drives-nav-card-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.previous-drives-nav-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: var(--student-600);
+  border-radius: var(--radius-md);
+  color: var(--color-white);
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.previous-drives-nav-card:hover .previous-drives-nav-card-icon {
+  transform: scale(1.05);
+}
+
+.previous-drives-nav-card-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.previous-drives-nav-card-title {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-dark);
+  margin: 0;
+}
+
+.previous-drives-nav-card-desc {
+  font-size: 14px;
+  color: var(--color-dark-secondary);
+  margin: 0;
+}
+
+.previous-drives-nav-card-arrow {
+  color: var(--student-600);
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.previous-drives-nav-card:hover .previous-drives-nav-card-arrow {
+  transform: translateX(4px);
+}
+
 .previous-drives-filters {
   display: flex;
   flex-wrap: wrap;
@@ -188,6 +259,32 @@
 }
 
 @media (max-width: 768px) {
+  .previous-drives-nav-card {
+    padding: 16px;
+  }
+
+  .previous-drives-nav-card-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .previous-drives-nav-card-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .previous-drives-nav-card-title {
+    font-size: 16px;
+  }
+
+  .previous-drives-nav-card-desc {
+    font-size: 13px;
+  }
+
+  .previous-drives-nav-card-arrow {
+    display: none;
+  }
+
   .previous-drives-table th,
   .previous-drives-table td {
     padding: 10px 12px;

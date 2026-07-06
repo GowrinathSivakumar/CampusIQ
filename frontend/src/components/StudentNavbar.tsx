@@ -1,4 +1,4 @@
-import { Search, Bell, Bookmark, Menu } from 'lucide-react'
+import { Bell, Bookmark, Menu } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import './StudentNavbar.css'
 
@@ -25,15 +25,6 @@ export default function StudentNavbar({ onToggleSidebar }: StudentNavbarProps) {
             <span className="student-navbar-brand-icon">IQ</span>
             <span className="student-navbar-brand-badge">Student</span>
           </Link>
-        </div>
-
-        <div className="student-navbar-search-wrapper">
-          <Search className="student-navbar-search-icon" size={16} />
-          <input
-            type="text"
-            placeholder="Search companies, questions, resources..."
-            className="student-navbar-search"
-          />
         </div>
 
         <div className="student-navbar-right">

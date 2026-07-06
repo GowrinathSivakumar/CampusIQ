@@ -98,6 +98,19 @@ export default function PreviousDrives() {
 
   return (
     <div className="previous-drives">
+      <Link to="/student/companies" className="previous-drives-nav-card">
+        <div className="previous-drives-nav-card-content">
+          <div className="previous-drives-nav-card-icon">
+            <Building2 size={24} />
+          </div>
+          <div className="previous-drives-nav-card-text">
+            <h3 className="previous-drives-nav-card-title">Companies</h3>
+            <p className="previous-drives-nav-card-desc">Browse all companies and their details</p>
+          </div>
+          <ChevronRight className="previous-drives-nav-card-arrow" size={20} />
+        </div>
+      </Link>
+
       <div className="previous-drives-filters">
         <div className="previous-drives-filter-group">
           <Building2 size={16} />

@@ -30,7 +30,6 @@
   z-index: 30;
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
-  padding-top: var(--navbar-height);
 }
 
 .student-sidebar-desktop.expanded {
@@ -119,11 +118,11 @@
 }
 
 .student-sidebar-nav {
-  padding: 12px;
+  padding: 24px 16px 12px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
   flex: 1;
 }
 
@@ -183,10 +182,10 @@
 
 .student-sidebar-footer {
   border-top: 1px solid var(--color-gray-100);
-  padding: 8px 12px;
+  padding: 12px;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
   flex-shrink: 0;
 }
 
@@ -208,7 +207,6 @@
   background: var(--color-red-500);
   color: var(--color-white);
   font-weight: 600;
-  margin-top: 4px;
 }
 
 .student-sidebar-logout.logout-btn:hover {
@@ -228,8 +226,8 @@
   display: none;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: var(--radius-md);
   color: var(--color-gray-400);
   transition: color 0.15s, background 0.15s;
