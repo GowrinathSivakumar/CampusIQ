@@ -569,30 +569,6 @@ export default function CompanyDetails() {
             </section>
           )}
         </div>
-
-        <div className="company-details-sidebar">
-          <div className="company-details-sidebar-card">
-            <h3 className="company-details-sidebar-title">Quick Info</h3>
-            <div className="company-details-sidebar-stats">
-              <div className="company-details-sidebar-stat">
-                <span className="company-details-sidebar-stat-label">Eligibility</span>
-                <span className="company-details-sidebar-stat-value">{company.eligibility.length} criteria</span>
-              </div>
-              <div className="company-details-sidebar-stat">
-                <span className="company-details-sidebar-stat-label">Process Steps</span>
-                <span className="company-details-sidebar-stat-value">{company.process.length}</span>
-              </div>
-              <div className="company-details-sidebar-stat">
-                <span className="company-details-sidebar-stat-label">Rounds</span>
-                <span className="company-details-sidebar-stat-value">{company.rounds.length}</span>
-              </div>
-              <div className="company-details-sidebar-stat">
-                <span className="company-details-sidebar-stat-label">Tips</span>
-                <span className="company-details-sidebar-stat-value">{company.tips.length}</span>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   )
