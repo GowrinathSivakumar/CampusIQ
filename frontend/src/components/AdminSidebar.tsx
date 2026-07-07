@@ -47,20 +47,13 @@ export default function AdminSidebar({ collapsed, onToggle, mobileOpen, onMobile
       <div className="sidebar-header">
         {!collapsed ? (
           <div className="sidebar-header-content">
-            <span className="sidebar-header-c-wrapper">
-              <GraduationCap className="sidebar-header-cap" />
-              <span className="sidebar-header-c">C</span>
-            </span>
-            <span className="sidebar-header-text">ampus</span>
-            <span className="sidebar-header-c">IQ</span>
+            <GraduationCap className="sidebar-header-icon" size={20} />
+            <span className="sidebar-header-brand">CampusIQ</span>
             <span className="sidebar-header-badge">Admin</span>
           </div>
         ) : (
           <div className="sidebar-header-center">
-            <span className="sidebar-header-c-wrapper">
-              <GraduationCap className="sidebar-header-cap" />
-              <span className="sidebar-header-c">C</span>
-            </span>
+            <GraduationCap className="sidebar-header-icon" size={20} />
           </div>
         )}
       </div>
