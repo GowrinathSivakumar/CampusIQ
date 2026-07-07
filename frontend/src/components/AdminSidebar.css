@@ -122,9 +122,9 @@
 }
 
 .sidebar-link.active {
-  background: var(--color-emerald-50);
-  color: var(--color-emerald-700);
-  border-color: var(--color-emerald-500);
+  background: linear-gradient(135deg, var(--color-emerald-500), var(--color-emerald-600));
+  color: var(--color-white);
+  border-color: var(--color-emerald-600);
 }
 
 .sidebar-link-icon {
@@ -140,7 +140,7 @@
 }
 
 .sidebar-link.active .sidebar-link-icon {
-  color: var(--color-emerald-600);
+  color: var(--color-white);
 }
 
 .sidebar-link-label {

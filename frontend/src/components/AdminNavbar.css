@@ -4,9 +4,9 @@
   left: 0;
   right: 0;
   height: var(--navbar-height);
-  background: rgba(255, 255, 255, 0.95);
+  background: linear-gradient(135deg, var(--color-emerald-500), var(--color-emerald-600));
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--color-gray-100);
+  border-bottom: 1px solid var(--color-emerald-600);
   box-shadow: var(--shadow-xs);
   z-index: 50;
 }
@@ -30,39 +30,52 @@
   display: none;
   padding: 8px;
   border-radius: var(--radius-md);
-  color: var(--color-dark-secondary);
+  color: var(--color-white);
   transition: background 0.15s;
 }
 
 .admin-navbar-hamburger:hover {
-  background: var(--color-gray-100);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .admin-navbar-brand {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 0;
 }
 
 .admin-navbar-brand-c {
   font-family: var(--font-heading);
   font-size: 20px;
   font-weight: 700;
-  color: var(--color-emerald-600);
+  color: var(--color-white);
 }
 
 .admin-navbar-brand-text {
   font-family: var(--font-heading);
   font-size: 20px;
   font-weight: 700;
-  color: var(--color-dark);
+  color: var(--color-white);
+}
+
+.admin-navbar-brand-badge {
+  margin-left: 6px;
+  padding: 1px 8px;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--color-white);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .admin-navbar-divider {
   display: none;
   width: 1px;
   height: 20px;
-  background: var(--color-gray-200);
+  background: rgba(255, 255, 255, 0.3);
   margin: 0 8px;
 }
 
@@ -70,7 +83,7 @@
   display: none;
   font-size: 14px;
   font-weight: 500;
-  color: var(--color-dark-secondary);
+  color: var(--color-white);
   white-space: nowrap;
 }
 
@@ -120,12 +133,12 @@
   position: relative;
   padding: 8px;
   border-radius: var(--radius-md);
-  color: var(--color-dark-secondary);
+  color: var(--color-white);
   transition: background 0.15s;
 }
 
 .admin-navbar-notification:hover {
-  background: var(--color-gray-100);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .admin-navbar-notification-dot {
@@ -144,7 +157,7 @@
   align-items: center;
   gap: 10px;
   padding-left: 16px;
-  border-left: 1px solid var(--color-gray-200);
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .admin-navbar-avatar {
@@ -167,12 +180,12 @@
 .admin-navbar-profile-name {
   font-size: 13px;
   font-weight: 500;
-  color: var(--color-dark);
+  color: var(--color-white);
 }
 
 .admin-navbar-profile-email {
   font-size: 11px;
-  color: var(--color-dark-secondary);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 @media (min-width: 640px) {

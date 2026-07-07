@@ -88,8 +88,8 @@ export default function StudentSidebar({ collapsed, onToggle, mobileOpen, onMobi
           onClick={() => { handleLogout(); onMobileClose() }}
           className={`student-sidebar-logout ${collapsed ? 'justify-center' : ''}`}
         >
-          <LogOut className="student-sidebar-link-icon" />
-          {!collapsed && <span className="student-sidebar-link-label">Logout</span>}
+          <LogOut className="sidebar-link-icon" />
+          {!collapsed && <span className="sidebar-link-label">Logout</span>}
         </button>
       </nav>
 

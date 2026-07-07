@@ -20,11 +20,9 @@ export default function AdminNavbar({ onToggleSidebar }: AdminNavbarProps) {
 
           <div className="admin-navbar-brand">
             <span className="admin-navbar-brand-c">C</span>
-            <span className="admin-navbar-brand-text">ampus</span>
-            <span className="admin-navbar-brand-c">IQ</span>
+            <span className="admin-navbar-brand-text">ampusIQ</span>
+            <span className="admin-navbar-brand-badge">Admin</span>
           </div>
-          <span className="admin-navbar-divider" />
-          <span className="admin-navbar-title">Admin Dashboard</span>
         </div>
 
         <div className="admin-navbar-search-wrapper">

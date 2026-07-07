@@ -4,10 +4,10 @@
   left: 0;
   right: 0;
   height: var(--navbar-height);
-  background: rgba(255, 255, 255, 0.97);
+  background: linear-gradient(135deg, var(--student-500), var(--student-600));
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--color-gray-100);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  border-bottom: 1px solid var(--student-600);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   z-index: 50;
 }
 
@@ -30,18 +30,19 @@
   display: none;
   padding: 8px;
   border-radius: var(--radius-md);
-  color: var(--color-dark-secondary);
-  transition: background 0.15s;
+  color: var(--student-100);
+  transition: background 0.15s, color 0.15s;
 }
 
 .student-navbar-hamburger:hover {
-  background: var(--color-gray-100);
+  background: var(--student-800);
+  color: var(--color-white);
 }
 
 .student-navbar-brand {
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 0;
   text-decoration: none;
 }
 
@@ -49,7 +50,7 @@
   font-family: var(--font-heading);
   font-size: 20px;
   font-weight: 800;
-  color: var(--student-600);
+  color: var(--color-white);
   letter-spacing: -0.02em;
 }
 
@@ -57,7 +58,7 @@
   font-family: var(--font-heading);
   font-size: 20px;
   font-weight: 700;
-  color: var(--color-dark);
+  color: var(--color-white);
 }
 
 .student-navbar-brand-badge {
@@ -67,10 +68,10 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  background: var(--student-100);
-  color: var(--student-700);
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--color-white);
   border-radius: 4px;
-  border: 1px solid var(--student-200);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .student-navbar-search-wrapper {
@@ -84,7 +85,7 @@
 .student-navbar-search-icon {
   position: absolute;
   left: 12px;
-  color: var(--color-gray-400);
+  color: var(--student-300);
   pointer-events: none;
 }
 
@@ -92,21 +93,22 @@
   width: 100%;
   padding: 9px 12px 9px 36px;
   font-size: 13px;
-  background: var(--color-gray-50);
-  border: 1px solid var(--color-gray-200);
+  background: var(--student-800);
+  border: 1px solid var(--student-700);
   border-radius: 10px;
   outline: none;
+  color: var(--color-white);
   transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
 }
 
 .student-navbar-search:focus {
   border-color: var(--student-400);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-  background: var(--color-white);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  background: var(--student-800);
 }
 
 .student-navbar-search::placeholder {
-  color: var(--color-gray-400);
+  color: var(--student-300);
   font-size: 13px;
 }
 
@@ -120,13 +122,13 @@
   position: relative;
   padding: 8px;
   border-radius: var(--radius-md);
-  color: var(--color-dark-secondary);
+  color: var(--student-100);
   transition: background 0.15s, color 0.15s;
 }
 
 .student-navbar-icon-btn:hover {
-  background: var(--student-50);
-  color: var(--student-600);
+  background: var(--student-800);
+  color: var(--color-white);
 }
 
 .student-navbar-notification-dot {
@@ -145,7 +147,7 @@
   align-items: center;
   gap: 10px;
   padding-left: 16px;
-  border-left: 1px solid var(--color-gray-200);
+  border-left: 1px solid var(--student-400);
   margin-left: 8px;
 }
 
@@ -155,12 +157,12 @@
   border-radius: 50%;
   overflow: hidden;
   flex-shrink: 0;
-  border: 2px solid var(--student-200);
+  border: 2px solid rgba(255, 255, 255, 0.3);
   transition: border-color 0.2s;
 }
 
 .student-navbar-avatar:hover {
-  border-color: var(--student-500);
+  border-color: var(--color-white);
 }
 
 .student-navbar-avatar-img {
@@ -176,13 +178,13 @@
 .student-navbar-profile-name {
   font-size: 13px;
   font-weight: 600;
-  color: var(--color-dark);
+  color: var(--color-white);
   line-height: 1.2;
 }
 
 .student-navbar-profile-role {
   font-size: 11px;
-  color: var(--student-600);
+  color: var(--student-200);
   font-weight: 500;
   line-height: 1.2;
 }

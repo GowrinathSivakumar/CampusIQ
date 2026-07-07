@@ -21,8 +21,7 @@ export default function StudentNavbar({ onToggleSidebar }: StudentNavbarProps) {
 
           <Link to="/student/dashboard" className="student-navbar-brand">
             <span className="student-navbar-brand-icon">C</span>
-            <span className="student-navbar-brand-text">ampus</span>
-            <span className="student-navbar-brand-icon">IQ</span>
+            <span className="student-navbar-brand-text">ampusIQ</span>
             <span className="student-navbar-brand-badge">Student</span>
           </Link>
         </div>
