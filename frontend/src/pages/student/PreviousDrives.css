@@ -2,6 +2,9 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .previous-drives-nav-card {
@@ -13,6 +16,7 @@
   padding: 20px;
   transition: all 0.25s ease;
   box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
 }
 
 .previous-drives-nav-card:hover {
@@ -79,6 +83,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  flex-shrink: 0;
 }
 
 .previous-drives-filter-group {
@@ -109,11 +114,13 @@
 }
 
 .previous-drives-table-wrapper {
-  overflow-x: auto;
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-gray-100);
   box-shadow: var(--shadow-sm);
   background: var(--color-white);
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
 }
 
 .previous-drives-table {

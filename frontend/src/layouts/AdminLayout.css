@@ -5,7 +5,9 @@
 .admin-main {
   padding-top: var(--navbar-height);
   transition: margin-left 0.3s ease;
-  min-height: 100vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
   background: #E8E8E8;
 }
 
@@ -13,6 +15,11 @@
   padding: 16px;
   max-width: 1280px;
   margin: 0 auto;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (min-width: 640px) {
