@@ -8,19 +8,12 @@ import {
   BarChart3,
   UserCircle,
   LogOut,
-  ChevronLeft,
-  ChevronRight,
   GraduationCap,
 } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 import './AdminSidebar.css'
 
-interface AdminSidebarProps {
-  collapsed: boolean
-  onToggle: () => void
-  mobileOpen: boolean
-  onMobileClose: () => void
-}
+interface AdminSidebarProps {}
 
 const menuItems = [
   { icon: LayoutDashboard, label: 'Dashboard', path: '/admin/dashboard' },
@@ -32,7 +25,7 @@ const menuItems = [
   { icon: UserCircle, label: 'Profile', path: '/admin/profile' },
 ]
 
-export default function AdminSidebar({ collapsed, onToggle, mobileOpen, onMobileClose }: AdminSidebarProps) {
+export default function AdminSidebar({}: AdminSidebarProps) {
   const location = useLocation()
   const navigate = useNavigate()
   const { logout } = useAuth()
@@ -42,72 +35,43 @@ export default function AdminSidebar({ collapsed, onToggle, mobileOpen, onMobile
     navigate('/login')
   }
 
-  const sidebarContent = (
-    <div className="sidebar-inner">
-      <div className="sidebar-header">
-        {!collapsed ? (
+  return (
+    <aside className="sidebar-desktop expanded">
+      <div className="sidebar-inner">
+        <div className="sidebar-header">
           <div className="sidebar-header-content">
             <GraduationCap className="sidebar-header-icon" size={20} />
             <span className="sidebar-header-brand">CampusIQ</span>
             <span className="sidebar-header-badge">Admin</span>
           </div>
-        ) : (
-          <div className="sidebar-header-center">
-            <GraduationCap className="sidebar-header-icon" size={20} />
-          </div>
-        )}
+        </div>
+
+        <nav className="sidebar-nav">
+          {menuItems.map((item) => {
+            const Icon = item.icon
+            const isActive = location.pathname === item.path
+            return (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                className={`sidebar-link ${isActive ? 'active' : ''}`}
+              >
+                <Icon className="sidebar-link-icon" />
+                <span className="sidebar-link-label">{item.label}</span>
+                {isActive && <span className="sidebar-link-dot" />}
+              </NavLink>
+            )
+          })}
+        </nav>
+
+        <button
+          onClick={handleLogout}
+          className="sidebar-logout"
+        >
+          <LogOut className="sidebar-link-icon" />
+          <span className="sidebar-link-label">Logout</span>
+        </button>
       </div>
-
-      <nav className="sidebar-nav">
-        {menuItems.map((item) => {
-          const Icon = item.icon
-          const isActive = location.pathname === item.path
-          return (
-            <NavLink
-              key={item.path}
-              to={item.path}
-              onClick={onMobileClose}
-              className={`sidebar-link ${isActive ? 'active' : ''} ${collapsed ? 'justify-center' : ''}`}
-              title={collapsed ? item.label : undefined}
-            >
-              <Icon className="sidebar-link-icon" />
-              {!collapsed && <span className="sidebar-link-label">{item.label}</span>}
-              {isActive && !collapsed && <span className="sidebar-link-dot" />}
-            </NavLink>
-          )
-        })}
-      </nav>
-
-      <button
-        onClick={() => { handleLogout(); onMobileClose() }}
-        className={`sidebar-logout ${collapsed ? 'justify-center' : ''}`}
-      >
-        <LogOut className="sidebar-link-icon" />
-        {!collapsed && <span className="sidebar-link-label">Logout</span>}
-      </button>
-
-      <button
-        onClick={onToggle}
-        className="sidebar-toggle-btn"
-      >
-        {collapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
-      </button>
-    </div>
-  )
-
-  return (
-    <>
-      {mobileOpen && (
-        <div className="sidebar-overlay" onClick={onMobileClose} />
-      )}
-
-      <aside className={`sidebar-mobile ${mobileOpen ? 'open' : ''}`}>
-        {sidebarContent}
-      </aside>
-
-      <aside className={`sidebar-desktop ${collapsed ? 'collapsed' : 'expanded'}`}>
-        {sidebarContent}
-      </aside>
-    </>
+    </aside>
   )
 }

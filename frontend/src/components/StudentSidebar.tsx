@@ -8,19 +8,12 @@ import {
   Bookmark,
   UserCircle,
   LogOut,
-  ChevronLeft,
-  ChevronRight,
   GraduationCap,
 } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 import './StudentSidebar.css'
 
-interface StudentSidebarProps {
-  collapsed: boolean
-  onToggle: () => void
-  mobileOpen: boolean
-  onMobileClose: () => void
-}
+interface StudentSidebarProps {}
 
 const menuItems = [
   { icon: LayoutDashboard, label: 'Dashboard', path: '/student/dashboard' },
@@ -32,7 +25,7 @@ const menuItems = [
   { icon: UserCircle, label: 'Profile', path: '/student/profile' },
 ]
 
-export default function StudentSidebar({ collapsed, onToggle, mobileOpen, onMobileClose }: StudentSidebarProps) {
+export default function StudentSidebar({}: StudentSidebarProps) {
   const location = useLocation()
   const navigate = useNavigate()
   const { logout } = useAuth()
@@ -42,10 +35,10 @@ export default function StudentSidebar({ collapsed, onToggle, mobileOpen, onMobi
     navigate('/login')
   }
 
-  const sidebarContent = (
-    <div className="student-sidebar-inner">
-      <div className="student-sidebar-header">
-        {!collapsed ? (
+  return (
+    <aside className="student-sidebar-desktop expanded">
+      <div className="student-sidebar-inner">
+        <div className="student-sidebar-header">
           <div className="student-sidebar-header-content">
             <span className="student-sidebar-header-c-wrapper">
               <GraduationCap className="student-sidebar-header-cap" />
@@ -55,66 +48,34 @@ export default function StudentSidebar({ collapsed, onToggle, mobileOpen, onMobi
             <span className="student-sidebar-header-c">IQ</span>
             <span className="student-sidebar-header-badge">Student</span>
           </div>
-        ) : (
-          <div className="student-sidebar-header-center">
-            <span className="student-sidebar-header-c-wrapper">
-              <GraduationCap className="student-sidebar-header-cap" />
-              <span className="student-sidebar-header-c">C</span>
-            </span>
-          </div>
-        )}
+        </div>
+
+        <nav className="student-sidebar-nav">
+          {menuItems.map((item) => {
+            const Icon = item.icon
+            const isActive = location.pathname === item.path
+            return (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                className={`student-sidebar-link ${isActive ? 'active' : ''}`}
+              >
+                <Icon className="student-sidebar-link-icon" />
+                <span className="student-sidebar-link-label">{item.label}</span>
+                {isActive && <span className="student-sidebar-link-dot" />}
+              </NavLink>
+            )
+          })}
+        </nav>
+
+        <button
+          onClick={handleLogout}
+          className="student-sidebar-logout"
+        >
+          <LogOut className="student-sidebar-link-icon" />
+          <span className="student-sidebar-link-label">Logout</span>
+        </button>
       </div>
-
-      <nav className="student-sidebar-nav">
-        {menuItems.map((item) => {
-          const Icon = item.icon
-          const isActive = location.pathname === item.path
-          return (
-            <NavLink
-              key={item.path}
-              to={item.path}
-              onClick={onMobileClose}
-              className={`student-sidebar-link ${isActive ? 'active' : ''} ${collapsed ? 'justify-center' : ''}`}
-              title={collapsed ? item.label : undefined}
-            >
-              <Icon className="student-sidebar-link-icon" />
-              {!collapsed && <span className="student-sidebar-link-label">{item.label}</span>}
-              {isActive && !collapsed && <span className="student-sidebar-link-dot" />}
-            </NavLink>
-          )
-        })}
-      </nav>
-
-      <button
-        onClick={() => { handleLogout(); onMobileClose() }}
-        className={`student-sidebar-logout ${collapsed ? 'justify-center' : ''}`}
-      >
-        <LogOut className="student-sidebar-link-icon" />
-        {!collapsed && <span className="student-sidebar-link-label">Logout</span>}
-      </button>
-
-      <button
-        onClick={onToggle}
-        className="student-sidebar-toggle-btn"
-      >
-        {collapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
-      </button>
-    </div>
-  )
-
-  return (
-    <>
-      {mobileOpen && (
-        <div className="student-sidebar-overlay" onClick={onMobileClose} />
-      )}
-
-      <aside className={`student-sidebar-mobile ${mobileOpen ? 'open' : ''}`}>
-        {sidebarContent}
-      </aside>
-
-      <aside className={`student-sidebar-desktop ${collapsed ? 'collapsed' : 'expanded'}`}>
-        {sidebarContent}
-      </aside>
-    </>
+    </aside>
   )
 }

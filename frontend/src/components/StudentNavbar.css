@@ -26,19 +26,6 @@
   gap: 12px;
 }
 
-.student-navbar-hamburger {
-  display: none;
-  padding: 8px;
-  border-radius: var(--radius-md);
-  color: var(--student-100);
-  transition: background 0.15s, color 0.15s;
-}
-
-.student-navbar-hamburger:hover {
-  background: var(--student-800);
-  color: var(--color-white);
-}
-
 .student-navbar-brand {
   display: flex;
   align-items: center;
@@ -74,43 +61,6 @@
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.student-navbar-search-wrapper {
-  display: none;
-  flex: 1;
-  max-width: 400px;
-  align-items: center;
-  position: relative;
-}
-
-.student-navbar-search-icon {
-  position: absolute;
-  left: 12px;
-  color: var(--student-300);
-  pointer-events: none;
-}
-
-.student-navbar-search {
-  width: 100%;
-  padding: 9px 12px 9px 36px;
-  font-size: 13px;
-  background: var(--student-800);
-  border: 1px solid var(--student-700);
-  border-radius: 10px;
-  outline: none;
-  color: var(--color-white);
-  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
-}
-
-.student-navbar-search:focus {
-  border-color: var(--student-400);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
-  background: var(--student-800);
-}
-
-.student-navbar-search::placeholder {
-  color: var(--student-300);
-  font-size: 13px;
-}
 
 .student-navbar-right {
   display: flex;
@@ -118,32 +68,9 @@
   gap: 8px;
 }
 
-.student-navbar-icon-btn {
-  position: relative;
-  padding: 8px;
-  border-radius: var(--radius-md);
-  color: var(--student-100);
-  transition: background 0.15s, color 0.15s;
-}
-
-.student-navbar-icon-btn:hover {
-  background: var(--student-800);
-  color: var(--color-white);
-}
-
-.student-navbar-notification-dot {
-  position: absolute;
-  top: 6px;
-  right: 6px;
-  width: 8px;
-  height: 8px;
-  background: var(--color-red-500);
-  border-radius: 50%;
-  border: 2px solid var(--color-white);
-}
 
 .student-navbar-profile {
-  display: none;
+  display: flex;
   align-items: center;
   gap: 10px;
   padding-left: 16px;
@@ -172,7 +99,7 @@
 }
 
 .student-navbar-profile-info {
-  display: none;
+  display: block;
 }
 
 .student-navbar-profile-name {
@@ -192,36 +119,5 @@
 @media (min-width: 640px) {
   .student-navbar-inner {
     padding: 0 24px;
-  }
-
-  .student-navbar-profile {
-    display: flex;
-  }
-}
-
-@media (min-width: 768px) {
-  .student-navbar-search-wrapper {
-    display: flex;
-    margin: 0 24px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .student-navbar-profile-info {
-    display: block;
-  }
-
-  .student-navbar-hamburger {
-    display: none;
-  }
-
-  .student-navbar-search-wrapper {
-    max-width: 480px;
-  }
-}
-
-@media (max-width: 1023px) {
-  .student-navbar-hamburger {
-    display: flex;
   }
 }
