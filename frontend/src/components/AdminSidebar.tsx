@@ -76,15 +76,15 @@ export default function AdminSidebar({ collapsed, onToggle, mobileOpen, onMobile
             </NavLink>
           )
         })}
-
-        <button
-          onClick={() => { handleLogout(); onMobileClose() }}
-          className={`sidebar-logout ${collapsed ? 'justify-center' : ''}`}
-        >
-          <LogOut className="sidebar-link-icon" />
-          {!collapsed && <span className="sidebar-link-label">Logout</span>}
-        </button>
       </nav>
+
+      <button
+        onClick={() => { handleLogout(); onMobileClose() }}
+        className={`sidebar-logout ${collapsed ? 'justify-center' : ''}`}
+      >
+        <LogOut className="sidebar-link-icon" />
+        {!collapsed && <span className="sidebar-link-label">Logout</span>}
+      </button>
 
       <button
         onClick={onToggle}

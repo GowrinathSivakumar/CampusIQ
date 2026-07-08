@@ -3,12 +3,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-bg);
+  background: #E8E8E8;
   padding: 24px;
 }
 
 .login-page.admin-theme {
-  background: var(--color-bg);
+  background: #E8E8E8;
 }
 
 .login-container {

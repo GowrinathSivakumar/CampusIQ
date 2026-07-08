@@ -246,61 +246,6 @@
   line-height: 1.6;
 }
 
-/* ── Strategy ── */
-
-.preparation-guide-strategy {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 14px;
-}
-
-.preparation-guide-strategy-card {
-  display: flex;
-  gap: 14px;
-  padding: 16px;
-  border: 1px solid var(--color-gray-100);
-  border-radius: var(--radius-md);
-  transition: border-color 0.2s;
-}
-
-.preparation-guide-strategy-card:hover {
-  border-color: var(--student-200);
-}
-
-.preparation-guide-strategy-step {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: var(--student-500);
-  color: var(--color-white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-heading);
-  font-size: 16px;
-  font-weight: 700;
-  flex-shrink: 0;
-}
-
-.preparation-guide-strategy-content {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.preparation-guide-strategy-title {
-  font-family: var(--font-heading);
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--color-dark);
-}
-
-.preparation-guide-strategy-desc {
-  font-size: 13px;
-  color: var(--color-dark-secondary);
-  line-height: 1.5;
-}
-
 /* ── Resources ── */
 
 .preparation-guide-resources {

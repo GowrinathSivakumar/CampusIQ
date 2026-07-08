@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ListChecks, HelpCircle, Target, ExternalLink, Lightbulb, ChevronRight, ArrowLeft } from 'lucide-react'
+import { ListChecks, HelpCircle, ExternalLink, Lightbulb, ChevronRight, ArrowLeft } from 'lucide-react'
 import './PreparationGuide.css'
 
 const topics = [
@@ -16,13 +16,6 @@ const faqs = [
   { question: 'Which programming language is best for placements?', answer: 'Java and Python are widely accepted. Java is preferred for its strong OOP concepts, while Python is excellent for coding interviews due to its simplicity.' },
   { question: 'How important is the aptitude round?', answer: 'Aptitude rounds test your logical thinking and problem-solving speed. Many companies use them as an initial filter, so consistent practice is essential.' },
   { question: 'What should I prepare for HR interviews?', answer: 'Focus on communication skills, understanding of the company, your career goals, and behavioral questions. Be honest and confident in your responses.' },
-]
-
-const strategy = [
-  { step: '1', title: 'Assess Your Skills', description: 'Identify your strengths and areas for improvement across technical, aptitude, and soft skills.' },
-  { step: '2', title: 'Build Fundamentals', description: 'Strengthen core concepts in programming, DSA, DBMS, OS, and networking.' },
-  { step: '3', title: 'Practice Regularly', description: 'Solve coding problems daily, take mock tests, and practice aptitude questions.' },
-  { step: '4', title: 'Apply & Interview', description: 'Apply to companies, attend drives, and continuously learn from each interview experience.' },
 ]
 
 const resources = [
@@ -142,24 +135,6 @@ export default function PreparationGuide() {
           </div>
         </section>
       </div>
-
-      <section className="preparation-guide-section">
-        <div className="preparation-guide-section-header">
-          <Target size={20} />
-          <h2 className="preparation-guide-section-title">Preparation Strategy</h2>
-        </div>
-        <div className="preparation-guide-strategy">
-          {strategy.map((s) => (
-            <div key={s.step} className="preparation-guide-strategy-card">
-              <span className="preparation-guide-strategy-step">{s.step}</span>
-              <div className="preparation-guide-strategy-content">
-                <h3 className="preparation-guide-strategy-title">{s.title}</h3>
-                <p className="preparation-guide-strategy-desc">{s.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
 
       <section className="preparation-guide-section">
         <div className="preparation-guide-section-header">
