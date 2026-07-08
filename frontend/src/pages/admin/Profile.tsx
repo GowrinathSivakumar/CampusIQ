@@ -1,4 +1,4 @@
-import { UserCircle, Mail, Shield, Calendar, Settings, Save, ChevronRight, Bell, Upload, BarChart3 } from 'lucide-react'
+import { UserCircle, Mail, Shield, Calendar, Settings, Save, Bell, Upload, BarChart3 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import './Profile.css'
 
