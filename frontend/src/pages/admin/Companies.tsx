@@ -17,10 +17,6 @@ export default function Companies() {
     <div className="companies-page">
       <div className="companies-header">
         <div className="companies-header-top">
-          <div>
-            <h1>Companies</h1>
-            <p>Manage registered placement companies</p>
-          </div>
           <button className="companies-add-btn">
             <Building2 size={16} />
             Add Company

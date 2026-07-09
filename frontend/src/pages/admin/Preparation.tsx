@@ -14,10 +14,6 @@ export default function Preparation() {
   return (
     <div className="preparation-page">
       <div className="preparation-header">
-        <div>
-          <h1>Preparation Tips</h1>
-          <p>Manage placement preparation resources</p>
-        </div>
         <button className="preparation-add-btn">
           <Plus size={16} />
           Add Tips

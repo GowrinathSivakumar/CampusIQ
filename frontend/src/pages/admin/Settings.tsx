@@ -4,11 +4,6 @@ import './Settings.css'
 export default function Settings() {
   return (
     <div className="settings-page">
-      <div>
-        <h1>Settings</h1>
-        <p>Manage your admin preferences</p>
-      </div>
-
       <div className="settings-card">
         <section className="settings-section">
           <h2>Profile Information</h2>

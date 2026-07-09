@@ -12,10 +12,6 @@ export default function Reports() {
   return (
     <div className="reports-page">
       <div className="reports-header">
-        <div>
-          <h1>Reports</h1>
-          <p>Analytics and placement reports</p>
-        </div>
         <button className="reports-export-btn">
           <Download size={16} />
           Export Report

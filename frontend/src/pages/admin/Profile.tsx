@@ -19,10 +19,6 @@ export default function Profile() {
   return (
     <div className="admin-profile-page">
       <div className="admin-profile-header">
-        <div>
-          <h1 className="admin-profile-title">Profile</h1>
-          <p className="admin-profile-subtitle">Your admin account details</p>
-        </div>
         <Link to="/admin/settings" className="admin-profile-settings-btn">
           <Settings size={20} />
         </Link>

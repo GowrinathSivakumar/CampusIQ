@@ -11,21 +11,8 @@
   gap: 16px;
 }
 
-.admin-profile-title {
-  font-family: var(--font-heading);
-  font-size: 26px;
-  font-weight: 700;
-  color: var(--color-dark);
-  letter-spacing: -0.02em;
-}
-
-.admin-profile-subtitle {
-  font-size: 14px;
-  color: var(--color-gray-400);
-  margin-top: 2px;
-}
-
 .admin-profile-settings-btn {
+  margin-left: auto;
   display: flex;
   align-items: center;
   justify-content: center;

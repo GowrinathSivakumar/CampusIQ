@@ -14,10 +14,6 @@ export default function PreviousDrives() {
   return (
     <div className="drives-page">
       <div className="drives-header">
-        <div>
-          <h1>Previous Drives</h1>
-          <p>View and manage past placement drives</p>
-        </div>
         <button className="drives-upload-btn">
           <History size={16} />
           Upload Drive

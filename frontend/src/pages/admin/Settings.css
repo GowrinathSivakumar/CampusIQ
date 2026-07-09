@@ -4,18 +4,6 @@
   gap: 24px;
 }
 
-.settings-page h1 {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--color-dark);
-}
-
-.settings-page > p {
-  font-size: 14px;
-  color: var(--color-dark-secondary);
-  margin-top: 2px;
-}
-
 .settings-card {
   background: var(--color-white);
   border-radius: var(--radius-lg);

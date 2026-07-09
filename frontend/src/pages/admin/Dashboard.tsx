@@ -2,6 +2,7 @@ import { Building2, CheckCircle2, BookOpen } from 'lucide-react'
 import DashboardCard from '../../components/DashboardCard'
 import HighestPlacementCard from '../../components/HighestPlacementCard'
 import QuickActionCard from '../../components/QuickActionCard'
+import KSRCELogo from '../../assets/KSRCE logo.jpg'
 
 import './Dashboard.css'
 
@@ -21,11 +22,12 @@ const quickActions = [
 export default function Dashboard() {
   return (
     <div className="dashboard-page">
-      <div className="dashboard-header">
-        <h1>Dashboard</h1>
-        <p>Overview of your placement hub</p>
+      <div className="dashboard-college-header">
+        <img src={KSRCELogo} alt="KSRCE Logo" className="dashboard-college-logo" />
+        <span className="dashboard-college-name">
+          K S R COLLEGE OF ENGINEERING <span className="dashboard-college-autonomous">(Autonomous)</span> – 637215
+        </span>
       </div>
-
       <div className="dashboard-stats">
         {stats.map((stat) => (
           <DashboardCard key={stat.title} {...stat} />

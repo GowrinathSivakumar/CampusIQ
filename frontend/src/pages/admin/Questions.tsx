@@ -16,10 +16,6 @@ export default function Questions() {
   return (
     <div className="questions-page">
       <div className="questions-header">
-        <div>
-          <h1>Interview Questions</h1>
-          <p>Browse and manage interview questions</p>
-        </div>
         <button className="questions-add-btn">
           <HelpCircle size={16} />
           Add Question

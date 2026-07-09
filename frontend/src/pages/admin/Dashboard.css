@@ -4,20 +4,31 @@
   gap: 24px;
 }
 
-.dashboard-header {
-  margin-bottom: 4px;
+.dashboard-college-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px 0 12px;
 }
 
-.dashboard-header h1 {
-  font-size: 22px;
+.dashboard-college-logo {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.dashboard-college-name {
+  font-family: var(--font-heading);
+  font-size: 35px;
   font-weight: 700;
   color: var(--color-dark);
+  line-height: 1.4;
 }
 
-.dashboard-header p {
-  font-size: 14px;
-  color: var(--color-dark-secondary);
-  margin-top: 4px;
+.dashboard-college-autonomous {
+  color: #00a300;
 }
 
 .dashboard-stats {
