@@ -104,11 +104,23 @@ export default function AIMentor() {
   ])
   const [inputValue, setInputValue] = useState('')
   const [isTyping, setIsTyping] = useState(false)
-  const chatEndRef = useRef<HTMLDivElement>(null)
+
+  const chatContainerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight
+    }
   }, [messages, isTyping])
+
+  useEffect(() => {
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = prev
+      window.scrollTo(0, 0)
+    }
+  }, [])
 
   const handleSend = (text?: string) => {
     const messageText = text || inputValue
@@ -163,7 +175,7 @@ export default function AIMentor() {
         </div>
       </div>
 
-      <div className="ai-mentor-chat">
+      <div className="ai-mentor-chat" ref={chatContainerRef}>
         <div className="ai-mentor-messages">
           {messages.map((msg, i) => (
             <ChatMessage
@@ -182,7 +194,6 @@ export default function AIMentor() {
               </div>
             </div>
           )}
-          <div ref={chatEndRef} />
         </div>
       </div>
 

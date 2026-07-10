@@ -1,8 +1,8 @@
 .ai-mentor {
   display: flex;
   flex-direction: column;
-  height: calc(100vh - var(--navbar-height) - 80px);
-  min-height: 500px;
+  flex: 1;
+  min-height: 0;
   background: var(--glass-student-bg);
   backdrop-filter: blur(var(--glass-student-blur));
   -webkit-backdrop-filter: blur(var(--glass-student-blur));
@@ -197,18 +197,24 @@
   align-items: center;
   gap: 10px;
   padding: 4px 4px 4px 16px;
-  background: rgba(255, 255, 255, 0.6);
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.04) 0%, rgba(59, 130, 246, 0.08) 50%, rgba(37, 99, 235, 0.04) 100%);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1.5px solid rgba(37, 99, 235, 0.15);
   border-radius: 12px;
-  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.ai-mentor-input-wrapper:hover {
+  border-color: rgba(37, 99, 235, 0.25);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
 .ai-mentor-input-wrapper:focus-within {
   border-color: #2563EB;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12), 0 4px 20px rgba(37, 99, 235, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.06) 0%, rgba(59, 130, 246, 0.1) 50%, rgba(37, 99, 235, 0.06) 100%);
 }
 
 .ai-mentor-input-field {
@@ -222,7 +228,8 @@
 }
 
 .ai-mentor-input-field::placeholder {
-  color: var(--color-gray-400);
+  color: #93b4f5;
+  font-weight: 400;
 }
 
 .ai-mentor-send-btn {
@@ -254,7 +261,6 @@
 
 @media (max-width: 640px) {
   .ai-mentor {
-    height: calc(100vh - var(--navbar-height) - 64px);
     border-radius: var(--radius-lg);
   }
 }
