@@ -1,16 +1,19 @@
 .student-stat-card {
-  background: var(--color-white);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-gray-100);
-  box-shadow: var(--shadow-sm);
+  background: var(--glass-student-bg);
+  backdrop-filter: blur(var(--glass-student-blur));
+  -webkit-backdrop-filter: blur(var(--glass-student-blur));
+  border-radius: var(--radius-xl);
+  border: var(--glass-student-border);
+  box-shadow: var(--glass-student-shadow);
   overflow: hidden;
-  transition: box-shadow 0.25s, transform 0.25s;
+  transition: box-shadow 0.25s ease, transform 0.25s ease, background 0.25s ease;
   cursor: default;
 }
 
 .student-stat-card:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+  box-shadow: var(--glass-student-shadow-hover);
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.85);
 }
 
 .student-stat-card-body {

@@ -1,15 +1,15 @@
 .highest-placement-card {
   position: relative;
-  background: linear-gradient(135deg, var(--color-emerald-600), var(--color-emerald-700), #005500);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-premium);
+  background: linear-gradient(135deg, #0F9D58, #16A34A, #007a00);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 20px 48px rgba(15, 157, 88, 0.2), 0 8px 20px rgba(15, 157, 88, 0.12);
   padding: 20px;
   overflow: hidden;
   transition: box-shadow 0.3s, transform 0.3s;
 }
 
 .highest-placement-card:hover {
-  box-shadow: var(--shadow-premium);
+  box-shadow: 0 24px 56px rgba(15, 157, 88, 0.25), 0 10px 24px rgba(15, 157, 88, 0.15);
   transform: scale(1.01);
 }
 
@@ -19,7 +19,7 @@
   right: 0;
   width: 128px;
   height: 128px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.06);
   border-radius: 50%;
   transform: translate(40px, -40px);
 }
@@ -30,7 +30,7 @@
   left: 0;
   width: 96px;
   height: 96px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.06);
   border-radius: 50%;
   transform: translate(-32px, 32px);
 }

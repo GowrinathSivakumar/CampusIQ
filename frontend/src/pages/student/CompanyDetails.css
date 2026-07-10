@@ -18,7 +18,7 @@
   gap: 6px;
   font-size: 14px;
   font-weight: 500;
-  color: var(--student-600);
+  color: #2563EB;
   text-decoration: none;
   transition: gap 0.2s;
 }
@@ -42,7 +42,7 @@
 }
 
 .company-details-breadcrumb-path a:hover {
-  color: var(--student-600);
+  color: #2563EB;
 }
 
 .company-details-breadcrumb-path span {
@@ -54,11 +54,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--color-white);
+  background: var(--glass-student-bg);
+  backdrop-filter: blur(var(--glass-student-blur));
+  -webkit-backdrop-filter: blur(var(--glass-student-blur));
   border-radius: var(--radius-xl);
   padding: 24px 28px;
-  border: 1px solid var(--color-gray-100);
-  box-shadow: var(--shadow-sm);
+  border: var(--glass-student-border);
+  box-shadow: var(--glass-student-shadow);
   gap: 16px;
   flex-wrap: wrap;
 }
@@ -73,7 +75,7 @@
   width: 56px;
   height: 56px;
   border-radius: var(--radius-lg);
-  background: linear-gradient(135deg, var(--student-500), var(--student-700));
+  background: linear-gradient(135deg, #2563EB, #1d4ed8);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -82,6 +84,7 @@
   font-size: 22px;
   font-weight: 700;
   flex-shrink: 0;
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.2);
 }
 
 .company-details-hero-text {
@@ -112,7 +115,7 @@
 }
 
 .company-details-meta-item a {
-  color: var(--student-600);
+  color: #2563EB;
   text-decoration: none;
 }
 
@@ -131,18 +134,18 @@
   transition: all 0.2s;
   cursor: pointer;
   border: none;
-  background: var(--color-gray-50);
+  background: rgba(37, 99, 235, 0.06);
   color: var(--color-dark-secondary);
 }
 
 .company-details-bookmark:hover {
-  background: var(--student-50);
-  color: var(--student-600);
+  background: rgba(37, 99, 235, 0.1);
+  color: #2563EB;
 }
 
 .company-details-bookmark.bookmarked {
-  background: var(--student-50);
-  color: var(--student-600);
+  background: rgba(37, 99, 235, 0.1);
+  color: #2563EB;
 }
 
 .company-details-grid {
@@ -159,11 +162,13 @@
 }
 
 .company-details-section {
-  background: var(--color-white);
-  border-radius: var(--radius-lg);
+  background: var(--glass-student-bg);
+  backdrop-filter: blur(var(--glass-student-blur));
+  -webkit-backdrop-filter: blur(var(--glass-student-blur));
+  border-radius: var(--radius-xl);
   padding: 24px;
-  border: 1px solid var(--color-gray-100);
-  box-shadow: var(--shadow-xs);
+  border: var(--glass-student-border);
+  box-shadow: var(--glass-student-shadow);
   height: 100%;
 }
 
@@ -185,7 +190,7 @@
 }
 
 .company-details-section-title svg {
-  color: var(--student-600);
+  color: #2563EB;
 }
 
 .company-details-text {
@@ -219,7 +224,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--student-500);
+  background: #2563EB;
 }
 
 .company-details-process {
@@ -239,8 +244,8 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: var(--student-50);
-  color: var(--student-600);
+  background: rgba(37, 99, 235, 0.08);
+  color: #2563EB;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -277,13 +282,13 @@
 
 .company-details-round-card {
   padding: 16px;
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: var(--radius-md);
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .company-details-round-card:hover {
-  border-color: var(--student-200);
+  border-color: rgba(37, 99, 235, 0.15);
   box-shadow: var(--shadow-xs);
 }
 
@@ -304,8 +309,8 @@
 .company-details-round-badge {
   font-size: 11px;
   font-weight: 600;
-  color: var(--student-600);
-  background: var(--student-50);
+  color: #2563EB;
+  background: rgba(37, 99, 235, 0.08);
   padding: 2px 8px;
   border-radius: 4px;
   white-space: nowrap;
@@ -321,8 +326,8 @@
 .company-details-round-duration {
   font-size: 12px;
   font-weight: 500;
-  color: var(--student-600);
-  background: var(--student-50);
+  color: #2563EB;
+  background: rgba(37, 99, 235, 0.08);
   padding: 2px 8px;
   border-radius: 4px;
 }
@@ -344,28 +349,28 @@
   align-items: center;
   gap: 14px;
   padding: 14px 16px;
-  background: var(--color-gray-50);
+  background: rgba(37, 99, 235, 0.03);
   border-radius: var(--radius-md);
   transition: background 0.15s;
 }
 
 .company-details-drive-card:hover {
-  background: var(--student-50);
+  background: rgba(37, 99, 235, 0.06);
 }
 
 .company-details-drive-year {
   width: 48px;
   height: 48px;
   border-radius: var(--radius-md);
-  background: var(--color-white);
-  border: 1px solid var(--color-gray-200);
+  background: var(--glass-student-bg);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-heading);
   font-size: 14px;
   font-weight: 700;
-  color: var(--student-600);
+  color: #2563EB;
   flex-shrink: 0;
 }
 
@@ -394,9 +399,9 @@
 
 .company-details-experience-card {
   padding: 16px;
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: var(--radius-md);
-  border-left: 3px solid var(--student-500);
+  border-left: 3px solid #2563EB;
 }
 
 .company-details-experience-header {
@@ -414,8 +419,8 @@
 
 .company-details-experience-role {
   font-size: 12px;
-  color: var(--student-600);
-  background: var(--student-50);
+  color: #2563EB;
+  background: rgba(37, 99, 235, 0.08);
   padding: 2px 8px;
   border-radius: 4px;
 }
@@ -437,7 +442,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 12px 16px;
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: var(--radius-md);
   text-decoration: none;
   transition: all 0.2s;
@@ -446,9 +451,9 @@
 }
 
 .company-details-resource-link:hover {
-  border-color: var(--student-200);
-  background: var(--student-50);
-  color: var(--student-700);
+  border-color: rgba(37, 99, 235, 0.15);
+  background: rgba(37, 99, 235, 0.04);
+  color: #1d4ed8;
 }
 
 .company-details-sidebar {
@@ -458,11 +463,13 @@
 }
 
 .company-details-sidebar-card {
-  background: var(--color-white);
-  border-radius: var(--radius-lg);
+  background: var(--glass-student-bg);
+  backdrop-filter: blur(var(--glass-student-blur));
+  -webkit-backdrop-filter: blur(var(--glass-student-blur));
+  border-radius: var(--radius-xl);
   padding: 20px;
-  border: 1px solid var(--color-gray-100);
-  box-shadow: var(--shadow-xs);
+  border: var(--glass-student-border);
+  box-shadow: var(--glass-student-shadow);
 }
 
 .company-details-sidebar-title {
@@ -484,7 +491,7 @@
   flex-direction: column;
   gap: 4px;
   padding: 12px;
-  background: var(--color-gray-50);
+  background: rgba(37, 99, 235, 0.03);
   border-radius: var(--radius-md);
 }
 
@@ -500,5 +507,5 @@
   font-family: var(--font-heading);
   font-size: 22px;
   font-weight: 700;
-  color: var(--student-600);
+  color: #2563EB;
 }

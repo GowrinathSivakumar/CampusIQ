@@ -18,14 +18,17 @@
   font-size: 13px;
   font-weight: 600;
   color: var(--color-white);
-  background: var(--color-emerald-600);
+  background: linear-gradient(135deg, #0F9D58, #16A34A);
   border-radius: var(--radius-md);
-  transition: background 0.15s;
+  transition: all 0.2s ease;
   white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(15, 157, 88, 0.2);
 }
 
 .preparation-add-btn:hover {
-  background: var(--color-emerald-700);
+  background: linear-gradient(135deg, #0D8F4E, #0F9D58);
+  box-shadow: 0 6px 16px rgba(15, 157, 88, 0.3);
+  transform: translateY(-1px);
 }
 
 .preparation-search-wrapper {
@@ -46,16 +49,18 @@
   width: 100%;
   padding: 9px 14px 9px 38px;
   font-size: 13px;
-  background: var(--color-white);
-  border: 1px solid var(--color-gray-200);
+  background: var(--glass-admin-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: var(--radius-md);
   outline: none;
-  transition: border-color 0.15s;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .preparation-search:focus {
-  border-color: var(--color-emerald-500);
-  box-shadow: 0 0 0 3px rgba(0, 163, 0, 0.1);
+  border-color: #0F9D58;
+  box-shadow: 0 0 0 3px rgba(15, 157, 88, 0.1);
 }
 
 .preparation-grid {
@@ -65,18 +70,21 @@
 }
 
 .tip-card {
-  background: var(--color-white);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-gray-100);
-  box-shadow: var(--shadow-sm);
+  background: var(--glass-admin-bg);
+  backdrop-filter: blur(var(--glass-admin-blur));
+  -webkit-backdrop-filter: blur(var(--glass-admin-blur));
+  border-radius: var(--radius-xl);
+  border: var(--glass-admin-border);
+  box-shadow: var(--glass-admin-shadow);
   padding: 20px;
   cursor: pointer;
-  transition: box-shadow 0.2s, transform 0.2s;
+  transition: box-shadow 0.25s ease, transform 0.25s ease, background 0.25s ease;
 }
 
 .tip-card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-2px);
+  box-shadow: var(--glass-admin-shadow-hover);
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.85);
 }
 
 .tip-card-top {
@@ -126,9 +134,9 @@
   font-weight: 500;
   border-radius: 999px;
   border: 1px solid;
-  background: var(--color-emerald-50);
-  color: var(--color-emerald-700);
-  border-color: var(--color-emerald-200);
+  background: rgba(15, 157, 88, 0.08);
+  color: #0F9D58;
+  border-color: rgba(15, 157, 88, 0.15);
 }
 
 .tip-card-date {

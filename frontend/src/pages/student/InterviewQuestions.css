@@ -17,8 +17,10 @@
   align-items: center;
   gap: 10px;
   padding: 10px 16px;
-  background: var(--color-white);
-  border: 1px solid var(--color-gray-200);
+  background: var(--glass-student-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 10px;
   max-width: 400px;
   color: var(--color-gray-400);
@@ -26,7 +28,7 @@
 }
 
 .questions-page-search:focus-within {
-  border-color: var(--student-400);
+  border-color: #2563EB;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
@@ -54,8 +56,10 @@
   align-items: center;
   gap: 8px;
   padding: 8px 12px;
-  background: var(--color-white);
-  border: 1px solid var(--color-gray-200);
+  background: var(--glass-student-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 10px;
   color: var(--color-gray-400);
   min-width: 160px;
@@ -85,8 +89,8 @@
 }
 
 .questions-card-difficulty.easy {
-  background: var(--color-emerald-50);
-  color: var(--color-emerald-700);
+  background: rgba(15, 157, 88, 0.08);
+  color: #0F9D58;
 }
 
 .questions-card-difficulty.medium {
@@ -113,21 +117,24 @@
   align-items: flex-start;
   gap: 14px;
   padding: 28px;
-  background: var(--color-white);
-  border: 1px solid var(--color-gray-100);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
+  background: var(--glass-student-bg);
+  backdrop-filter: blur(var(--glass-student-blur));
+  -webkit-backdrop-filter: blur(var(--glass-student-blur));
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--glass-student-shadow);
   cursor: pointer;
-  transition: box-shadow 0.25s, transform 0.25s, border-color 0.25s;
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
   text-align: left;
   font-family: inherit;
   width: 100%;
 }
 
 .questions-category-card:hover {
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--glass-student-shadow-hover);
   transform: translateY(-3px);
-  border-color: var(--student-200);
+  border-color: rgba(37, 99, 235, 0.15);
+  background: rgba(255, 255, 255, 0.85);
 }
 
 .questions-category-icon {
@@ -157,8 +164,8 @@
 .questions-category-count {
   font-size: 12px;
   font-weight: 600;
-  color: var(--student-600);
-  background: var(--student-50);
+  color: #2563EB;
+  background: rgba(37, 99, 235, 0.08);
   padding: 4px 12px;
   border-radius: 6px;
 }
@@ -181,8 +188,10 @@
   font-size: 13px;
   font-weight: 600;
   color: var(--color-dark-secondary);
-  background: var(--color-white);
-  border: 1px solid var(--color-gray-200);
+  background: var(--glass-student-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.2s, color 0.2s, border-color 0.2s;
@@ -190,9 +199,9 @@
 }
 
 .questions-back-btn:hover {
-  background: var(--color-gray-50);
+  background: rgba(255, 255, 255, 0.9);
   color: var(--color-dark);
-  border-color: var(--color-gray-300);
+  border-color: rgba(37, 99, 235, 0.15);
 }
 
 .questions-nav-title {
@@ -209,8 +218,8 @@
   width: 36px;
   height: 36px;
   border-radius: 10px;
-  background: var(--student-100);
-  color: var(--student-600);
+  background: rgba(37, 99, 235, 0.08);
+  color: #2563EB;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -221,10 +230,12 @@
 
 .questions-table-wrapper {
   overflow-x: auto;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-gray-100);
-  box-shadow: var(--shadow-sm);
-  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  border: var(--glass-student-border);
+  box-shadow: var(--glass-student-shadow);
+  background: var(--glass-student-bg);
+  backdrop-filter: blur(var(--glass-student-blur));
+  -webkit-backdrop-filter: blur(var(--glass-student-blur));
 }
 
 .questions-table {
@@ -234,8 +245,8 @@
 }
 
 .questions-table thead {
-  background: var(--student-50);
-  border-bottom: 1px solid var(--color-gray-200);
+  background: rgba(37, 99, 235, 0.04);
+  border-bottom: 1px solid rgba(37, 99, 235, 0.08);
 }
 
 .questions-table th {
@@ -252,7 +263,7 @@
 
 .questions-table td {
   padding: 14px 16px;
-  border-bottom: 1px solid var(--color-gray-100);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
   color: var(--color-dark);
 }
 
@@ -261,7 +272,7 @@
 }
 
 .questions-table tbody tr:hover {
-  background: var(--color-gray-50);
+  background: rgba(37, 99, 235, 0.03);
 }
 
 .q-col-sno {

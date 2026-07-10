@@ -17,8 +17,10 @@
   align-items: center;
   gap: 10px;
   padding: 10px 16px;
-  background: var(--color-white);
-  border: 1px solid var(--color-gray-200);
+  background: var(--glass-student-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 10px;
   flex: 1;
   max-width: 420px;
@@ -28,7 +30,7 @@
 }
 
 .companies-page-search:focus-within {
-  border-color: var(--student-400);
+  border-color: #2563EB;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
@@ -57,15 +59,17 @@
   align-items: center;
   gap: 8px;
   padding: 8px 12px;
-  background: var(--color-white);
-  border: 1px solid var(--color-gray-200);
+  background: var(--glass-student-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 8px;
   color: var(--color-gray-400);
   transition: border-color 0.2s;
 }
 
 .companies-page-filter-select:focus-within {
-  border-color: var(--student-400);
+  border-color: #2563EB;
 }
 
 .companies-page-filter-select select {
@@ -85,19 +89,22 @@
 }
 
 .companies-page-card {
-  background: var(--color-white);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-gray-100);
-  box-shadow: var(--shadow-sm);
+  background: var(--glass-student-bg);
+  backdrop-filter: blur(var(--glass-student-blur));
+  -webkit-backdrop-filter: blur(var(--glass-student-blur));
+  border-radius: var(--radius-xl);
+  border: var(--glass-student-border);
+  box-shadow: var(--glass-student-shadow);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: box-shadow 0.25s, transform 0.25s;
+  transition: box-shadow 0.25s ease, transform 0.25s ease, background 0.25s ease;
 }
 
 .companies-page-card:hover {
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--glass-student-shadow-hover);
   transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.85);
 }
 
 .companies-page-card-body {
@@ -159,8 +166,8 @@
 .companies-page-card-package {
   font-size: 12px;
   font-weight: 600;
-  color: var(--color-emerald-700);
-  background: var(--color-emerald-50);
+  color: #2563EB;
+  background: rgba(37, 99, 235, 0.08);
   padding: 2px 8px;
   border-radius: 4px;
 }
@@ -190,18 +197,18 @@
   padding: 8px 16px;
   font-size: 13px;
   font-weight: 600;
-  color: var(--student-600);
-  background: var(--student-50);
+  color: #2563EB;
+  background: rgba(37, 99, 235, 0.08);
   border-radius: 8px;
-  transition: background 0.2s, color 0.2s, gap 0.2s;
+  transition: all 0.2s ease;
   align-self: flex-start;
   border: none;
   cursor: pointer;
 }
 
 .companies-page-card-btn:hover {
-  background: var(--student-100);
-  color: var(--student-700);
+  background: rgba(37, 99, 235, 0.14);
+  color: #1d4ed8;
   gap: 10px;
 }
 

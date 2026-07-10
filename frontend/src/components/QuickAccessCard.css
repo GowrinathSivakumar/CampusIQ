@@ -3,22 +3,25 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: var(--color-white);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--student-200);
-  box-shadow: var(--shadow-sm);
+  background: var(--glass-student-bg);
+  backdrop-filter: blur(var(--glass-student-blur));
+  -webkit-backdrop-filter: blur(var(--glass-student-blur));
+  border-radius: var(--radius-xl);
+  border: var(--glass-student-border);
+  box-shadow: var(--glass-student-shadow);
   padding: 28px 24px;
   text-align: left;
   width: 100%;
   min-height: 190px;
   cursor: pointer;
-  transition: box-shadow 0.25s, transform 0.25s;
+  transition: box-shadow 0.25s ease, transform 0.25s ease, background 0.25s ease;
   overflow: hidden;
 }
 
 .quick-access-card:hover {
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--glass-student-shadow-hover);
   transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.85);
 }
 
 .quick-access-card-bg {
@@ -55,13 +58,15 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 8px;
-  transition: transform 0.25s;
-  background: linear-gradient(135deg, var(--student-500), var(--student-600));
+  transition: transform 0.25s, box-shadow 0.25s;
+  background: linear-gradient(135deg, #2563EB, #3B82F6);
   color: var(--color-white);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
 }
 
 .quick-access-card:hover .quick-access-card-icon {
   transform: scale(1.08);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
 }
 
 .quick-access-card-title {
@@ -73,7 +78,7 @@
 }
 
 .quick-access-card:hover .quick-access-card-title {
-  color: var(--student-700);
+  color: #2563EB;
 }
 
 .quick-access-card-desc {
@@ -89,7 +94,7 @@
   gap: 4px;
   font-size: 13px;
   font-weight: 600;
-  color: var(--student-500);
+  color: #2563EB;
   margin-top: auto;
   padding-top: 8px;
   opacity: 0;

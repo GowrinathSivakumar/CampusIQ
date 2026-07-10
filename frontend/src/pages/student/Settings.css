@@ -28,8 +28,8 @@
   width: 44px;
   height: 44px;
   border-radius: var(--radius-md);
-  background: var(--student-50);
-  color: var(--student-600);
+  background: rgba(37, 99, 235, 0.08);
+  color: #2563EB;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -59,16 +59,19 @@
   align-items: center;
   gap: 16px;
   padding: 20px;
-  background: var(--color-white);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-gray-100);
-  box-shadow: var(--shadow-xs);
-  transition: box-shadow 0.2s, border-color 0.2s;
+  background: var(--glass-student-bg);
+  backdrop-filter: blur(var(--glass-student-blur));
+  -webkit-backdrop-filter: blur(var(--glass-student-blur));
+  border-radius: var(--radius-xl);
+  border: var(--glass-student-border);
+  box-shadow: var(--glass-student-shadow);
+  transition: box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
 }
 
 .settings-page-card:hover {
-  box-shadow: var(--shadow-sm);
-  border-color: var(--student-200);
+  box-shadow: var(--glass-student-shadow-hover);
+  border-color: rgba(37, 99, 235, 0.15);
+  background: rgba(255, 255, 255, 0.85);
 }
 
 .settings-page-card-icon {
@@ -107,10 +110,10 @@
   padding: 8px 16px;
   font-size: 13px;
   font-weight: 600;
-  color: var(--student-600);
-  background: var(--student-50);
+  color: #2563EB;
+  background: rgba(37, 99, 235, 0.08);
   border-radius: 8px;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
   white-space: nowrap;
   flex-shrink: 0;
   border: none;
@@ -118,8 +121,8 @@
 }
 
 .settings-page-card-btn:hover {
-  background: var(--student-100);
-  color: var(--student-700);
+  background: rgba(37, 99, 235, 0.14);
+  color: #1d4ed8;
   gap: 10px;
 }
 
@@ -130,11 +133,13 @@
 }
 
 .settings-page-sidebar-card {
-  background: var(--color-white);
-  border-radius: var(--radius-lg);
+  background: var(--glass-student-bg);
+  backdrop-filter: blur(var(--glass-student-blur));
+  -webkit-backdrop-filter: blur(var(--glass-student-blur));
+  border-radius: var(--radius-xl);
   padding: 20px;
-  border: 1px solid var(--color-gray-100);
-  box-shadow: var(--shadow-xs);
+  border: var(--glass-student-border);
+  box-shadow: var(--glass-student-shadow);
 }
 
 .settings-page-sidebar-header {
@@ -145,7 +150,7 @@
 }
 
 .settings-page-sidebar-header svg {
-  color: var(--student-600);
+  color: #2563EB;
 }
 
 .settings-page-sidebar-title {
@@ -166,7 +171,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 8px 0;
-  border-bottom: 1px solid var(--color-gray-50);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
 }
 
 .settings-page-sidebar-row:last-child {

@@ -10,19 +10,19 @@
 .previous-drives-nav-card {
   display: block;
   text-decoration: none;
-  background: linear-gradient(135deg, var(--student-50) 0%, var(--student-100) 100%);
-  border: 1px solid var(--student-200);
-  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.04) 0%, rgba(37, 99, 235, 0.08) 100%);
+  border: 1px solid rgba(37, 99, 235, 0.1);
+  border-radius: var(--radius-xl);
   padding: 20px;
   transition: all 0.25s ease;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--glass-student-shadow);
   flex-shrink: 0;
 }
 
 .previous-drives-nav-card:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--student-300);
+  box-shadow: var(--glass-student-shadow-hover);
+  border-color: rgba(37, 99, 235, 0.2);
 }
 
 .previous-drives-nav-card-content {
@@ -37,15 +37,17 @@
   justify-content: center;
   width: 56px;
   height: 56px;
-  background: var(--student-600);
+  background: linear-gradient(135deg, #2563EB, #3B82F6);
   border-radius: var(--radius-md);
   color: var(--color-white);
   flex-shrink: 0;
   transition: transform 0.25s ease;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
 }
 
 .previous-drives-nav-card:hover .previous-drives-nav-card-icon {
   transform: scale(1.05);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
 }
 
 .previous-drives-nav-card-text {
@@ -70,7 +72,7 @@
 }
 
 .previous-drives-nav-card-arrow {
-  color: var(--student-600);
+  color: #2563EB;
   flex-shrink: 0;
   transition: transform 0.25s ease;
 }
@@ -91,8 +93,10 @@
   align-items: center;
   gap: 8px;
   padding: 8px 12px;
-  background: var(--color-white);
-  border: 1px solid var(--color-gray-200);
+  background: var(--glass-student-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 10px;
   color: var(--color-gray-400);
   min-width: 160px;
@@ -114,10 +118,12 @@
 }
 
 .previous-drives-table-wrapper {
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-gray-100);
-  box-shadow: var(--shadow-sm);
-  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  border: var(--glass-student-border);
+  box-shadow: var(--glass-student-shadow);
+  background: var(--glass-student-bg);
+  backdrop-filter: blur(var(--glass-student-blur));
+  -webkit-backdrop-filter: blur(var(--glass-student-blur));
   flex: 1;
   min-height: 0;
   overflow: auto;
@@ -130,8 +136,8 @@
 }
 
 .previous-drives-table thead {
-  background: var(--student-50);
-  border-bottom: 1px solid var(--color-gray-200);
+  background: rgba(37, 99, 235, 0.04);
+  border-bottom: 1px solid rgba(37, 99, 235, 0.08);
 }
 
 .previous-drives-table th {
@@ -154,7 +160,7 @@
 }
 
 .previous-drives-table th.col-sortable:hover {
-  color: var(--student-700);
+  color: #1d4ed8;
 }
 
 .previous-drives-table th.col-sortable svg {
@@ -177,7 +183,7 @@
 
 .previous-drives-table td {
   padding: 14px 16px;
-  border-bottom: 1px solid var(--color-gray-100);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
   color: var(--color-dark);
 }
 
@@ -186,7 +192,7 @@
 }
 
 .previous-drives-table tbody tr:hover {
-  background: var(--color-gray-50);
+  background: rgba(37, 99, 235, 0.03);
 }
 
 .previous-drives-table td.col-sno {
@@ -206,7 +212,7 @@
 
 .previous-drives-table td.col-package {
   font-weight: 600;
-  color: var(--color-emerald-700);
+  color: #0F9D58;
 }
 
 .previous-drives-table td.col-rounds {
@@ -224,17 +230,17 @@
   padding: 6px 14px;
   font-size: 12px;
   font-weight: 600;
-  color: var(--student-600);
-  background: var(--student-50);
+  color: #2563EB;
+  background: rgba(37, 99, 235, 0.08);
   border-radius: 6px;
   text-decoration: none;
-  transition: background 0.2s, gap 0.2s;
+  transition: all 0.2s ease;
   white-space: nowrap;
 }
 
 .previous-drives-table-btn:hover {
-  background: var(--student-100);
-  color: var(--student-700);
+  background: rgba(37, 99, 235, 0.14);
+  color: #1d4ed8;
   gap: 8px;
 }
 

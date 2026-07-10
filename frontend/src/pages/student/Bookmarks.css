@@ -30,8 +30,8 @@
   align-items: center;
   gap: 8px;
   padding: 8px 16px;
-  background: var(--student-50);
-  color: var(--student-700);
+  background: rgba(37, 99, 235, 0.08);
+  color: #1d4ed8;
   border-radius: 10px;
   font-size: 14px;
   font-weight: 600;
@@ -51,22 +51,25 @@
   font-size: 14px;
   font-weight: 500;
   color: var(--color-dark-secondary);
-  background: var(--color-white);
-  border: 1px solid var(--color-gray-200);
+  background: var(--glass-student-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 10px;
   transition: all 0.15s;
   cursor: pointer;
 }
 
 .bookmarks-page-tab:hover {
-  border-color: var(--student-300);
-  color: var(--student-700);
+  border-color: rgba(37, 99, 235, 0.15);
+  color: #1d4ed8;
 }
 
 .bookmarks-page-tab.active {
-  background: var(--student-500);
+  background: linear-gradient(135deg, #2563EB, #3B82F6);
   color: var(--color-white);
-  border-color: var(--student-500);
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
 }
 
 .bookmarks-page-tab-count {
@@ -94,16 +97,19 @@
   align-items: center;
   gap: 14px;
   padding: 16px;
-  background: var(--color-white);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-gray-100);
-  box-shadow: var(--shadow-xs);
-  transition: box-shadow 0.2s, border-color 0.2s;
+  background: var(--glass-student-bg);
+  backdrop-filter: blur(var(--glass-student-blur));
+  -webkit-backdrop-filter: blur(var(--glass-student-blur));
+  border-radius: var(--radius-xl);
+  border: var(--glass-student-border);
+  box-shadow: var(--glass-student-shadow);
+  transition: box-shadow 0.2s, border-color 0.2s, background 0.2s;
 }
 
 .bookmarks-page-item:hover {
-  box-shadow: var(--shadow-sm);
-  border-color: var(--student-200);
+  box-shadow: var(--glass-student-shadow-hover);
+  border-color: rgba(37, 99, 235, 0.15);
+  background: rgba(255, 255, 255, 0.85);
 }
 
 .bookmarks-page-item-icon {
@@ -117,8 +123,8 @@
 }
 
 .bookmarks-page-item-icon.company {
-  background: var(--student-50);
-  color: var(--student-600);
+  background: rgba(37, 99, 235, 0.08);
+  color: #2563EB;
 }
 
 .bookmarks-page-item-icon.question {
@@ -127,8 +133,8 @@
 }
 
 .bookmarks-page-item-icon.guide {
-  background: var(--color-emerald-50);
-  color: var(--color-emerald-600);
+  background: rgba(15, 157, 88, 0.08);
+  color: #0F9D58;
 }
 
 .bookmarks-page-item-content {
@@ -151,7 +157,7 @@
 }
 
 .bookmarks-page-item-title:hover {
-  color: var(--student-600);
+  color: #2563EB;
 }
 
 .bookmarks-page-item-title svg {

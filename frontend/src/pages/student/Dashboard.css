@@ -30,7 +30,7 @@
 }
 
 .student-dashboard-college-autonomous {
-  color: var(--student-600);
+  color: #2563EB;
 }
 
 .student-dashboard-section {
@@ -60,7 +60,7 @@
   gap: 4px;
   font-size: 13px;
   font-weight: 600;
-  color: var(--student-600);
+  color: #2563EB;
   text-decoration: none;
   transition: gap 0.2s;
 }
@@ -104,13 +104,15 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  background: var(--color-white);
+  background: var(--glass-student-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-radius: var(--radius-lg);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 32px rgba(37, 99, 235, 0.12), 0 2px 8px rgba(37, 99, 235, 0.06);
   padding: 16px 20px;
   max-width: 380px;
-  border: 1px solid var(--student-200);
-  border-left: 4px solid var(--student-500);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-left: 4px solid #2563EB;
   animation: toastIn 0.4s ease forwards, toastOut 0.5s ease 6.5s forwards;
 }
 
@@ -118,12 +120,13 @@
   width: 40px;
   height: 40px;
   border-radius: var(--radius-md);
-  background: linear-gradient(135deg, var(--student-500), var(--student-600));
+  background: linear-gradient(135deg, #2563EB, #3B82F6);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   color: var(--color-white);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
 }
 
 .welcome-toast-content {
@@ -165,5 +168,4 @@
     transform: translateX(24px);
   }
 }
-
 
