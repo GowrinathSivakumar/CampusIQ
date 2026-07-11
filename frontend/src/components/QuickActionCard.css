@@ -4,19 +4,20 @@
   backdrop-filter: blur(var(--glass-admin-blur));
   -webkit-backdrop-filter: blur(var(--glass-admin-blur));
   border-radius: var(--radius-xl);
-  border: var(--glass-admin-border);
-  box-shadow: var(--glass-admin-shadow);
+  border: 1px solid rgba(15, 157, 88, 0.12);
+  box-shadow: var(--glass-admin-shadow), 0 1px 3px rgba(0, 0, 0, 0.04);
   padding: 20px;
   text-align: left;
   width: 100%;
   cursor: pointer;
-  transition: box-shadow 0.25s ease, transform 0.25s ease, background 0.25s ease;
+  transition: box-shadow 0.25s ease, transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
 }
 
 .quick-action-card:hover {
-  box-shadow: var(--glass-admin-shadow-hover);
-  transform: translateY(-4px);
-  background: rgba(255, 255, 255, 0.85);
+  box-shadow: var(--glass-admin-shadow-hover), 0 2px 8px rgba(0, 0, 0, 0.05);
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(15, 157, 88, 0.22);
 }
 
 .quick-action-gradient {

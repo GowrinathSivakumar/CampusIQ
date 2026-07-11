@@ -126,11 +126,11 @@
   --color-bg-dark-gradient: linear-gradient(135deg, #0A0A0F 0%, #1A1A24 100%);
 
   /* ── Admin Glassmorphism (Emerald) ── */
-  --glass-admin-bg: rgba(255, 255, 255, 0.75);
-  --glass-admin-border: 1px solid rgba(255, 255, 255, 0.6);
+  --glass-admin-bg: rgba(255, 255, 255, 0.82);
+  --glass-admin-border: 1px solid rgba(255, 255, 255, 0.7);
   --glass-admin-blur: 16px;
-  --glass-admin-shadow: 0 8px 32px rgba(15, 157, 88, 0.08), 0 2px 8px rgba(15, 157, 88, 0.04);
-  --glass-admin-shadow-hover: 0 12px 40px rgba(15, 157, 88, 0.14), 0 4px 12px rgba(15, 157, 88, 0.06);
+  --glass-admin-shadow: 0 8px 32px rgba(15, 157, 88, 0.10), 0 2px 8px rgba(15, 157, 88, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+  --glass-admin-shadow-hover: 0 16px 48px rgba(15, 157, 88, 0.16), 0 6px 16px rgba(15, 157, 88, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
   --glass-admin-gradient: linear-gradient(135deg, #F7FFF8, #ECFDF3, #E8F8EC);
   --glass-admin-nav: linear-gradient(135deg, #0F9D58, #16A34A);
   --glass-admin-nav-glow: 0 4px 24px rgba(15, 157, 88, 0.3), 0 1px 4px rgba(15, 157, 88, 0.15);
@@ -140,11 +140,11 @@
   --glass-admin-glow: 0 0 80px rgba(15, 157, 88, 0.06);
 
   /* ── Student Glassmorphism (Blue) ── */
-  --glass-student-bg: rgba(255, 255, 255, 0.75);
-  --glass-student-border: 1px solid rgba(255, 255, 255, 0.6);
+  --glass-student-bg: rgba(255, 255, 255, 0.82);
+  --glass-student-border: 1px solid rgba(255, 255, 255, 0.7);
   --glass-student-blur: 16px;
-  --glass-student-shadow: 0 8px 32px rgba(37, 99, 235, 0.08), 0 2px 8px rgba(37, 99, 235, 0.04);
-  --glass-student-shadow-hover: 0 12px 40px rgba(37, 99, 235, 0.14), 0 4px 12px rgba(37, 99, 235, 0.06);
+  --glass-student-shadow: 0 8px 32px rgba(37, 99, 235, 0.10), 0 2px 8px rgba(37, 99, 235, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+  --glass-student-shadow-hover: 0 16px 48px rgba(37, 99, 235, 0.16), 0 6px 16px rgba(37, 99, 235, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
   --glass-student-gradient: linear-gradient(135deg, #F8FAFF, #EEF4FF, #E7F0FF);
   --glass-student-nav: linear-gradient(135deg, #2563EB, #3B82F6);
   --glass-student-nav-glow: 0 4px 24px rgba(37, 99, 235, 0.3), 0 1px 4px rgba(37, 99, 235, 0.15);

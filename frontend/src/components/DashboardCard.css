@@ -3,16 +3,17 @@
   backdrop-filter: blur(var(--glass-admin-blur));
   -webkit-backdrop-filter: blur(var(--glass-admin-blur));
   border-radius: var(--radius-xl);
-  border: var(--glass-admin-border);
-  box-shadow: var(--glass-admin-shadow);
+  border: 1px solid rgba(15, 157, 88, 0.12);
+  box-shadow: var(--glass-admin-shadow), 0 1px 3px rgba(0, 0, 0, 0.04);
   padding: 20px;
-  transition: box-shadow 0.25s ease, transform 0.25s ease, background 0.25s ease;
+  transition: box-shadow 0.25s ease, transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
 }
 
 .dashboard-card:hover {
-  box-shadow: var(--glass-admin-shadow-hover);
-  transform: translateY(-3px);
-  background: rgba(255, 255, 255, 0.85);
+  box-shadow: var(--glass-admin-shadow-hover), 0 2px 6px rgba(0, 0, 0, 0.04);
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(15, 157, 88, 0.22);
 }
 
 .dashboard-card-inner {
