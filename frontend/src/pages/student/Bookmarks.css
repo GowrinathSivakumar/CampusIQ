@@ -54,15 +54,17 @@
   background: var(--glass-student-bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(37, 99, 235, 0.1);
   border-radius: 10px;
   transition: all 0.15s;
   cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
 }
 
 .bookmarks-page-tab:hover {
-  border-color: rgba(37, 99, 235, 0.15);
+  border-color: rgba(37, 99, 235, 0.2);
   color: #1d4ed8;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.06);
 }
 
 .bookmarks-page-tab.active {
@@ -101,15 +103,16 @@
   backdrop-filter: blur(var(--glass-student-blur));
   -webkit-backdrop-filter: blur(var(--glass-student-blur));
   border-radius: var(--radius-xl);
-  border: var(--glass-student-border);
-  box-shadow: var(--glass-student-shadow);
-  transition: box-shadow 0.2s, border-color 0.2s, background 0.2s;
+  border: 1px solid rgba(37, 99, 235, 0.1);
+  box-shadow: var(--glass-student-shadow), 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.2s, border-color 0.2s, background 0.2s, transform 0.2s;
 }
 
 .bookmarks-page-item:hover {
-  box-shadow: var(--glass-student-shadow-hover);
-  border-color: rgba(37, 99, 235, 0.15);
-  background: rgba(255, 255, 255, 0.85);
+  box-shadow: var(--glass-student-shadow-hover), 0 2px 6px rgba(0, 0, 0, 0.04);
+  border-color: rgba(37, 99, 235, 0.2);
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
 }
 
 .bookmarks-page-item-icon {

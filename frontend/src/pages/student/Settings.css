@@ -63,15 +63,16 @@
   backdrop-filter: blur(var(--glass-student-blur));
   -webkit-backdrop-filter: blur(var(--glass-student-blur));
   border-radius: var(--radius-xl);
-  border: var(--glass-student-border);
-  box-shadow: var(--glass-student-shadow);
-  transition: box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  border: 1px solid rgba(37, 99, 235, 0.12);
+  box-shadow: var(--glass-student-shadow), 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
 }
 
 .settings-page-card:hover {
-  box-shadow: var(--glass-student-shadow-hover);
-  border-color: rgba(37, 99, 235, 0.15);
-  background: rgba(255, 255, 255, 0.85);
+  box-shadow: var(--glass-student-shadow-hover), 0 2px 6px rgba(0, 0, 0, 0.04);
+  border-color: rgba(37, 99, 235, 0.22);
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
 }
 
 .settings-page-card-icon {
@@ -138,8 +139,8 @@
   -webkit-backdrop-filter: blur(var(--glass-student-blur));
   border-radius: var(--radius-xl);
   padding: 20px;
-  border: var(--glass-student-border);
-  box-shadow: var(--glass-student-shadow);
+  border: 1px solid rgba(37, 99, 235, 0.12);
+  box-shadow: var(--glass-student-shadow), 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
 .settings-page-sidebar-header {

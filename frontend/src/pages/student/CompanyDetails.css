@@ -59,8 +59,8 @@
   -webkit-backdrop-filter: blur(var(--glass-student-blur));
   border-radius: var(--radius-xl);
   padding: 24px 28px;
-  border: var(--glass-student-border);
-  box-shadow: var(--glass-student-shadow);
+  border: 1px solid rgba(37, 99, 235, 0.12);
+  box-shadow: var(--glass-student-shadow), 0 1px 3px rgba(0, 0, 0, 0.04);
   gap: 16px;
   flex-wrap: wrap;
 }
@@ -167,8 +167,8 @@
   -webkit-backdrop-filter: blur(var(--glass-student-blur));
   border-radius: var(--radius-xl);
   padding: 24px;
-  border: var(--glass-student-border);
-  box-shadow: var(--glass-student-shadow);
+  border: 1px solid rgba(37, 99, 235, 0.12);
+  box-shadow: var(--glass-student-shadow), 0 1px 3px rgba(0, 0, 0, 0.04);
   height: 100%;
 }
 
@@ -282,14 +282,15 @@
 
 .company-details-round-card {
   padding: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(37, 99, 235, 0.1);
   border-radius: var(--radius-md);
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
 }
 
 .company-details-round-card:hover {
-  border-color: rgba(37, 99, 235, 0.15);
-  box-shadow: var(--shadow-xs);
+  border-color: rgba(37, 99, 235, 0.2);
+  box-shadow: var(--shadow-sm), 0 2px 6px rgba(0, 0, 0, 0.03);
+  transform: translateY(-1px);
 }
 
 .company-details-round-header {
@@ -442,7 +443,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 12px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(37, 99, 235, 0.1);
   border-radius: var(--radius-md);
   text-decoration: none;
   transition: all 0.2s;
@@ -451,9 +452,11 @@
 }
 
 .company-details-resource-link:hover {
-  border-color: rgba(37, 99, 235, 0.15);
-  background: rgba(37, 99, 235, 0.04);
+  border-color: rgba(37, 99, 235, 0.22);
+  background: rgba(37, 99, 235, 0.06);
   color: #1d4ed8;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.08);
+  transform: translateY(-1px);
 }
 
 .company-details-sidebar {
@@ -468,8 +471,8 @@
   -webkit-backdrop-filter: blur(var(--glass-student-blur));
   border-radius: var(--radius-xl);
   padding: 20px;
-  border: var(--glass-student-border);
-  box-shadow: var(--glass-student-shadow);
+  border: 1px solid rgba(37, 99, 235, 0.12);
+  box-shadow: var(--glass-student-shadow), 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
 .company-details-sidebar-title {

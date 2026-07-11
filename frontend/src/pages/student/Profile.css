@@ -30,8 +30,8 @@
   backdrop-filter: blur(var(--glass-student-blur));
   -webkit-backdrop-filter: blur(var(--glass-student-blur));
   border-radius: 16px;
-  border: var(--glass-student-border);
-  box-shadow: var(--glass-student-shadow);
+  border: 1px solid rgba(37, 99, 235, 0.12);
+  box-shadow: var(--glass-student-shadow), 0 1px 3px rgba(0, 0, 0, 0.04);
   padding: 32px;
 }
 
