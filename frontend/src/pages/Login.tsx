@@ -3,48 +3,10 @@ import { useNavigate } from 'react-router-dom'
 import { LogIn, Mail, Lock, Eye, EyeOff, GraduationCap, Shield } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useAuth } from '../context/AuthContext'
+import studentLoginImage from '../assets/stu_login.png'
+import adminLoginImage from '../assets/admin_login.png'
 import './Login.css'
 
-function StudentIllustration() {
-  return (
-    <svg viewBox="0 0 400 380" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="200" cy="140" r="60" stroke="rgba(255,255,255,0.5)" strokeWidth="3" fill="none" />
-      <circle cx="200" cy="140" r="30" fill="rgba(255,255,255,0.8)" />
-      <rect x="185" y="200" width="30" height="70" rx="4" fill="rgba(255,255,255,0.6)" />
-      <rect x="175" y="200" width="10" height="50" rx="3" fill="rgba(255,255,255,0.4)" />
-      <rect x="215" y="200" width="10" height="50" rx="3" fill="rgba(255,255,255,0.4)" />
-      <path d="M130 270 L200 240 L270 270" stroke="rgba(255,255,255,0.5)" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-      <rect x="160" y="255" width="80" height="12" rx="2" fill="rgba(255,255,255,0.5)" />
-      <path d="M200 50 V20" stroke="rgba(255,255,255,0.4)" strokeWidth="2.5" strokeLinecap="round" />
-      <rect x="185" y="10" width="30" height="8" rx="2" fill="rgba(255,255,255,0.5)" />
-      <circle cx="100" cy="100" r="4" fill="rgba(255,255,255,0.4)" />
-      <circle cx="310" cy="80" r="3" fill="rgba(255,255,255,0.3)" />
-      <circle cx="330" cy="180" r="5" fill="rgba(255,255,255,0.35)" />
-      <circle cx="70" cy="210" r="3" fill="rgba(255,255,255,0.3)" />
-    </svg>
-  )
-}
-
-function AdminIllustration() {
-  return (
-    <svg viewBox="0 0 400 380" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M200 50 L270 90 V170 C270 230 200 280 200 280 C200 280 130 230 130 170 V90 L200 50Z" stroke="rgba(255,255,255,0.5)" strokeWidth="3" fill="none" strokeLinejoin="round" />
-      <path d="M175 170 L195 190 L225 155" stroke="rgba(255,255,255,0.85)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-      <circle cx="200" cy="200" r="55" stroke="rgba(255,255,255,0.15)" strokeWidth="2" fill="none" />
-      <circle cx="200" cy="200" r="40" stroke="rgba(255,255,255,0.1)" strokeWidth="1.5" fill="none" />
-      <rect x="165" y="130" width="70" height="8" rx="3" fill="rgba(255,255,255,0.5)" />
-      <line x1="120" y1="140" x2="140" y2="130" stroke="rgba(255,255,255,0.3)" strokeWidth="2.5" strokeLinecap="round" />
-      <line x1="260" y1="130" x2="280" y2="140" stroke="rgba(255,255,255,0.3)" strokeWidth="2.5" strokeLinecap="round" />
-      <line x1="115" y1="180" x2="135" y2="175" stroke="rgba(255,255,255,0.3)" strokeWidth="2.5" strokeLinecap="round" />
-      <line x1="265" y1="175" x2="285" y2="180" stroke="rgba(255,255,255,0.3)" strokeWidth="2.5" strokeLinecap="round" />
-      <rect x="140" y="55" width="120" height="4" rx="2" fill="rgba(255,255,255,0.4)" />
-      <circle cx="80" cy="90" r="3" fill="rgba(255,255,255,0.3)" />
-      <circle cx="320" cy="110" r="4" fill="rgba(255,255,255,0.35)" />
-      <circle cx="340" cy="240" r="3" fill="rgba(255,255,255,0.3)" />
-      <circle cx="60" cy="260" r="5" fill="rgba(255,255,255,0.25)" />
-    </svg>
-  )
-}
 
 export default function Login() {
   const navigate = useNavigate()
@@ -229,7 +191,11 @@ export default function Login() {
                   exit={{ x: 200, opacity: 0 }}
                   transition={{ type: 'spring', stiffness: 120, damping: 18 }}
                 >
-                  <StudentIllustration />
+                  <img
+                    src={studentLoginImage}
+                    alt="Student Login"
+                    className="student-login-img"
+                  />
                 </motion.div>
               ) : (
                 <motion.div
@@ -240,7 +206,11 @@ export default function Login() {
                   exit={{ x: -200, opacity: 0 }}
                   transition={{ type: 'spring', stiffness: 120, damping: 18 }}
                 >
-                  <AdminIllustration />
+                  <img
+                    src={adminLoginImage}
+                    alt="Admin Login"
+                    className="student-login-img"
+                  />
                 </motion.div>
               )}
             </AnimatePresence>
