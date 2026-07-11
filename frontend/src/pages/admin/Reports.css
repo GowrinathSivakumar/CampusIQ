@@ -18,18 +18,20 @@
   font-size: 13px;
   font-weight: 500;
   color: var(--color-dark-secondary);
-  background: var(--glass-admin-bg);
+  background: linear-gradient(135deg, rgba(15, 157, 88, 0.04) 0%, rgba(22, 163, 74, 0.07) 100%);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 2px solid rgba(15, 157, 88, 0.15);
   border-radius: var(--radius-md);
   transition: all 0.2s ease;
   white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(15, 157, 88, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
 .reports-export-btn:hover {
-  background: rgba(255, 255, 255, 0.9);
-  border-color: rgba(15, 157, 88, 0.2);
+  background: linear-gradient(135deg, rgba(15, 157, 88, 0.06) 0%, rgba(22, 163, 74, 0.1) 100%);
+  border-color: rgba(15, 157, 88, 0.25);
+  box-shadow: 0 4px 14px rgba(15, 157, 88, 0.1), 0 2px 6px rgba(0, 0, 0, 0.03);
 }
 
 .reports-grid {
@@ -43,16 +45,17 @@
   backdrop-filter: blur(var(--glass-admin-blur));
   -webkit-backdrop-filter: blur(var(--glass-admin-blur));
   border-radius: var(--radius-xl);
-  border: var(--glass-admin-border);
-  box-shadow: var(--glass-admin-shadow);
+  border: 1px solid rgba(15, 157, 88, 0.12);
+  box-shadow: var(--glass-admin-shadow), 0 1px 3px rgba(0, 0, 0, 0.04);
   padding: 20px;
-  transition: box-shadow 0.25s ease, transform 0.25s ease, background 0.25s ease;
+  transition: box-shadow 0.25s ease, transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
 }
 
 .report-card:hover {
-  box-shadow: var(--glass-admin-shadow-hover);
-  transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.85);
+  box-shadow: var(--glass-admin-shadow-hover), 0 2px 6px rgba(0, 0, 0, 0.04);
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(15, 157, 88, 0.22);
 }
 
 .report-card-top {
@@ -112,8 +115,8 @@
   backdrop-filter: blur(var(--glass-admin-blur));
   -webkit-backdrop-filter: blur(var(--glass-admin-blur));
   border-radius: var(--radius-xl);
-  border: var(--glass-admin-border);
-  box-shadow: var(--glass-admin-shadow);
+  border: 1px solid rgba(15, 157, 88, 0.1);
+  box-shadow: var(--glass-admin-shadow), 0 1px 3px rgba(0, 0, 0, 0.04);
   padding: 32px;
 }
 

@@ -9,8 +9,8 @@
   backdrop-filter: blur(var(--glass-admin-blur));
   -webkit-backdrop-filter: blur(var(--glass-admin-blur));
   border-radius: var(--radius-xl);
-  border: var(--glass-admin-border);
-  box-shadow: var(--glass-admin-shadow);
+  border: 1px solid rgba(15, 157, 88, 0.12);
+  box-shadow: var(--glass-admin-shadow), 0 1px 3px rgba(0, 0, 0, 0.04);
   padding: 24px;
   max-width: 768px;
   display: flex;
@@ -46,20 +46,25 @@
 
 .settings-field input {
   width: 100%;
-  padding: 9px 12px;
+  padding: 10px 12px;
   font-size: 13px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 2px solid rgba(15, 157, 88, 0.12);
   border-radius: var(--radius-md);
   outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  background: rgba(255, 255, 255, 0.6);
+  transition: border-color 0.3s, box-shadow 0.3s;
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+}
+
+.settings-field input:hover {
+  border-color: rgba(15, 157, 88, 0.22);
 }
 
 .settings-field input:focus {
   border-color: #0F9D58;
-  box-shadow: 0 0 0 3px rgba(15, 157, 88, 0.1);
+  box-shadow: 0 0 0 3px rgba(15, 157, 88, 0.14), 0 2px 8px rgba(15, 157, 88, 0.08);
 }
 
 .settings-preference {

@@ -32,8 +32,8 @@
   backdrop-filter: blur(var(--glass-admin-blur));
   -webkit-backdrop-filter: blur(var(--glass-admin-blur));
   border-radius: 16px;
-  border: var(--glass-admin-border);
-  box-shadow: var(--glass-admin-shadow);
+  border: 1px solid rgba(15, 157, 88, 0.12);
+  box-shadow: var(--glass-admin-shadow), 0 1px 3px rgba(0, 0, 0, 0.04);
   padding: 32px;
 }
 
@@ -179,20 +179,25 @@
 .admin-profile-field input {
   padding: 10px 14px;
   font-size: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 2px solid rgba(15, 157, 88, 0.12);
   border-radius: 8px;
   outline: none;
   font-family: inherit;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.3s, box-shadow 0.3s;
   color: var(--color-dark);
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+}
+
+.admin-profile-field input:hover {
+  border-color: rgba(15, 157, 88, 0.22);
 }
 
 .admin-profile-field input:focus {
   border-color: #0F9D58;
-  box-shadow: 0 0 0 3px rgba(15, 157, 88, 0.1);
+  box-shadow: 0 0 0 3px rgba(15, 157, 88, 0.14), 0 2px 8px rgba(15, 157, 88, 0.08);
 }
 
 .admin-profile-prefs-list {
