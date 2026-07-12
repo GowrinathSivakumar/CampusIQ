@@ -115,7 +115,7 @@
   font-size: 14px;
   font-weight: 600;
   color: var(--color-white);
-  background: linear-gradient(135deg, #DC2626, #EF4444);
+  background: #ef4444;
   transition: all 0.2s ease;
   text-decoration: none;
   flex-shrink: 0;
@@ -124,12 +124,12 @@
   line-height: 1.5;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25);
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
 }
 
 .sidebar-logout:hover {
-  background: linear-gradient(135deg, #B91C1C, #DC2626);
-  box-shadow: 0 6px 16px rgba(220, 38, 38, 0.35);
+  background: #dc2626;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
   transform: translateY(-1px);
 }
 

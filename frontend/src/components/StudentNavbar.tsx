@@ -19,14 +19,14 @@ export default function StudentNavbar({}: StudentNavbarProps) {
           <div className="student-navbar-profile">
             <div className="student-navbar-avatar">
               <img
-                src="https://ui-avatars.com/api/?name=Kiruthika&background=2563eb&color=fff&size=32"
+                src="https://ui-avatars.com/api/?name=Kiruthika&background=2563eb&color=fff&size=32&bold=true"
                 alt="Kiruthika"
                 className="student-navbar-avatar-img"
               />
             </div>
             <div className="student-navbar-profile-info">
               <p className="student-navbar-profile-name">Kiruthika</p>
-              <p className="student-navbar-profile-role">Student</p>
+              <p className="student-navbar-profile-email">kiruthika@student.edu</p>
             </div>
           </div>
         </div>

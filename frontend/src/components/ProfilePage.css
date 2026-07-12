@@ -1,0 +1,481 @@
+/* ═══════════════════════════════════════════
+   Shared ProfilePage — two-column layout
+   ═══════════════════════════════════════════ */
+
+/* ── Page grid ── */
+.pf {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* ═══════════════════════════
+   Card (shared left + right)
+   ═══════════════════════════ */
+.pf-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 8px 32px rgba(0, 0, 0, 0.06);
+  padding: 32px 32px 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Accent bar (top-left corner) ── */
+.pf-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 48px;
+  height: 4px;
+  border-radius: 0 0 4px 0;
+}
+
+.pf--student .pf-accent {
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+}
+
+.pf--admin .pf-accent {
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+}
+
+/* ═══════════════════════════
+   LEFT COLUMN — profile card
+   ═══════════════════════════ */
+
+/* ── Header ── */
+.pf-header {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-top: 6px;
+  margin-bottom: 24px;
+}
+
+/* ── Avatar ── */
+.pf-avatar {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.pf--student .pf-avatar {
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
+}
+
+.pf--admin .pf-avatar {
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  box-shadow: 0 6px 20px rgba(22, 163, 74, 0.3);
+}
+
+/* ── Identity ── */
+.pf-identity {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.pf-name {
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--color-dark);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+}
+
+.pf-role {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.pf--student .pf-role { color: #2563eb; }
+.pf--admin .pf-role   { color: #16a34a; }
+
+/* ── Divider ── */
+.pf-divider {
+  height: 1px;
+  margin-bottom: 4px;
+}
+
+.pf--student .pf-divider { background: rgba(37, 99, 235, 0.08); }
+.pf--admin .pf-divider   { background: rgba(22, 163, 74, 0.08); }
+
+/* ── Fields ── */
+.pf-fields {
+  display: flex;
+  flex-direction: column;
+}
+
+.pf-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+  gap: 20px;
+  border-bottom: 1px solid transparent;
+}
+
+.pf--student .pf-row { border-bottom-color: rgba(37, 99, 235, 0.06); }
+.pf--admin .pf-row   { border-bottom-color: rgba(22, 163, 74, 0.06); }
+
+.pf-row:last-child {
+  border-bottom: none;
+  padding-bottom: 2px;
+}
+
+.pf-row-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.pf-row-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pf--student .pf-row-icon {
+  background: rgba(37, 99, 235, 0.07);
+  color: #2563eb;
+}
+
+.pf--admin .pf-row-icon {
+  background: rgba(22, 163, 74, 0.07);
+  color: #16a34a;
+}
+
+.pf-row-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-gray-400);
+  white-space: nowrap;
+}
+
+.pf-row-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-dark);
+  text-align: right;
+  min-width: 0;
+}
+
+/* ═══════════════════════════
+   RIGHT COLUMN — side cards
+   ═══════════════════════════ */
+.pf-col-right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.pf-side-card {
+  padding: 26px 28px 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.pf-side-title {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+  margin-bottom: 18px;
+  color: var(--color-gray-400);
+}
+
+/* ── Stat tiles grid ── */
+.pf-stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  flex: 1;
+}
+
+.pf-stat-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 22px 10px 20px;
+  border-radius: 12px;
+  gap: 8px;
+}
+
+.pf--student .pf-stat-tile { background: rgba(37, 99, 235, 0.04); }
+.pf--admin .pf-stat-tile   { background: rgba(22, 163, 74, 0.04); }
+
+.pf-stat-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pf--student .pf-stat-icon {
+  background: rgba(37, 99, 235, 0.1);
+  color: #2563eb;
+}
+
+.pf--admin .pf-stat-icon {
+  background: rgba(22, 163, 74, 0.1);
+  color: #16a34a;
+}
+
+.pf-stat-number {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-dark);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.pf-stat-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-gray-400);
+  line-height: 1.3;
+}
+
+/* ── Setting rows ── */
+.pf-setting-rows {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+}
+
+.pf-setting-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+  gap: 12px;
+  border-bottom: 1px solid transparent;
+}
+
+.pf--student .pf-setting-row { border-bottom-color: rgba(37, 99, 235, 0.06); }
+.pf--admin .pf-setting-row   { border-bottom-color: rgba(22, 163, 74, 0.06); }
+
+.pf-setting-row:last-child {
+  border-bottom: none;
+  padding-bottom: 2px;
+}
+
+.pf-setting-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-gray-500);
+}
+
+.pf--student .pf-setting-left svg { color: #2563eb; }
+.pf--admin .pf-setting-left svg   { color: #16a34a; }
+
+.pf-setting-meta {
+  font-size: 12px;
+  color: var(--color-gray-400);
+}
+
+/* ── Buttons ── */
+.pf-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.pf-btn-outline {
+  background: transparent;
+  border: 1.5px solid;
+}
+
+.pf--student .pf-btn-outline {
+  color: #2563eb;
+  border-color: rgba(37, 99, 235, 0.25);
+}
+
+.pf--student .pf-btn-outline:hover {
+  background: rgba(37, 99, 235, 0.06);
+  border-color: rgba(37, 99, 235, 0.4);
+}
+
+.pf--admin .pf-btn-outline {
+  color: #16a34a;
+  border-color: rgba(22, 163, 74, 0.25);
+}
+
+.pf--admin .pf-btn-outline:hover {
+  background: rgba(22, 163, 74, 0.06);
+  border-color: rgba(22, 163, 74, 0.4);
+}
+
+/* ── Toggle switch ── */
+.pf-toggle {
+  position: relative;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.pf-toggle input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.pf-toggle-track {
+  display: block;
+  width: 38px;
+  height: 20px;
+  border-radius: 999px;
+  background: var(--color-gray-200);
+  transition: background 0.2s;
+  position: relative;
+}
+
+.pf-toggle input:checked + .pf-toggle-track {
+  background: #16a34a;
+}
+
+.pf--student .pf-toggle input:checked + .pf-toggle-track {
+  background: #2563eb;
+}
+
+.pf-toggle-thumb {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.pf-toggle input:checked + .pf-toggle-track .pf-toggle-thumb {
+  transform: translateX(18px);
+}
+
+/* ═══════════════════════════
+   Responsive
+   ═══════════════════════════ */
+@media (max-width: 1100px) {
+  .pf {
+    grid-template-columns: 1fr 340px;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .pf {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .pf-col-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .pf-side-card {
+    flex: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .pf {
+    gap: 16px;
+  }
+
+  .pf-card {
+    padding: 24px 18px 20px;
+    border-radius: 12px;
+  }
+
+  .pf-side-card {
+    padding: 20px 16px 18px;
+  }
+
+  .pf-header {
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .pf-avatar {
+    width: 60px;
+    height: 60px;
+    font-size: 22px;
+  }
+
+  .pf-name {
+    font-size: 21px;
+  }
+
+  .pf-col-right {
+    grid-template-columns: 1fr;
+  }
+
+  .pf-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    padding: 14px 0;
+  }
+
+  .pf-row-value {
+    text-align: left;
+    padding-left: 48px;
+  }
+
+  .pf-stat-grid {
+    gap: 8px;
+  }
+
+  .pf-stat-tile {
+    padding: 14px 6px 12px;
+  }
+
+  .pf-stat-number {
+    font-size: 18px;
+  }
+}
