@@ -6,20 +6,6 @@ export default function Settings() {
     <div className="settings-page">
       <div className="settings-card">
         <section className="settings-section">
-          <h2>Profile Information</h2>
-          <div className="settings-grid">
-            <div className="settings-field">
-              <label>Full Name</label>
-              <input type="text" defaultValue="Admin User" />
-            </div>
-            <div className="settings-field">
-              <label>Email</label>
-              <input type="email" defaultValue="admin@campusiq.com" />
-            </div>
-          </div>
-        </section>
-
-        <section className="settings-section">
           <h2>System Preferences</h2>
           <div className="settings-preferences-list">
             {[

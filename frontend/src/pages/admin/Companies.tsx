@@ -16,13 +16,6 @@ export default function Companies() {
   return (
     <div className="companies-page">
       <div className="companies-header">
-        <div className="companies-header-top">
-          <button className="companies-add-btn">
-            <Building2 size={16} />
-            Add Company
-          </button>
-        </div>
-
         <div className="companies-toolbar">
           <div className="companies-search-wrapper">
             <Search size={16} className="companies-search-icon" />

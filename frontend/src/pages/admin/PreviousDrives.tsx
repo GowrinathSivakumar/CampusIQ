@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { History, Search } from 'lucide-react'
 import './PreviousDrives.css'
 
@@ -11,10 +12,12 @@ const dummyDrives = [
 ]
 
 export default function PreviousDrives() {
+  const navigate = useNavigate()
+
   return (
     <div className="drives-page">
       <div className="drives-header">
-        <button className="drives-upload-btn">
+        <button className="drives-upload-btn" onClick={() => navigate('/admin/companies/add')}>
           <History size={16} />
           Upload Drive
         </button>

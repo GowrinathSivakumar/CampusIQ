@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom'
+import { useAuth } from '../context/AuthContext'
 import './StudentNavbar.css'
 
 interface StudentNavbarProps {}
 
 export default function StudentNavbar({}: StudentNavbarProps) {
+  const { user } = useAuth()
+  const initial = user?.email?.charAt(0).toUpperCase() || 'S'
+
   return (
     <header className="student-navbar">
       <div className="student-navbar-inner">
@@ -16,19 +20,7 @@ export default function StudentNavbar({}: StudentNavbarProps) {
         </div>
 
         <div className="student-navbar-right">
-          <div className="student-navbar-profile">
-            <div className="student-navbar-avatar">
-              <img
-                src="https://ui-avatars.com/api/?name=Kiruthika&background=2563eb&color=fff&size=32&bold=true"
-                alt="Kiruthika"
-                className="student-navbar-avatar-img"
-              />
-            </div>
-            <div className="student-navbar-profile-info">
-              <p className="student-navbar-profile-name">Kiruthika</p>
-              <p className="student-navbar-profile-email">kiruthika@student.edu</p>
-            </div>
-          </div>
+          <div className="student-navbar-avatar">{initial}</div>
         </div>
       </div>
     </header>

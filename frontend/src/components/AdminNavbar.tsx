@@ -14,15 +14,7 @@ export default function AdminNavbar({}: AdminNavbarProps) {
           </div>
         </div>
 
-        <div className="admin-navbar-right">
-          <div className="admin-navbar-profile">
-            <div className="admin-navbar-avatar">A</div>
-            <div className="admin-navbar-profile-info">
-              <p className="admin-navbar-profile-name">Admin</p>
-              <p className="admin-navbar-profile-email">admin@campusiq.com</p>
-            </div>
-          </div>
-        </div>
+        <div className="admin-navbar-right"></div>
       </div>
     </header>
   )

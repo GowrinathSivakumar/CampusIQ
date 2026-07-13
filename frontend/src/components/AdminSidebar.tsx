@@ -6,7 +6,6 @@ import {
   HelpCircle,
   Lightbulb,
   BarChart3,
-  UserCircle,
   LogOut,
   GraduationCap,
 } from 'lucide-react'
@@ -22,7 +21,6 @@ const menuItems = [
   { icon: HelpCircle, label: 'Interview Questions', path: '/admin/questions' },
   { icon: Lightbulb, label: 'Preparation Tips', path: '/admin/preparation' },
   { icon: BarChart3, label: 'Reports', path: '/admin/reports' },
-  { icon: UserCircle, label: 'Profile', path: '/admin/profile' },
 ]
 
 export default function AdminSidebar({}: AdminSidebarProps) {
@@ -49,11 +47,14 @@ export default function AdminSidebar({}: AdminSidebarProps) {
         <nav className="sidebar-nav">
           {menuItems.map((item) => {
             const Icon = item.icon
-            const isActive = location.pathname === item.path
+            const isActive = item.path === '/admin/drives'
+              ? (location.pathname === item.path || location.pathname === '/admin/companies/add')
+              : location.pathname === item.path
             return (
               <NavLink
                 key={item.path}
                 to={item.path}
+                end
                 className={`sidebar-link ${isActive ? 'active' : ''}`}
               >
                 <Icon className="sidebar-link-icon" />

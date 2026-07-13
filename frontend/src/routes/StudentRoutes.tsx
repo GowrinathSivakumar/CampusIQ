@@ -9,7 +9,6 @@ import InterviewQuestions from '../pages/student/InterviewQuestions'
 import PreparationGuide from '../pages/student/PreparationGuide'
 import AIMentor from '../pages/student/AIMentor'
 import Bookmarks from '../pages/student/Bookmarks'
-import Profile from '../pages/student/Profile'
 import Settings from '../pages/student/Settings'
 import NotFound from '../pages/NotFound'
 
@@ -27,7 +26,6 @@ export default function StudentRoutes() {
           <Route path="preparation" element={<PreparationGuide />} />
           <Route path="ai" element={<AIMentor />} />
           <Route path="bookmarks" element={<Bookmarks />} />
-          <Route path="profile" element={<Profile />} />
           <Route path="settings" element={<Settings />} />
           <Route path="*" element={<NotFound />} />
         </Route>

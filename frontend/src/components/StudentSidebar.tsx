@@ -6,7 +6,6 @@ import {
   BookOpen,
   Bot,
   Bookmark,
-  UserCircle,
   LogOut,
   GraduationCap,
 } from 'lucide-react'
@@ -22,7 +21,6 @@ const menuItems = [
   { icon: BookOpen, label: 'Preparation Guide', path: '/student/preparation' },
   { icon: Bot, label: 'AI Mentor', path: '/student/ai' },
   { icon: Bookmark, label: 'Bookmarks', path: '/student/bookmarks' },
-  { icon: UserCircle, label: 'Profile', path: '/student/profile' },
 ]
 
 export default function StudentSidebar({}: StudentSidebarProps) {
