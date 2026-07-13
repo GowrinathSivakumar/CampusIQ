@@ -1,4 +1,5 @@
 import { HelpCircle, Search, Filter } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 import './Questions.css'
 
 const dummyQuestions = [
@@ -13,10 +14,12 @@ const dummyQuestions = [
 ]
 
 export default function Questions() {
+  const navigate = useNavigate()
+
   return (
     <div className="questions-page">
       <div className="questions-header">
-        <button className="questions-add-btn">
+        <button className="questions-add-btn" onClick={() => navigate('/admin/questions/add')}>
           <HelpCircle size={16} />
           Add Question
         </button>

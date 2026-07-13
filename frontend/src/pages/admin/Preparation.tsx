@@ -1,4 +1,5 @@
 import { Lightbulb, Plus, Search } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 import './Preparation.css'
 
 const dummyTips = [
@@ -11,10 +12,12 @@ const dummyTips = [
 ]
 
 export default function Preparation() {
+  const navigate = useNavigate()
+
   return (
     <div className="preparation-page">
       <div className="preparation-header">
-        <button className="preparation-add-btn">
+        <button className="preparation-add-btn" onClick={() => navigate('/admin/preparation/add')}>
           <Plus size={16} />
           Add Tips
         </button>
