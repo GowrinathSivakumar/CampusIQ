@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { Bot, Send, Sparkles, Zap, MessageSquare } from 'lucide-react'
 import ChatMessage from '../../components/ChatMessage'
 import './AIMentor.css'
+import { askAI } from "../../services/chatService";
 
 interface Message {
   text: string
@@ -122,31 +123,43 @@ export default function AIMentor() {
     }
   }, [])
 
-  const handleSend = (text?: string) => {
-    const messageText = text || inputValue
-    if (!messageText.trim()) return
+const handleSend = async (text?: string) => {
+  const messageText = text || inputValue;
 
-    const userMessage: Message = {
-      text: messageText.trim(),
-      sender: 'user',
+  if (!messageText.trim()) return;
+
+  const userMessage: Message = {
+    text: messageText.trim(),
+    sender: "user",
+    timestamp: getCurrentTime(),
+  };
+
+  setMessages((prev) => [...prev, userMessage]);
+  setInputValue("");
+  setIsTyping(true);
+
+  try {
+    const reply = await askAI(messageText.trim());
+
+    const aiMessage: Message = {
+      text: reply,
+      sender: "ai",
       timestamp: getCurrentTime(),
-    }
+    };
 
-    setMessages((prev) => [...prev, userMessage])
-    setInputValue('')
-    setIsTyping(true)
+    setMessages((prev) => [...prev, aiMessage]);
+  } catch (error) {
+    const aiMessage: Message = {
+      text: "Sorry! I couldn't connect to the AI server. Please try again.",
+      sender: "ai",
+      timestamp: getCurrentTime(),
+    };
 
-    setTimeout(() => {
-      const aiMessage: Message = {
-        text: getAIResponse(messageText.trim()),
-        sender: 'ai',
-        timestamp: getCurrentTime(),
-      }
-      setMessages((prev) => [...prev, aiMessage])
-      setIsTyping(false)
-    }, 1200 + Math.random() * 800)
+    setMessages((prev) => [...prev, aiMessage]);
+  } finally {
+    setIsTyping(false);
   }
-
+};
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault()

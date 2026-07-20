@@ -3,6 +3,7 @@ import { HiSparkles, HiPaperAirplane } from 'react-icons/hi'
 import styles from './AISection.module.css'
 
 
+
 const PROMPTS = [
   {
     label: 'Technical Prep',
