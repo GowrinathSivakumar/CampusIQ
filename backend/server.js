@@ -33,7 +33,7 @@ if (config.NODE_ENV === 'development') {
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
-app.use(routes);
+app.use('/api', routes);
 
 app.use(errorHandler);
 

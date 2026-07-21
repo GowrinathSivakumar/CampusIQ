@@ -10,15 +10,15 @@ const bookmarkRoutes = require('./admin/bookmarkRoutes');
 const chatRoutes = require("./chatRoutes");
 
 
-router.use('/api/auth', authRoutes);
-router.use('/api/companies', companyRoutes);
-router.use('/api/drives', driveRoutes);
-router.use('/api/questions', questionRoutes);
-router.use('/api/tips', tipRoutes);
-router.use('/api/bookmarks', bookmarkRoutes);
-router.use('/api/chat', chatRoutes);
+router.use('/admin/auth', authRoutes);
+router.use('/admin/companies', companyRoutes);
+router.use('/admin/drives', driveRoutes);
+router.use('/admin/questions', questionRoutes);
+router.use('/admin/tips', tipRoutes);
+router.use('/admin/bookmarks', bookmarkRoutes);
+router.use('/chat', chatRoutes);
 
-router.get('/api/health', (req, res) => {
+router.get('/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
