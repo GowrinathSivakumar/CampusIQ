@@ -1,5 +1,9 @@
 // Import the User model to interact with the MongoDB database
 const User = require('../../models/User');
+// Import bcryptjs for password comparison
+const bcrypt = require('bcryptjs');
+// Import jsonwebtoken for JWT generation
+const jwt = require('jsonwebtoken');
 
 const register = async (req, res) => {
   try {
@@ -59,17 +63,71 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
   try {
+    // Extract email and password from the request body
     const { email, password } = req.body;
 
+    // Validate that both email and password are provided
+    // Return 400 error if either field is missing
+    if (!email || !password) {
+      return res.status(400).json({
+        success: false,
+        message: 'Please provide email and password',
+      });
+    }
+
+    // Find the user by email in the database
+    // This will return the user document if found, or null if not found
+    const user = await User.findOne({ email });
+
+    // Check if user exists
+    // If user doesn't exist, return 400 with generic error message
+    // Using generic message for security (doesn't reveal if email exists)
+    if (!user) {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid email or password',
+      });
+    }
+
+    // Compare the entered password with the hashed password in the database
+    // bcrypt.compare() returns true if passwords match, false otherwise
+    const isPasswordMatch = await bcrypt.compare(password, user.password);
+
+    // If password doesn't match, return 400 with generic error message
+    if (!isPasswordMatch) {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid email or password',
+      });
+    }
+
+    // Password matches - generate JWT token
+    // Create payload with user's _id and role
+    const payload = {
+      id: user._id,
+      role: user.role,
+    };
+
+    // Sign the token using JWT_SECRET from environment variables
+    // Set expiry to 7 days (7 * 24 * 60 * 60 seconds)
+    const token = jwt.sign(payload, process.env.JWT_SECRET, {
+      expiresIn: '7d',
+    });
+
+    // Return success response with token and user data
     res.status(200).json({
       success: true,
-      message: 'Login placeholder - authentication logic not implemented yet',
+      message: 'Login successful',
+      token,
       data: {
-        email,
-        password,
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
       },
     });
   } catch (error) {
+    // Handle any unexpected errors
     res.status(500).json({
       success: false,
       message: error.message,
@@ -79,17 +137,38 @@ const login = async (req, res) => {
 
 const getMe = async (req, res) => {
   try {
+    // Get the user ID from req.user (set by the authentication middleware)
+    // The middleware decoded the JWT and attached the user info to req.user
+    const userId = req.user.id;
+
+    // Find the user by ID in MongoDB
+    // Use .select('-password') to exclude the password field from the result
+    const user = await User.findById(userId).select('-password');
+
+    // Check if user exists
+    // If user not found, return 404 Not Found response
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: 'User not found',
+      });
+    }
+
+    // Return the user's profile data
     res.status(200).json({
       success: true,
-      message: 'Get user placeholder - authentication logic not implemented yet',
+      message: 'User profile retrieved successfully',
       data: {
-        id: 'placeholder-id',
-        name: 'placeholder-name',
-        email: 'placeholder-email',
-        role: 'placeholder-role',
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+        createdAt: user.createdAt,
+        updatedAt: user.updatedAt,
       },
     });
   } catch (error) {
+    // Handle any unexpected errors
     res.status(500).json({
       success: false,
       message: error.message,
