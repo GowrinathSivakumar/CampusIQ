@@ -7,11 +7,13 @@ const jwt = require('jsonwebtoken');
 
 const register = async (req, res) => {
   try {
-    // Extract user data from the request body
+    // Step 1: Extract user data from the request body
+    // Get name, email, password, and role from the incoming request
     const { name, email, password, role } = req.body;
 
-    // Validate that all required fields are provided
-    // Return 400 error if any required field is missing
+    // Step 2: Validate that all required fields are provided
+    // Return 400 Bad Request error if any required field is missing
+    // This ensures we don't process incomplete registration data
     if (!name || !email || !password) {
       return res.status(400).json({
         success: false,
@@ -19,8 +21,9 @@ const register = async (req, res) => {
       });
     }
 
-    // Check if a user with the same email already exists in the database
-    // This prevents duplicate registrations with the same email
+    // Step 3: Check if a user with the same email already exists in the database
+    // This prevents duplicate registrations with the same email address
+    // findOne() returns the user document if found, or null if not found
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({
@@ -29,18 +32,25 @@ const register = async (req, res) => {
       });
     }
 
-    // Create a new user in MongoDB
-    // Password is saved as-is for now (hashing will be added in next step)
-    // Role defaults to 'student' if not provided
+    // Step 4: Hash the password using bcrypt before saving
+    // bcrypt.hash() creates a one-way hash that cannot be reversed
+    // The salt rounds (12) determine the computational cost - higher is more secure
+    // This ensures passwords are never stored in plain text in the database
+    const hashedPassword = await bcrypt.hash(password, 12);
+
+    // Step 5: Create a new user in MongoDB with the hashed password
+    // Store the hashed password instead of the plain text password
+    // Role defaults to 'student' if not provided in the request
     const user = await User.create({
       name,
       email,
-      password, // Temporary: saving password without hashing
+      password: hashedPassword, // Store the hashed password, not plain text
       role: role || 'student',
     });
 
-    // Return success response with created user data
+    // Step 6: Return success response with created user data
     // Exclude the password field from the response for security
+    // Even though it's hashed, we never send password data in API responses
     res.status(201).json({
       success: true,
       message: 'User registered successfully',
@@ -53,7 +63,8 @@ const register = async (req, res) => {
       },
     });
   } catch (error) {
-    // Handle any unexpected errors
+    // Step 7: Handle any unexpected errors (database errors, validation errors, etc.)
+    // Return 500 Internal Server Error with the error message
     res.status(500).json({
       success: false,
       message: error.message,
