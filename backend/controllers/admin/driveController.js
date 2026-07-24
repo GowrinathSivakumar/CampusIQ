@@ -4,7 +4,7 @@ const ApiResponse = require('../../utils/ApiResponse');
 
 exports.getDrives = async (req, res, next) => {
   try {
-    const { search, company, year, page = 1, limit = 50 } = req.query;
+    const { search, company, year, department, page = 1, limit = 50 } = req.query;
 
     const filter = {};
     if (search) {
@@ -19,6 +19,7 @@ exports.getDrives = async (req, res, next) => {
       const endOfYear = new Date(year, 11, 31, 23, 59, 59);
       filter.date = { $gte: startOfYear, $lte: endOfYear };
     }
+    if (department) filter.department = { $regex: department, $options: 'i' };
 
     const drives = await Drive.find(filter)
       .sort({ date: -1 })
@@ -53,7 +54,7 @@ exports.getDriveById = async (req, res, next) => {
 
 exports.createDrive = async (req, res, next) => {
   try {
-    const { company, companyName, role, date, studentsPlaced, package: pkg, description } = req.body;
+    const { company, companyName, role, date, studentsPlaced, package: pkg, rounds, department, description } = req.body;
 
     if (!companyName || !role || !date) {
       throw ApiError.badRequest('Company name, role, and date are required');
@@ -66,6 +67,8 @@ exports.createDrive = async (req, res, next) => {
       date,
       studentsPlaced,
       package: pkg,
+      rounds,
+      department,
       description,
       createdBy: req.user._id,
     });

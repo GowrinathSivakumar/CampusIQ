@@ -24,12 +24,12 @@ const seedCompanies = [
 ];
 
 const seedDrives = [
-  { companyName: 'Microsoft', role: 'Software Engineer', date: new Date('2026-06-15'), studentsPlaced: 12, package: '₹45 LPA', description: 'Full-time software engineer role for fresh graduates' },
-  { companyName: 'Google', role: 'SDE Intern', date: new Date('2026-06-10'), studentsPlaced: 8, package: '₹42 LPA', description: 'Summer internship leading to full-time conversion' },
-  { companyName: 'Amazon', role: 'Frontend Developer', date: new Date('2026-06-05'), studentsPlaced: 15, package: '₹38 LPA', description: 'Full-stack development role with focus on frontend' },
-  { companyName: 'TCS', role: 'System Engineer', date: new Date('2026-05-28'), studentsPlaced: 45, package: '₹12 LPA', description: 'Bulk hiring for system engineering roles' },
-  { companyName: 'Infosys', role: 'Associate Developer', date: new Date('2026-05-20'), studentsPlaced: 38, package: '₹14 LPA', description: 'Entry-level developer positions across multiple teams' },
-  { companyName: 'Zoho Corporation', role: 'Full Stack Developer', date: new Date('2026-05-15'), studentsPlaced: 10, package: '₹18 LPA', description: 'Full-stack development with React and Node.js' },
+  { companyName: 'Microsoft', role: 'Software Engineer', date: new Date('2026-06-15'), studentsPlaced: 12, package: '₹45 LPA', rounds: 4, department: 'CSE, IT', description: 'Full-time software engineer role for fresh graduates' },
+  { companyName: 'Google', role: 'SDE Intern', date: new Date('2026-06-10'), studentsPlaced: 8, package: '₹42 LPA', rounds: 5, department: 'CSE', description: 'Summer internship leading to full-time conversion' },
+  { companyName: 'Amazon', role: 'Frontend Developer', date: new Date('2026-06-05'), studentsPlaced: 15, package: '₹38 LPA', rounds: 4, department: 'CSE', description: 'Full-stack development role with focus on frontend' },
+  { companyName: 'TCS', role: 'System Engineer', date: new Date('2026-05-28'), studentsPlaced: 45, package: '₹12 LPA', rounds: 3, department: 'All', description: 'Bulk hiring for system engineering roles' },
+  { companyName: 'Infosys', role: 'Associate Developer', date: new Date('2026-05-20'), studentsPlaced: 38, package: '₹14 LPA', rounds: 3, department: 'All', description: 'Entry-level developer positions across multiple teams' },
+  { companyName: 'Zoho Corporation', role: 'Full Stack Developer', date: new Date('2026-05-15'), studentsPlaced: 10, package: '₹18 LPA', rounds: 4, department: 'CSE', description: 'Full-stack development with React and Node.js' },
 ];
 
 const seedQuestions = [

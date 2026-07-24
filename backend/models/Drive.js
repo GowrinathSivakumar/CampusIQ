@@ -29,6 +29,16 @@ const driveSchema = new mongoose.Schema(
       type: String,
       trim: true,
     },
+    rounds: {
+      type: Number,
+      default: 3,
+      min: 1,
+    },
+    department: {
+      type: String,
+      trim: true,
+      default: 'All',
+    },
     description: {
       type: String,
       maxlength: 1000,

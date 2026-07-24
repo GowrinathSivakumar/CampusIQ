@@ -1,23 +1,52 @@
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { History, Search } from 'lucide-react'
+import { getDrives, type Drive } from '../../services/driveService'
 import './PreviousDrives.css'
 
-const dummyDrives = [
-  { company: 'Microsoft', role: 'Software Engineer', date: '15-06-2026', students: 12, package: '₹45 LPA' },
-  { company: 'Google', role: 'SDE Intern', date: '10-06-2026', students: 8, package: '₹42 LPA' },
-  { company: 'Amazon', role: 'Frontend Developer', date: '05-06-2026', students: 15, package: '₹38 LPA' },
-  { company: 'TCS', role: 'System Engineer', date: '28-05-2026', students: 45, package: '₹12 LPA' },
-  { company: 'Infosys', role: 'Associate Developer', date: '20-05-2026', students: 38, package: '₹14 LPA' },
-  { company: 'Zoho', role: 'Full Stack Developer', date: '15-05-2026', students: 10, package: '₹18 LPA' },
-]
+function formatDate(dateStr: string): string {
+  const d = new Date(dateStr)
+  const day = String(d.getDate()).padStart(2, '0')
+  const month = String(d.getMonth() + 1).padStart(2, '0')
+  const year = d.getFullYear()
+  return `${day}-${month}-${year}`
+}
 
 export default function PreviousDrives() {
   const navigate = useNavigate()
+  const [drives, setDrives] = useState<Drive[]>([])
+  const [loading, setLoading] = useState(true)
+  const [search, setSearch] = useState('')
+
+  useEffect(() => {
+    fetchDrives()
+  }, [])
+
+  async function fetchDrives() {
+    try {
+      setLoading(true)
+      const data = await getDrives({ limit: 200 })
+      setDrives(data.drives)
+    } catch {
+      setDrives([])
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const filtered = drives.filter((d) => {
+    if (!search) return true
+    const q = search.toLowerCase()
+    return (
+      d.companyName.toLowerCase().includes(q) ||
+      d.role.toLowerCase().includes(q)
+    )
+  })
 
   return (
     <div className="drives-page">
       <div className="drives-header">
-        <button className="drives-upload-btn" onClick={() => navigate('/admin/companies/add')}>
+        <button className="drives-upload-btn" onClick={() => navigate('/admin/drives')}>
           <History size={16} />
           Upload Drive
         </button>
@@ -25,25 +54,44 @@ export default function PreviousDrives() {
 
       <div className="drives-search-wrapper">
         <Search size={16} className="drives-search-icon" />
-        <input type="text" placeholder="Search drives..." className="drives-search" />
+        <input
+          type="text"
+          placeholder="Search drives..."
+          className="drives-search"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
       </div>
 
-      <div className="drives-grid">
-        {dummyDrives.map((drive) => (
-          <div key={`${drive.company}-${drive.date}`} className="drive-card">
-            <div className="drive-card-top">
-              <div className="drive-card-icon"><History size={20} /></div>
-              <span className="drive-card-date">{drive.date}</span>
-            </div>
-            <h3 className="drive-card-company">{drive.company}</h3>
-            <p className="drive-card-role">{drive.role}</p>
-            <div className="drive-card-footer">
-              <span className="drive-card-students">{drive.students} students placed</span>
-              <span className="drive-card-package">{drive.package}</span>
-            </div>
+      {loading ? (
+        <div className="drives-grid">
+          <div className="drive-card">
+            <p style={{ textAlign: 'center', color: 'var(--color-gray-400)' }}>Loading drives...</p>
           </div>
-        ))}
-      </div>
+        </div>
+      ) : (
+        <div className="drives-grid">
+          {filtered.map((drive) => (
+            <div key={drive._id} className="drive-card">
+              <div className="drive-card-top">
+                <div className="drive-card-icon"><History size={20} /></div>
+                <span className="drive-card-date">{formatDate(drive.date)}</span>
+              </div>
+              <h3 className="drive-card-company">{drive.companyName}</h3>
+              <p className="drive-card-role">{drive.role}</p>
+              <div className="drive-card-footer">
+                <span className="drive-card-students">{drive.studentsPlaced} students placed</span>
+                <span className="drive-card-package">{drive.package}</span>
+              </div>
+            </div>
+          ))}
+          {filtered.length === 0 && (
+            <div className="drive-card">
+              <p style={{ textAlign: 'center', color: 'var(--color-gray-400)' }}>No drives found</p>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   )
 }

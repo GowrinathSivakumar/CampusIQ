@@ -1,39 +1,19 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {
   HelpCircle, Search, Filter, ChevronDown,
   ArrowLeft, Brain, Code2, Users, MessageCircle,
 } from 'lucide-react'
+import { getQuestions, type Question } from '../../services/questionService'
 import './InterviewQuestions.css'
 
-interface Question {
-  id: number
+interface DisplayQuestion {
+  id: string
   question: string
   company: string
   topic: string
   difficulty: string
   round: string
 }
-
-const questions: Question[] = [
-  { id: 1, question: 'If a train 100 m long passes a pole in 10 seconds, what is its speed?', company: 'TCS', topic: 'Aptitude', difficulty: 'Easy', round: 'Aptitude' },
-  { id: 2, question: 'Find the next number in the series: 2, 6, 12, 20, 30, ?', company: 'Infosys', topic: 'Aptitude', difficulty: 'Medium', round: 'Aptitude' },
-  { id: 3, question: 'A bag contains 3 red, 4 green, and 5 blue balls. What is the probability of drawing a green ball?', company: 'Wipro', topic: 'Aptitude', difficulty: 'Easy', round: 'Aptitude' },
-  { id: 4, question: 'If log2 = 0.3010, what is log5?', company: 'TCS', topic: 'Aptitude', difficulty: 'Hard', round: 'Aptitude' },
-  { id: 5, question: 'Given an array of integers, find the two numbers that sum to a target value.', company: 'Amazon', topic: 'Coding', difficulty: 'Medium', round: 'Coding' },
-  { id: 6, question: 'Implement a function to check if a string is a valid palindrome considering only alphanumeric characters.', company: 'Google', topic: 'Coding', difficulty: 'Easy', round: 'Coding' },
-  { id: 7, question: 'Find the longest substring without repeating characters in a given string.', company: 'Zoho', topic: 'Coding', difficulty: 'Medium', round: 'Coding' },
-  { id: 8, question: 'Given a binary tree, find the maximum path sum from any node to any node.', company: 'Microsoft', topic: 'Coding', difficulty: 'Hard', round: 'Coding' },
-  { id: 9, question: 'Explain the difference between process and thread. How do they communicate?', company: 'Zoho', topic: 'Technical', difficulty: 'Medium', round: 'Technical' },
-  { id: 10, question: 'What is normalization in DBMS? Explain 1NF, 2NF, 3NF with examples.', company: 'TCS', topic: 'Technical', difficulty: 'Medium', round: 'Technical' },
-  { id: 11, question: 'Explain polymorphism in OOP with real-world examples.', company: 'Amazon', topic: 'Technical', difficulty: 'Easy', round: 'Technical' },
-  { id: 12, question: 'What is the difference between TCP and UDP? When would you use each?', company: 'Infosys', topic: 'Technical', difficulty: 'Medium', round: 'Technical' },
-  { id: 13, question: 'Explain deadlock in operating systems and its prevention techniques.', company: 'Google', topic: 'Technical', difficulty: 'Hard', round: 'Technical' },
-  { id: 14, question: 'What is the significance of the Java Virtual Machine (JVM)?', company: 'TCS', topic: 'Technical', difficulty: 'Easy', round: 'Technical' },
-  { id: 15, question: 'Tell me about yourself and your career aspirations.', company: 'Amazon', topic: 'HR', difficulty: 'Easy', round: 'HR' },
-  { id: 16, question: 'Describe a time you faced a challenge and how you overcame it.', company: 'Google', topic: 'HR', difficulty: 'Medium', round: 'HR' },
-  { id: 17, question: 'Where do you see yourself in 5 years?', company: 'TCS', topic: 'HR', difficulty: 'Easy', round: 'HR' },
-  { id: 18, question: 'Why do you want to work at our company?', company: 'Zoho', topic: 'HR', difficulty: 'Easy', round: 'HR' },
-]
 
 const difficulties = ['All Difficulties', 'Easy', 'Medium', 'Hard']
 
@@ -51,10 +31,39 @@ const categoryIcons: Record<string, typeof Brain> = {
   HR: MessageCircle,
 }
 
+function mapQuestion(q: Question): DisplayQuestion {
+  return {
+    id: q._id,
+    question: q.question,
+    company: q.company || 'General',
+    topic: q.category,
+    difficulty: q.difficulty,
+    round: q.category,
+  }
+}
+
 export default function InterviewQuestions() {
+  const [questions, setQuestions] = useState<DisplayQuestion[]>([])
+  const [loading, setLoading] = useState(true)
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
   const [difficulty, setDifficulty] = useState('All Difficulties')
+
+  useEffect(() => {
+    fetchQuestions()
+  }, [])
+
+  async function fetchQuestions() {
+    try {
+      setLoading(true)
+      const data = await getQuestions({ limit: 200 })
+      setQuestions(data.questions.map(mapQuestion))
+    } catch {
+      setQuestions([])
+    } finally {
+      setLoading(false)
+    }
+  }
 
   const filtered = questions.filter((q) => {
     const matchSearch = q.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -70,6 +79,17 @@ export default function InterviewQuestions() {
     setSelectedCategory(null)
     setDifficulty('All Difficulties')
     setSearchTerm('')
+  }
+
+  if (loading) {
+    return (
+      <div className="questions-page">
+        <div className="questions-page-empty">
+          <HelpCircle size={48} />
+          <h3>Loading questions...</h3>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -119,7 +139,7 @@ export default function InterviewQuestions() {
       ) : (
         <>
           <div className="questions-nav-bar">
-            <button className="questions-back-btn" onClick={goBack}>
+            <button className="questions-back-btn" onClick={() => { setSelectedCategory(null); setDifficulty('All Difficulties'); setSearchTerm('') }}>
               <ArrowLeft size={16} />
               <span>Back to Categories</span>
             </button>
@@ -130,7 +150,7 @@ export default function InterviewQuestions() {
                   return <Icon size={18} />
                 })()}
               </div>
-              <span>{category?.label}</span>
+              <span>{categories.find((c) => c.key === selectedCategory)?.label}</span>
             </div>
           </div>
 

@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ListChecks, HelpCircle, ExternalLink, Lightbulb, ChevronRight, ArrowLeft } from 'lucide-react'
+import { getTips, type Tip } from '../../services/tipService'
 import './PreparationGuide.css'
 
 const topics = [
@@ -25,7 +26,7 @@ const resources = [
   { title: 'CodeChef', description: 'Competitive programming platform with regular contests', url: 'https://codechef.com' },
 ]
 
-const tips = [
+const fallbackTips = [
   'Create a consistent study schedule and stick to it daily.',
   'Focus on understanding concepts rather than memorizing answers.',
   'Participate in mock interviews to build confidence.',
@@ -47,6 +48,28 @@ const subjectColors: Record<string, string> = {
 
 export default function PreparationGuide() {
   const [selectedSubject, setSelectedSubject] = useState<string | null>(null)
+  const [tips, setTips] = useState<string[]>([])
+  const [loadingTips, setLoadingTips] = useState(true)
+
+  useEffect(() => {
+    fetchTips()
+  }, [])
+
+  async function fetchTips() {
+    try {
+      setLoadingTips(true)
+      const data = await getTips({ status: 'Published', limit: 50 })
+      if (data.tips.length > 0) {
+        setTips(data.tips.map((t: Tip) => t.description))
+      } else {
+        setTips(fallbackTips)
+      }
+    } catch {
+      setTips(fallbackTips)
+    } finally {
+      setLoadingTips(false)
+    }
+  }
 
   const currentTopic = selectedSubject
     ? topics.find((t) => t.title === selectedSubject)
@@ -161,12 +184,18 @@ export default function PreparationGuide() {
           <h2 className="preparation-guide-section-title">Interview Tips</h2>
         </div>
         <div className="preparation-guide-tips">
-          {tips.map((tip, i) => (
-            <div key={i} className="preparation-guide-tip-card">
-              <span className="preparation-guide-tip-number">{String(i + 1).padStart(2, '0')}</span>
-              <p className="preparation-guide-tip-text">{tip}</p>
+          {loadingTips ? (
+            <div style={{ textAlign: 'center', color: 'var(--color-gray-400)', padding: '24px' }}>
+              Loading tips...
             </div>
-          ))}
+          ) : (
+            tips.map((tip, i) => (
+              <div key={i} className="preparation-guide-tip-card">
+                <span className="preparation-guide-tip-number">{String(i + 1).padStart(2, '0')}</span>
+                <p className="preparation-guide-tip-text">{tip}</p>
+              </div>
+            ))
+          )}
         </div>
       </section>
     </div>
