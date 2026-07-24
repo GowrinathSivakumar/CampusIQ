@@ -73,14 +73,6 @@ export default function InterviewQuestions() {
     return matchSearch && matchCategory && matchDifficulty
   })
 
-  const category = categories.find((c) => c.key === selectedCategory)
-
-  function goBack() {
-    setSelectedCategory(null)
-    setDifficulty('All Difficulties')
-    setSearchTerm('')
-  }
-
   if (loading) {
     return (
       <div className="questions-page">
