@@ -1,42 +1,21 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Bookmark, Building2, HelpCircle, BookOpen, Trash2, ExternalLink } from 'lucide-react'
+import { getBookmarks, removeBookmark as removeBookmarkApi, type Bookmark as BookmarkType } from '../../services/bookmarkService'
 import './Bookmarks.css'
 
-interface BookmarkedCompany {
-  id: number
-  name: string
-  type: 'company'
-  bookmarkedAt: string
+function timeAgo(dateStr: string): string {
+  const seconds = Math.floor((Date.now() - new Date(dateStr).getTime()) / 1000)
+  if (seconds < 60) return 'just now'
+  const minutes = Math.floor(seconds / 60)
+  if (minutes < 60) return `${minutes}m ago`
+  const hours = Math.floor(minutes / 60)
+  if (hours < 24) return `${hours}h ago`
+  const days = Math.floor(hours / 24)
+  if (days < 7) return `${days}d ago`
+  const weeks = Math.floor(days / 7)
+  return `${weeks}w ago`
 }
-
-interface BookmarkedQuestion {
-  id: number
-  text: string
-  company: string
-  type: 'question'
-  bookmarkedAt: string
-}
-
-interface BookmarkedGuide {
-  id: number
-  title: string
-  type: 'guide'
-  bookmarkedAt: string
-}
-
-type BookmarkItem = BookmarkedCompany | BookmarkedQuestion | BookmarkedGuide
-
-const initialBookmarks: BookmarkItem[] = [
-  { id: 1, name: 'Zoho Corporation', type: 'company', bookmarkedAt: '2 days ago' },
-  { id: 2, name: 'Amazon', type: 'company', bookmarkedAt: '5 days ago' },
-  { id: 5, name: 'TCS', type: 'company', bookmarkedAt: '1 week ago' },
-  { id: 10, name: 'Microsoft', type: 'company', bookmarkedAt: '2 weeks ago' },
-  { id: 101, text: 'Explain the difference between process and thread.', company: 'Zoho', type: 'question', bookmarkedAt: '3 days ago' },
-  { id: 102, text: 'Given an array of integers, find the two numbers that sum to a target value.', company: 'Amazon', type: 'question', bookmarkedAt: '1 week ago' },
-  { id: 201, title: 'Data Structures & Algorithms Guide', type: 'guide', bookmarkedAt: '4 days ago' },
-  { id: 202, title: 'HR Interview Preparation Tips', type: 'guide', bookmarkedAt: '1 week ago' },
-]
 
 const tabs = [
   { id: 'all', label: 'All', icon: Bookmark },
@@ -46,16 +25,55 @@ const tabs = [
 ]
 
 export default function Bookmarks() {
-  const [bookmarks, setBookmarks] = useState<BookmarkItem[]>(initialBookmarks)
+  const [bookmarks, setBookmarks] = useState<BookmarkType[]>([])
+  const [loading, setLoading] = useState(true)
   const [activeTab, setActiveTab] = useState('all')
 
-  const removeBookmark = (id: number) => {
-    setBookmarks((prev) => prev.filter((b) => b.id !== id))
+  useEffect(() => {
+    fetchBookmarks()
+  }, [])
+
+  async function fetchBookmarks() {
+    try {
+      setLoading(true)
+      const data = await getBookmarks({ limit: 200 })
+      setBookmarks(data.bookmarks)
+    } catch {
+      setBookmarks([])
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  async function handleRemoveBookmark(id: string) {
+    try {
+      await removeBookmarkApi(id)
+      setBookmarks((prev) => prev.filter((b) => b._id !== id))
+    } catch {
+      // silently fail
+    }
   }
 
   const filtered = activeTab === 'all'
     ? bookmarks
-    : bookmarks.filter((b) => b.type === activeTab)
+    : bookmarks.filter((b) => b.itemType === activeTab)
+
+  if (loading) {
+    return (
+      <div className="bookmarks-page">
+        <div className="bookmarks-page-header">
+          <div>
+            <h1 className="bookmarks-page-title">Bookmarks</h1>
+            <p className="bookmarks-page-subtitle">Access your saved companies, questions, and guides</p>
+          </div>
+        </div>
+        <div className="bookmarks-page-empty">
+          <Bookmark size={48} />
+          <h3>Loading bookmarks...</h3>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="bookmarks-page">
@@ -84,7 +102,7 @@ export default function Bookmarks() {
               <span className="bookmarks-page-tab-count">
                 {tab.id === 'all'
                   ? bookmarks.length
-                  : bookmarks.filter((b) => b.type === tab.id).length
+                  : bookmarks.filter((b) => b.itemType === tab.id).length
                 }
               </span>
             </button>
@@ -94,23 +112,23 @@ export default function Bookmarks() {
 
       <div className="bookmarks-page-list">
         {filtered.map((item) => {
-          if (item.type === 'company') {
-            const company = item as BookmarkedCompany
+          if (item.itemType === 'company') {
+            const company = item.companyId
             return (
-              <div key={company.id} className="bookmarks-page-item">
+              <div key={item._id} className="bookmarks-page-item">
                 <div className="bookmarks-page-item-icon company">
                   <Building2 size={18} />
                 </div>
                 <div className="bookmarks-page-item-content">
-                  <Link to={`/student/company/${company.id}`} className="bookmarks-page-item-title">
-                    {company.name}
+                  <Link to={`/student/company/${company?._id || ''}`} className="bookmarks-page-item-title">
+                    {company?.name || 'Unknown Company'}
                     <ExternalLink size={14} />
                   </Link>
-                  <span className="bookmarks-page-item-meta">Bookmarked {company.bookmarkedAt}</span>
+                  <span className="bookmarks-page-item-meta">Bookmarked {timeAgo(item.createdAt)}</span>
                 </div>
                 <button
                   className="bookmarks-page-item-remove"
-                  onClick={() => removeBookmark(company.id)}
+                  onClick={() => handleRemoveBookmark(item._id)}
                   aria-label="Remove bookmark"
                 >
                   <Trash2 size={16} />
@@ -119,22 +137,22 @@ export default function Bookmarks() {
             )
           }
 
-          if (item.type === 'question') {
-            const question = item as BookmarkedQuestion
+          if (item.itemType === 'question') {
+            const question = item.questionId
             return (
-              <div key={question.id} className="bookmarks-page-item">
+              <div key={item._id} className="bookmarks-page-item">
                 <div className="bookmarks-page-item-icon question">
                   <HelpCircle size={18} />
                 </div>
                 <div className="bookmarks-page-item-content">
-                  <p className="bookmarks-page-item-title">{question.text}</p>
+                  <p className="bookmarks-page-item-title">{question?.question || 'Unknown Question'}</p>
                   <span className="bookmarks-page-item-meta">
-                    {question.company} • Bookmarked {question.bookmarkedAt}
+                    {question?.company || ''} • Bookmarked {timeAgo(item.createdAt)}
                   </span>
                 </div>
                 <button
                   className="bookmarks-page-item-remove"
-                  onClick={() => removeBookmark(question.id)}
+                  onClick={() => handleRemoveBookmark(item._id)}
                   aria-label="Remove bookmark"
                 >
                   <Trash2 size={16} />
@@ -143,22 +161,21 @@ export default function Bookmarks() {
             )
           }
 
-          const guide = item as BookmarkedGuide
           return (
-            <div key={guide.id} className="bookmarks-page-item">
+            <div key={item._id} className="bookmarks-page-item">
               <div className="bookmarks-page-item-icon guide">
                 <BookOpen size={18} />
               </div>
               <div className="bookmarks-page-item-content">
                 <Link to="/student/preparation" className="bookmarks-page-item-title">
-                  {guide.title}
+                  {item.guideTitle || 'Unknown Guide'}
                   <ExternalLink size={14} />
                 </Link>
-                <span className="bookmarks-page-item-meta">Bookmarked {guide.bookmarkedAt}</span>
+                <span className="bookmarks-page-item-meta">Bookmarked {timeAgo(item.createdAt)}</span>
               </div>
               <button
                 className="bookmarks-page-item-remove"
-                onClick={() => removeBookmark(guide.id)}
+                onClick={() => handleRemoveBookmark(item._id)}
                 aria-label="Remove bookmark"
               >
                 <Trash2 size={16} />
