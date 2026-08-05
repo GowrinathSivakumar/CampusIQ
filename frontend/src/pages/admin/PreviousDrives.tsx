@@ -18,10 +18,6 @@ export default function PreviousDrives() {
   const [loading, setLoading] = useState(true)
   const [search, setSearch] = useState('')
 
-  useEffect(() => {
-    fetchDrives()
-  }, [])
-
   async function fetchDrives() {
     try {
       setLoading(true)
@@ -33,6 +29,10 @@ export default function PreviousDrives() {
       setLoading(false)
     }
   }
+
+  useEffect(() => {
+    fetchDrives()
+  }, [])
 
   const filtered = drives.filter((d) => {
     if (!search) return true
@@ -46,7 +46,7 @@ export default function PreviousDrives() {
   return (
     <div className="drives-page">
       <div className="drives-header">
-        <button className="drives-upload-btn" onClick={() => navigate('/admin/drives')}>
+        <button className="drives-upload-btn" onClick={() => navigate('/admin/drives/add')}>
           <History size={16} />
           Upload Drive
         </button>

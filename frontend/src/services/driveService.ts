@@ -49,3 +49,19 @@ export const getDriveById = async (id: string): Promise<Drive> => {
   const response = await axios.get(`${API_URL}/${id}`)
   return response.data.data
 }
+
+export interface CreateDrivePayload {
+  companyName: string
+  role: string
+  date: string
+  studentsPlaced?: number
+  package?: string
+  rounds?: number
+  department?: string
+  description?: string
+}
+
+export const createDrive = async (payload: CreateDrivePayload): Promise<Drive> => {
+  const response = await axios.post(API_URL, payload)
+  return response.data.data
+}

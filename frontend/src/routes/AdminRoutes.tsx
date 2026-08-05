@@ -5,6 +5,7 @@ import Dashboard from '../pages/admin/Dashboard'
 import Companies from '../pages/admin/Companies'
 import AddCompany from '../pages/admin/AddCompany'
 import PreviousDrives from '../pages/admin/PreviousDrives'
+import AddDrive from '../pages/admin/AddDrive'
 import Questions from '../pages/admin/Questions'
 import AddQuestion from '../pages/admin/AddQuestion'
 import Preparation from '../pages/admin/Preparation'
@@ -23,6 +24,7 @@ export default function AdminRoutes() {
           <Route path="companies" element={<Companies />} />
           <Route path="companies/add" element={<AddCompany />} />
           <Route path="drives" element={<PreviousDrives />} />
+          <Route path="drives/add" element={<AddDrive />} />
           <Route path="questions" element={<Questions />} />
           <Route path="questions/add" element={<AddQuestion />} />
           <Route path="preparation" element={<Preparation />} />
