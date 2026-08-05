@@ -29,6 +29,12 @@ const protect = async (req, res, next) => {
     // This makes the user data available in subsequent middleware and route handlers
     req.user = decoded;
 
+    // Normalize the user id so both req.user.id and req.user._id work
+    // (JWT payload stores 'id', while controllers reference '_id')
+    if (decoded.id && !decoded._id) {
+      req.user._id = decoded.id;
+    }
+
     // Call next() to proceed to the next middleware or route handler
     next();
   } catch (error) {

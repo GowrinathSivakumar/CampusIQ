@@ -1,16 +1,12 @@
+import { useEffect, useState } from 'react'
 import { Building2, CheckCircle2, BookOpen } from 'lucide-react'
 import DashboardCard from '../../components/DashboardCard'
 import HighestPlacementCard from '../../components/HighestPlacementCard'
 import QuickActionCard from '../../components/QuickActionCard'
 import KSRCELogo from '../../assets/KSRCE logo.jpg'
+import { getDashboard, type DashboardResponse } from '../../services/dashboardService'
 
 import './Dashboard.css'
-
-const stats = [
-  { title: 'Total Companies', value: '128 Companies', icon: Building2, trend: { value: '12% increase', positive: true } },
-  { title: 'Completed Drives', value: '95 Drives', icon: CheckCircle2, trend: { value: '8% increase', positive: true } },
-  { title: 'Interview Questions', value: '1,542 Questions', icon: BookOpen, trend: { value: '24% increase', positive: true } },
-]
 
 const quickActions = [
   { title: 'View Companies', description: 'Browse and manage registered companies', icon: Building2, path: '/admin/companies' },
@@ -19,7 +15,80 @@ const quickActions = [
   { title: 'Add Preparation Tips', description: 'Share preparation tips and resources', icon: BookOpen, path: '/admin/preparation' },
 ]
 
+function formatCount(count: number, singular: string, plural: string): string {
+  return `${count.toLocaleString('en-US')} ${count === 1 ? singular : plural}`
+}
+
 export default function Dashboard() {
+  const [data, setData] = useState<DashboardResponse | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
+
+  useEffect(() => {
+    let mounted = true
+
+    async function fetchDashboard() {
+      try {
+        setLoading(true)
+        setError(false)
+        const response = await getDashboard()
+        if (mounted) setData(response)
+      } catch {
+        if (mounted) setError(true)
+      } finally {
+        if (mounted) setLoading(false)
+      }
+    }
+
+    fetchDashboard()
+    return () => {
+      mounted = false
+    }
+  }, [])
+
+  const stats = data?.stats
+
+  const statCards = [
+    {
+      title: 'Total Companies',
+      value: loading
+        ? 'Loading...'
+        : error
+          ? 'Unavailable'
+          : formatCount(stats?.totalCompanies ?? 0, 'Company', 'Companies'),
+      icon: Building2,
+    },
+    {
+      title: 'Completed Drives',
+      value: loading
+        ? 'Loading...'
+        : error
+          ? 'Unavailable'
+          : formatCount(stats?.totalDrives ?? 0, 'Drive', 'Drives'),
+      icon: CheckCircle2,
+    },
+    {
+      title: 'Interview Questions',
+      value: loading
+        ? 'Loading...'
+        : error
+          ? 'Unavailable'
+          : formatCount(stats?.totalQuestions ?? 0, 'Question', 'Questions'),
+      icon: BookOpen,
+    },
+  ]
+
+  const highest = data?.highestPlacement
+  const highestPlacement = {
+    company: error
+      ? 'Unavailable'
+      : loading
+        ? 'Loading...'
+        : highest?.company?.name || highest?.companyName || 'No drives recorded yet',
+    role: error || loading ? '—' : highest?.role || '—',
+    package: error || loading ? '—' : highest?.package || '—',
+  }
+
   return (
     <div className="dashboard-page">
       <div className="dashboard-college-header">
@@ -29,10 +98,10 @@ export default function Dashboard() {
         </span>
       </div>
       <div className="dashboard-stats">
-        {stats.map((stat) => (
+        {statCards.map((stat) => (
           <DashboardCard key={stat.title} {...stat} />
         ))}
-        <HighestPlacementCard company="Microsoft" role="Software Engineer" package="₹45 LPA" />
+        <HighestPlacementCard {...highestPlacement} />
       </div>
 
       <div>

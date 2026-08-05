@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const {
+  getDashboard,
   getDashboardStats,
   getHighestPlacement,
   getRecentDrives,
@@ -10,6 +11,7 @@ const protect = require('../../middleware/auth');
 
 router.use(protect);
 
+router.get('/', getDashboard);
 router.get('/stats', getDashboardStats);
 router.get('/highest-placement', getHighestPlacement);
 router.get('/recent-drives', getRecentDrives);

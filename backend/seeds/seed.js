@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 const config = require('../config/config');
 const User = require('../models/User');
 const Company = require('../models/Company');
@@ -74,7 +75,15 @@ async function seed() {
 
     const userCount = await User.countDocuments();
     if (userCount === 0) {
-      const users = await User.create(seedUsers);
+      const saltRounds = 12;
+      const users = await User.create(
+        await Promise.all(
+          seedUsers.map(async (u) => ({
+            ...u,
+            password: await bcrypt.hash(u.password, saltRounds),
+          }))
+        )
+      );
       console.log(`Seeded ${users.length} users`);
 
       const adminUser = users.find((u) => u.role === 'admin');
