@@ -1,0 +1,370 @@
+.add-drive-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding-bottom: 32px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.add-drive-page::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Header ── */
+
+.add-drive-header {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.add-drive-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-dark-secondary);
+  background: none;
+  padding: 0;
+  transition: color 0.2s;
+  width: fit-content;
+}
+
+.add-drive-back:hover {
+  color: #0F9D58;
+}
+
+.add-drive-title-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.add-drive-title-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, #0F9D58, #16A34A);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  box-shadow: 0 4px 14px rgba(15, 157, 88, 0.25);
+  flex-shrink: 0;
+}
+
+.add-drive-title {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-dark);
+  line-height: 1.2;
+}
+
+.add-drive-subtitle {
+  font-size: 13px;
+  color: var(--color-gray-500);
+  margin-top: 2px;
+}
+
+/* ── Progress Bar ── */
+
+.add-drive-progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.add-drive-progress-track {
+  flex: 1;
+  height: 6px;
+  background: rgba(15, 157, 88, 0.1);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.add-drive-progress-fill {
+  height: 100%;
+  background: linear-gradient(135deg, #0F9D58, #16A34A);
+  border-radius: 999px;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.add-drive-progress-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #0F9D58;
+  white-space: nowrap;
+  min-width: 80px;
+  text-align: right;
+}
+
+/* ── Cards ── */
+
+.add-drive-card {
+  background: var(--glass-admin-bg);
+  backdrop-filter: blur(var(--glass-admin-blur));
+  -webkit-backdrop-filter: blur(var(--glass-admin-blur));
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(15, 157, 88, 0.1);
+  box-shadow: var(--glass-admin-shadow), 0 1px 3px rgba(0, 0, 0, 0.04);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.add-drive-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(15, 157, 88, 0.07);
+}
+
+.add-drive-card-icon {
+  color: #0F9D58;
+}
+
+.add-drive-card-header h2 {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+/* ── Grid ── */
+
+.add-drive-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+/* ── Field ── */
+
+.add-drive-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.add-drive-field--full {
+  grid-column: 1 / -1;
+}
+
+.add-drive-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-dark);
+}
+
+.add-drive-required {
+  color: #0F9D58;
+  margin-left: 2px;
+}
+
+/* ── Inputs ── */
+
+.add-drive-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.add-drive-input-wrapper--textarea {
+  align-items: flex-start;
+}
+
+.add-drive-input-icon {
+  position: absolute;
+  left: 12px;
+  color: var(--color-gray-400);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.add-drive-input-icon--top {
+  top: 12px;
+}
+
+.add-drive-input {
+  width: 100%;
+  padding: 10px 12px 10px 36px;
+  font-size: 13px;
+  color: var(--color-dark);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(15, 157, 88, 0.14);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+}
+
+.add-drive-input::placeholder {
+  color: var(--color-gray-400);
+}
+
+.add-drive-input:hover {
+  border-color: rgba(15, 157, 88, 0.25);
+}
+
+.add-drive-input:focus {
+  border-color: #0F9D58;
+  box-shadow: 0 0 0 3px rgba(15, 157, 88, 0.1), 0 2px 8px rgba(15, 157, 88, 0.06);
+}
+
+.add-drive-input--error {
+  border-color: var(--color-red-500);
+}
+
+.add-drive-input--error:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+  border-color: var(--color-red-500);
+}
+
+.add-drive-select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+}
+
+.add-drive-textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.6;
+  padding-top: 12px;
+}
+
+.add-drive-textarea-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.add-drive-char-count {
+  font-size: 11px;
+  color: var(--color-gray-400);
+}
+
+/* ── Error ── */
+
+.add-drive-error {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--color-red-500);
+  font-weight: 500;
+}
+
+/* ── Actions ── */
+
+.add-drive-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 8px;
+}
+
+.add-drive-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.add-drive-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.add-drive-btn--cancel {
+  color: var(--color-dark-secondary);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1.5px solid rgba(15, 157, 88, 0.12);
+}
+
+.add-drive-btn--cancel:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(15, 157, 88, 0.2);
+}
+
+.add-drive-btn--reset {
+  color: var(--color-dark-secondary);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1.5px solid rgba(15, 157, 88, 0.12);
+}
+
+.add-drive-btn--reset:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(15, 157, 88, 0.2);
+}
+
+.add-drive-btn--submit {
+  color: var(--color-white);
+  background: linear-gradient(135deg, #0F9D58, #16A34A);
+  box-shadow: 0 4px 12px rgba(15, 157, 88, 0.2);
+  min-width: 160px;
+}
+
+.add-drive-btn--submit:hover:not(:disabled) {
+  background: linear-gradient(135deg, #0D8F4E, #0F9D58);
+  box-shadow: 0 6px 16px rgba(15, 157, 88, 0.3);
+  transform: translateY(-1px);
+}
+
+.add-drive-btn--submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.add-drive-btn--success {
+  background: linear-gradient(135deg, #0F9D58, #16A34A) !important;
+  box-shadow: 0 4px 16px rgba(15, 157, 88, 0.3) !important;
+}
+
+.add-drive-btn--error {
+  background: linear-gradient(135deg, var(--color-red-600), var(--color-red-500)) !important;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2) !important;
+}
+
+.add-drive-spinner {
+  animation: add-drive-spin 0.8s linear infinite;
+}
+
+@keyframes add-drive-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ── Responsive ── */
+
+@media (min-width: 640px) {
+  .add-drive-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .add-drive-actions {
+    justify-content: flex-end;
+  }
+}
