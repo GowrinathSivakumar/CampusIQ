@@ -1,4 +1,4 @@
-const { generateResponse } = require("../../services/groqService");
+const { generateResponse } = require("../../services/student/groqService");
 
 const chatWithAI = async (req, res) => {
   try {

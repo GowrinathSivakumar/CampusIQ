@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { chatWithAI } = require("../controllers/admin/chatController");
+const { chatWithAI } = require("../../controllers/student/chatController");
 
 router.post("/", chatWithAI);
 

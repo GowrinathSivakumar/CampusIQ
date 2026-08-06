@@ -6,9 +6,9 @@ const companyRoutes = require('./admin/companyRoutes');
 const driveRoutes = require('./admin/driveRoutes');
 const questionRoutes = require('./admin/questionRoutes');
 const tipRoutes = require('./admin/tipRoutes');
-const bookmarkRoutes = require('./admin/bookmarkRoutes');
+const bookmarkRoutes = require('./student/bookmarkRoutes');
 const dashboardRoutes = require('./admin/dashboardRoutes');
-const chatRoutes = require("./chatRoutes");
+const chatRoutes = require('./student/chatRoutes');
 
 router.use('/admin/auth', authRoutes);
 router.use('/admin/companies', companyRoutes);

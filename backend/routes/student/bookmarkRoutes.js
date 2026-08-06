@@ -4,7 +4,7 @@ const {
   getBookmarks,
   addBookmark,
   removeBookmark,
-} = require('../../controllers/admin/bookmarkController');
+} = require('../../controllers/student/bookmarkController');
 const protect = require('../../middleware/auth');
 
 router.use(protect);
