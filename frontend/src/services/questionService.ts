@@ -46,3 +46,26 @@ export const getQuestionById = async (id: string): Promise<Question> => {
   const response = await axios.get(`${API_URL}/${id}`)
   return response.data.data
 }
+
+export interface CreateQuestionPayload {
+  question: string
+  category: string
+  company?: string
+  difficulty?: string
+  answer?: string
+  tags?: string[]
+}
+
+export const createQuestion = async (payload: CreateQuestionPayload): Promise<Question> => {
+  const response = await axios.post(API_URL, payload)
+  return response.data.data
+}
+
+export const updateQuestion = async (id: string, payload: Partial<CreateQuestionPayload>): Promise<Question> => {
+  const response = await axios.put(`${API_URL}/${id}`, payload)
+  return response.data.data
+}
+
+export const deleteQuestion = async (id: string): Promise<void> => {
+  await axios.delete(`${API_URL}/${id}`)
+}

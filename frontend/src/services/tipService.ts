@@ -10,6 +10,7 @@ export interface Tip {
   company: string
   tags: string[]
   status: string
+  createdAt?: string
   createdBy?: { name: string; email: string }
 }
 
@@ -45,4 +46,27 @@ export const getTips = async (filters?: TipFilters): Promise<TipsResponse> => {
 export const getTipById = async (id: string): Promise<Tip> => {
   const response = await axios.get(`${API_URL}/${id}`)
   return response.data.data
+}
+
+export interface CreateTipPayload {
+  title: string
+  category: string
+  description: string
+  company?: string
+  tags?: string[]
+  status?: string
+}
+
+export const createTip = async (payload: CreateTipPayload): Promise<Tip> => {
+  const response = await axios.post(API_URL, payload)
+  return response.data.data
+}
+
+export const updateTip = async (id: string, payload: Partial<CreateTipPayload>): Promise<Tip> => {
+  const response = await axios.put(`${API_URL}/${id}`, payload)
+  return response.data.data
+}
+
+export const deleteTip = async (id: string): Promise<void> => {
+  await axios.delete(`${API_URL}/${id}`)
 }

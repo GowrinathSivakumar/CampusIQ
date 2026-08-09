@@ -150,6 +150,37 @@
   transform: translateY(-1px);
 }
 
+.settings-save-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.settings-spinner {
+  animation: settings-spin 1s linear infinite;
+}
+
+@keyframes settings-spin {
+  to { transform: rotate(360deg); }
+}
+
+.settings-save-message {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.settings-save-message--success {
+  color: #0F9D58;
+}
+
+.settings-save-message--error {
+  color: #dc2626;
+}
+
 @media (min-width: 768px) {
   .settings-grid {
     grid-template-columns: repeat(2, 1fr);

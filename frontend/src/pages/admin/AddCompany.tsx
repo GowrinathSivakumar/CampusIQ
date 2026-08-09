@@ -16,6 +16,7 @@ import {
   Briefcase,
   Cpu,
 } from 'lucide-react'
+import { createCompany } from '../../services/companyService'
 import './AddCompany.css'
 
 interface CompanyForm {
@@ -185,7 +186,18 @@ export default function AddCompany() {
     setSubmitting(true)
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1200))
+      await createCompany({
+        name: form.name.trim(),
+        type: form.type,
+        industry: form.industry,
+        logo: form.logo,
+        website: form.website.trim(),
+        location: form.location.trim(),
+        description: form.description.trim(),
+        package: form.package ? Number(form.package) : undefined,
+        status: form.status,
+        tags: form.tags,
+      })
       setSubmitStatus('success')
       setTimeout(() => navigate('/admin/companies'), 1000)
     } catch {

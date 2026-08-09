@@ -13,6 +13,7 @@ import {
   AlertCircle,
   Layers,
 } from 'lucide-react'
+import { createQuestion } from '../../services/questionService'
 import './AddQuestion.css'
 
 interface QuestionForm {
@@ -134,7 +135,14 @@ export default function AddQuestion() {
     setSubmitting(true)
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1200))
+      await createQuestion({
+        question: form.question.trim(),
+        category: form.category,
+        company: form.company || undefined,
+        difficulty: form.difficulty,
+        answer: form.answer.trim(),
+        tags: form.tags,
+      })
       setSubmitStatus('success')
       setTimeout(() => navigate('/admin/questions'), 1000)
     } catch {

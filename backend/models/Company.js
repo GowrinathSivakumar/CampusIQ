@@ -51,6 +51,37 @@ const companySchema = new mongoose.Schema(
         message: 'Cannot have more than 8 tags',
       },
     },
+    eligibility: {
+      type: [String],
+      default: [],
+    },
+    process: {
+      type: [String],
+      default: [],
+    },
+    rounds: {
+      type: [
+        {
+          name: { type: String, trim: true },
+          description: { type: String, trim: true },
+          duration: { type: String, trim: true },
+        },
+      ],
+      default: [],
+    },
+    tips: {
+      type: [String],
+      default: [],
+    },
+    resources: {
+      type: [
+        {
+          title: { type: String, trim: true },
+          url: { type: String, trim: true },
+        },
+      ],
+      default: [],
+    },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',

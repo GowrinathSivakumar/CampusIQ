@@ -12,6 +12,7 @@ import {
   Layers,
   PenLine,
 } from 'lucide-react'
+import { createTip } from '../../services/tipService'
 import './AddTip.css'
 
 interface TipForm {
@@ -141,7 +142,14 @@ export default function AddTip() {
     setSubmitting(true)
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1200))
+      await createTip({
+        title: form.title.trim(),
+        category: form.category,
+        description: form.description.trim(),
+        company: form.company || undefined,
+        tags: form.tags,
+        status: form.status,
+      })
       setSubmitStatus('success')
       setTimeout(() => navigate('/admin/preparation'), 1000)
     } catch {

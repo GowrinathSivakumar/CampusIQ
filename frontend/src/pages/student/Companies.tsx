@@ -1,16 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Search, Building2, Briefcase, ChevronRight } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
+import { getCompanies, type Company } from '../../services/companyService'
 import './Companies.css'
-
-interface Company {
-  id: number
-  name: string
-  salaryPackage: string
-  category: string
-  drives: number
-  description: string
-}
 
 const categories = ['All', 'IT Services', 'Product', 'E-Commerce', 'Consulting']
 
@@ -35,25 +27,12 @@ const defaultLogos: Record<string, string> = {
   'HCL Technologies': '#006bb7',
 }
 
-const companies: Company[] = [
-  { id: 1, name: 'Zoho Corporation', salaryPackage: '8.5 LPA', category: 'Product', drives: 4, description: 'Leading SaaS company with a wide range of business applications.' },
-  { id: 2, name: 'TCS', salaryPackage: '7 LPA', category: 'IT Services', drives: 6, description: 'India\'s largest IT services company providing technology solutions.' },
-  { id: 3, name: 'Amazon', salaryPackage: '18 LPA', category: 'E-Commerce', drives: 3, description: 'Global e-commerce and cloud computing giant.' },
-  { id: 4, name: 'Google', salaryPackage: '24 LPA', category: 'Product', drives: 2, description: 'Technology leader in search, cloud, and AI solutions.' },
-  { id: 5, name: 'Microsoft', salaryPackage: '20 LPA', category: 'Product', drives: 3, description: 'World\'s largest software company empowering digital transformation.' },
-  { id: 6, name: 'Infosys', salaryPackage: '6.5 LPA', category: 'IT Services', drives: 5, description: 'Global leader in next-generation digital services and consulting.' },
-  { id: 7, name: 'Wipro', salaryPackage: '5.5 LPA', category: 'IT Services', drives: 4, description: 'Leading technology services and consulting company.' },
-  { id: 8, name: 'Cognizant', salaryPackage: '6 LPA', category: 'IT Services', drives: 4, description: 'Multinational technology services and consulting company.' },
-  { id: 9, name: 'Accenture', salaryPackage: '7.5 LPA', category: 'Consulting', drives: 3, description: 'Global professional services company with expertise in digital and cloud.' },
-  { id: 10, name: 'HCL Technologies', salaryPackage: '5 LPA', category: 'IT Services', drives: 3, description: 'Global technology company helping enterprises reimagine their businesses.' },
-]
-
-function parsePackage(value: string): number {
-  const num = parseFloat(value)
+function parsePackage(value: number | string | undefined): number {
+  const num = parseFloat(String(value ?? ''))
   return isNaN(num) ? 0 : num
 }
 
-function matchPackageRange(pkg: string, range: string): boolean {
+function matchPackageRange(pkg: number | string | undefined, range: string): boolean {
   if (range === 'All Packages') return true
   const val = parsePackage(pkg)
   switch (range) {
@@ -65,16 +44,48 @@ function matchPackageRange(pkg: string, range: string): boolean {
   }
 }
 
+function categoryForCompany(c: Company): string {
+  const industry = (c.industry || '').toLowerCase()
+  if (industry.includes('e-commerce')) return 'E-Commerce'
+  if (industry.includes('consulting')) return 'Consulting'
+  if (industry.includes('information technology')) return 'IT Services'
+  if (c.type === 'Software' || industry.includes('product')) return 'Product'
+  return 'IT Services'
+}
+
 export default function Companies() {
   const navigate = useNavigate()
+  const [companies, setCompanies] = useState<Company[]>([])
+  const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedPackage, setSelectedPackage] = useState('All Packages')
   const [selectedCategory, setSelectedCategory] = useState('All')
 
+  useEffect(() => {
+    let mounted = true
+
+    async function fetchCompanies() {
+      try {
+        setLoading(true)
+        const data = await getCompanies({ limit: 200 })
+        if (mounted) setCompanies(data.companies)
+      } catch {
+        if (mounted) setCompanies([])
+      } finally {
+        if (mounted) setLoading(false)
+      }
+    }
+
+    fetchCompanies()
+    return () => {
+      mounted = false
+    }
+  }, [])
+
   const filtered = companies.filter((c) => {
     const matchSearch = c.name.toLowerCase().includes(searchTerm.toLowerCase())
-    const matchPackage = matchPackageRange(c.salaryPackage, selectedPackage)
-    const matchCategory = selectedCategory === 'All' || c.category === selectedCategory
+    const matchPackage = matchPackageRange(c.package, selectedPackage)
+    const matchCategory = selectedCategory === 'All' || categoryForCompany(c) === selectedCategory
     return matchSearch && matchPackage && matchCategory
   })
 
@@ -110,39 +121,53 @@ export default function Companies() {
         </div>
       </div>
 
-      <div className="companies-page-grid">
-        {filtered.map((company) => {
-          const bgColor = defaultLogos[company.name.split(' ')[0]] || '#6366f1'
-          return (
-            <div key={company.id} className="companies-page-card">
-              <div className="companies-page-card-body">
-                <div className="companies-page-card-header">
-                  <div className="companies-page-card-logo" style={{ background: bgColor }}>
-                    <span>{company.name.charAt(0)}</span>
-                  </div>
-                  <div className="companies-page-card-info">
-                    <h3 className="companies-page-card-name">{company.name}</h3>
-                    <div className="companies-page-card-meta">
-                      <span className="companies-page-card-package">{company.salaryPackage}</span>
-                      <span className="companies-page-card-drives">{company.drives} {company.drives === 1 ? 'drive' : 'drives'}</span>
+      {loading ? (
+        <div className="companies-page-grid">
+          <div className="companies-page-card">
+            <p style={{ textAlign: 'center', color: 'var(--color-gray-400)' }}>Loading companies...</p>
+          </div>
+        </div>
+      ) : (
+        <div className="companies-page-grid">
+          {filtered.map((company) => {
+            const bgColor = defaultLogos[company.name.split(' ')[0]] || '#6366f1'
+            return (
+              <div key={company._id} className="companies-page-card">
+                <div className="companies-page-card-body">
+                  <div className="companies-page-card-header">
+                    <div className="companies-page-card-logo" style={{ background: bgColor }}>
+                      {company.logo ? (
+                        <img src={company.logo} alt={`${company.name} logo`} className="companies-page-card-logo-img" />
+                      ) : (
+                        <span>{company.name.charAt(0)}</span>
+                      )}
+                    </div>
+                    <div className="companies-page-card-info">
+                      <h3 className="companies-page-card-name">{company.name}</h3>
+                      <div className="companies-page-card-meta">
+                        <span className="companies-page-card-package">
+                          {company.package != null && company.package !== '' ? `${company.package} LPA` : '—'}
+                        </span>
+                        <span className="companies-page-card-drives">{company.industry || 'N/A'}</span>
+                      </div>
                     </div>
                   </div>
+                  <p className="companies-page-card-desc">{company.description || 'Details coming soon.'}</p>
                 </div>
-                <p className="companies-page-card-desc">{company.description}</p>
+                <button
+                  onClick={() => navigate(`/student/company/${company._id}`)}
+                  className="companies-page-card-btn"
+                >
+                  View Details
+                  <ChevronRight size={16} />
+                </button>
               </div>
-              <button
-                onClick={() => navigate(`/student/company/${company.id}`)}
-                className="companies-page-card-btn"
-              >
-                View Details
-                <ChevronRight size={16} />
-              </button>
-            </div>
-          )
-        })}
-      </div>
+            )
+          })}
+        </div>
+      )}
 
-      {filtered.length === 0 && (
+      {!loading && filtered.length === 0 && (
         <div className="companies-page-empty">
           <Building2 size={48} />
           <h3>No companies found</h3>

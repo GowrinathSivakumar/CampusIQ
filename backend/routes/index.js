@@ -9,6 +9,7 @@ const tipRoutes = require('./admin/tipRoutes');
 const bookmarkRoutes = require('./student/bookmarkRoutes');
 const dashboardRoutes = require('./admin/dashboardRoutes');
 const chatRoutes = require('./student/chatRoutes');
+const reportRoutes = require('./admin/reportRoutes');
 
 router.use('/admin/auth', authRoutes);
 router.use('/admin/companies', companyRoutes);
@@ -17,6 +18,7 @@ router.use('/admin/questions', questionRoutes);
 router.use('/admin/tips', tipRoutes);
 router.use('/admin/bookmarks', bookmarkRoutes);
 router.use('/admin/dashboard', dashboardRoutes);
+router.use('/admin/reports', reportRoutes);
 router.use('/chat', chatRoutes);
 
 router.get('/health', (req, res) => {

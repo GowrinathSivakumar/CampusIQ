@@ -187,16 +187,178 @@ const getMe = async (req, res) => {
   }
 };
 
+const Preference = require('../../models/Preference');
+
 const updateSettings = async (req, res) => {
   try {
     const { name, email } = req.body;
 
+    if (!name && !email) {
+      return res.status(400).json({
+        success: false,
+        message: 'Please provide at least one field to update',
+      });
+    }
+
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Please provide a valid email address',
+      });
+    }
+
+    if (email) {
+      const existing = await User.findOne({ email, _id: { $ne: req.user._id } });
+      if (existing) {
+        return res.status(400).json({
+          success: false,
+          message: 'User with this email already exists',
+        });
+      }
+    }
+
+    const update = {};
+    if (name) update.name = name;
+    if (email) update.email = email;
+
+    const user = await User.findByIdAndUpdate(req.user._id, update, {
+      new: true,
+      runValidators: true,
+    }).select('-password');
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: 'User not found',
+      });
+    }
+
     res.status(200).json({
       success: true,
-      message: 'Update settings placeholder - authentication logic not implemented yet',
+      message: 'Profile updated successfully',
       data: {
-        name,
-        email,
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        role: user.role,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+const changePassword = async (req, res) => {
+  try {
+    const { currentPassword, newPassword } = req.body;
+
+    if (!currentPassword || !newPassword) {
+      return res.status(400).json({
+        success: false,
+        message: 'Please provide current and new password',
+      });
+    }
+
+    if (String(newPassword).length < 6) {
+      return res.status(400).json({
+        success: false,
+        message: 'New password must be at least 6 characters',
+      });
+    }
+
+    const user = await User.findById(req.user._id);
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: 'User not found',
+      });
+    }
+
+    const isMatch = await bcrypt.compare(currentPassword, user.password);
+    if (!isMatch) {
+      return res.status(400).json({
+        success: false,
+        message: 'Current password is incorrect',
+      });
+    }
+
+    user.password = await bcrypt.hash(newPassword, 12);
+    await user.save();
+
+    res.status(200).json({
+      success: true,
+      message: 'Password changed successfully',
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+const getPreferences = async (req, res) => {
+  try {
+    let preferences = await Preference.findOne({ user: req.user._id });
+
+    if (!preferences) {
+      preferences = await Preference.create({ user: req.user._id });
+    }
+
+    res.status(200).json({
+      success: true,
+      data: {
+        emailNotifications: preferences.emailNotifications,
+        autoPublish: preferences.autoPublish,
+        analyticsTracking: preferences.analyticsTracking,
+        theme: preferences.theme,
+        notificationPrefs: preferences.notificationPrefs,
+        privacy: preferences.privacy,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+const updatePreferences = async (req, res) => {
+  try {
+    const allowed = [
+      'emailNotifications',
+      'autoPublish',
+      'analyticsTracking',
+      'theme',
+      'notificationPrefs',
+      'privacy',
+    ];
+
+    const update = {};
+    for (const key of allowed) {
+      if (req.body[key] !== undefined) update[key] = req.body[key];
+    }
+
+    const preferences = await Preference.findOneAndUpdate(
+      { user: req.user._id },
+      update,
+      { new: true, runValidators: true, upsert: true }
+    );
+
+    res.status(200).json({
+      success: true,
+      message: 'Preferences updated successfully',
+      data: {
+        emailNotifications: preferences.emailNotifications,
+        autoPublish: preferences.autoPublish,
+        analyticsTracking: preferences.analyticsTracking,
+        theme: preferences.theme,
+        notificationPrefs: preferences.notificationPrefs,
+        privacy: preferences.privacy,
       },
     });
   } catch (error) {
@@ -212,4 +374,7 @@ module.exports = {
   login,
   getMe,
   updateSettings,
+  changePassword,
+  getPreferences,
+  updatePreferences,
 };
