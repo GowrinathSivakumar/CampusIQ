@@ -1,16 +1,13 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import {
-  Building2,
-  History,
-  HelpCircle,
-  Bot,
-  BookOpen,
-  ChevronRight,
-  Sparkles,
-} from 'lucide-react'
+import { ChevronRight, Sparkles } from 'lucide-react'
 import QuickAccessCard from '../../components/QuickAccessCard'
 import KSRCELogo from '../../assets/KSRCE logo.jpg'
+import StuBrowseCompany from '../../assets/stu_browse_company.svg'
+import StuPreviousDrive from '../../assets/stu_previous_drive.svg'
+import StuInterviewQuestions from '../../assets/stu_interview_questions.svg'
+import StuPreparationGuide from '../../assets/stu_preparation_guide.svg'
+import StuAiIcon from '../../assets/stu_Ai_icon.svg'
 
 import './Dashboard.css'
 
@@ -18,31 +15,31 @@ const quickAccessItems = [
   {
     title: 'Browse Companies',
     description: 'Explore all recruiting companies and their details',
-    icon: Building2,
+    icon: StuBrowseCompany,
     path: '/student/companies',
   },
   {
     title: 'Previous Drives',
     description: 'View past placement drives with complete details',
-    icon: History,
+    icon: StuPreviousDrive,
     path: '/student/drives',
-  },
-  {
-    title: 'Interview Questions',
-    description: 'Practice common interview questions for technical and HR rounds',
-    icon: HelpCircle,
-    path: '/student/questions',
   },
   {
     title: 'Preparation Guide',
     description: 'Comprehensive placement preparation resources',
-    icon: BookOpen,
+    icon: StuPreparationGuide,
     path: '/student/preparation',
+  },
+  {
+    title: 'Interview Questions',
+    description: 'Practice common interview questions for technical and HR rounds',
+    icon: StuInterviewQuestions,
+    path: '/student/questions',
   },
   {
     title: 'AI Placement Mentor',
     description: 'Get personalized guidance from AI mentor',
-    icon: Bot,
+    icon: StuAiIcon,
     path: '/student/ai',
   },
 ]
@@ -87,8 +84,19 @@ export default function Dashboard() {
             <ChevronRight size={16} />
           </Link>
         </div>
-        <div className="student-dashboard-quick-access">
-          {quickAccessItems.map((item) => (
+        <div className="student-dashboard-quick-access-top">
+          {quickAccessItems.slice(0, 3).map((item) => (
+            <QuickAccessCard
+              key={item.title}
+              title={item.title}
+              description={item.description}
+              icon={item.icon}
+              path={item.path}
+            />
+          ))}
+        </div>
+        <div className="student-dashboard-quick-access-bottom">
+          {quickAccessItems.slice(3).map((item) => (
             <QuickAccessCard
               key={item.title}
               title={item.title}

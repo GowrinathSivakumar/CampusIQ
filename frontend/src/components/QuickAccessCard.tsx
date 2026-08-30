@@ -1,12 +1,10 @@
-import type { LucideIcon } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
-import { ArrowRight } from 'lucide-react'
 import './QuickAccessCard.css'
 
 interface QuickAccessCardProps {
   title: string
   description: string
-  icon: LucideIcon
+  icon: string
   path: string
   gradient?: string
 }
@@ -14,7 +12,7 @@ interface QuickAccessCardProps {
 export default function QuickAccessCard({
   title,
   description,
-  icon: Icon,
+  icon,
   path,
   gradient = 'linear-gradient(135deg, var(--student-500), var(--student-700))',
 }: QuickAccessCardProps) {
@@ -27,14 +25,13 @@ export default function QuickAccessCard({
     >
       <div className="quick-access-card-bg" style={{ background: gradient }} />
       <div className="quick-access-card-content">
-        <div className="quick-access-card-icon">
-          <Icon size={22} />
+        <div className="quick-access-card-header">
+          <div className="quick-access-card-icon">
+            <img src={icon} alt={`${title} icon`} className="quick-access-card-icon-img" />
+          </div>
+          <h3 className="quick-access-card-title">{title}</h3>
         </div>
-        <h3 className="quick-access-card-title">{title}</h3>
         <p className="quick-access-card-desc">{description}</p>
-        <span className="quick-access-card-arrow">
-          <ArrowRight size={16} />
-        </span>
       </div>
     </button>
   )
