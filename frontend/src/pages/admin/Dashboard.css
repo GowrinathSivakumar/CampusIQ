@@ -10,6 +10,7 @@
   justify-content: center;
   gap: 20px;
   padding: 20px 0 16px;
+  margin-top:-32px;
 }
 
 .dashboard-college-logo {
