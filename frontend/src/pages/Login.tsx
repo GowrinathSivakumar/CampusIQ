@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { LogIn, Mail, Lock, Eye, EyeOff, GraduationCap, Shield } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useAuth } from '../context/AuthContext'
-import studentLoginImage from '../assets/stu_login.png'
-import adminLoginImage from '../assets/admin_login.png'
+import studentLoginImage from '../assets/StudLoginimage.png'
+import adminLoginImage from '../assets/Adminloginimage.png'
 import './Login.css'
 
 
@@ -141,9 +141,10 @@ export default function Login() {
               </div>
             </div>
           )}
+        </div>
 
-          {/* Animated Illustration */}
-          <div className="login-illustration">
+        {/* Animated Illustration */}
+        <div className="login-illustration">
             <div className="login-blob login-blob-1" />
             <div className="login-blob login-blob-2" />
             <div className="login-blob login-blob-3" />
@@ -185,7 +186,7 @@ export default function Login() {
               {role === 'student' ? (
                 <motion.div
                   key="student-illustration"
-                  className="login-illustration-svg student-illustration-position"
+                  className="login-illustration-svg"
                   initial={{ x: -200, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   exit={{ x: 200, opacity: 0 }}
@@ -214,7 +215,6 @@ export default function Login() {
                 </motion.div>
               )}
             </AnimatePresence>
-          </div>
         </div>
       </div>
 

@@ -72,6 +72,7 @@
   min-height: 100vh;
   background: linear-gradient(135deg, #1E40AF, #2563EB, #60A5FA);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 32px;
@@ -243,7 +244,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
-  margin: 20px 0;
+  margin: 20px 0 0 0;
 }
 
 .stat-card {
@@ -308,7 +309,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
-  margin: 32px 0;
+  margin: 32px 0 0 0;
 }
 
 .login-feature-card {
@@ -898,24 +899,20 @@
 .login-illustration {
   position: relative;
   display: flex;
-  align-items: center;
   justify-content: center;
-  min-height: 200px;
+  align-items: center;
+  width: 100%;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  z-index: 2;
 }
 
 .login-illustration-svg {
   position: relative;
   z-index: 2;
-  width: 100%;
-  max-width: 300px;
-  height: auto;
-}
-
-.student-illustration-position {
-  align-self: flex-end;
-  justify-self: flex-end;
-  margin-right: -20px;
-  margin-bottom: -20px;
+  width: min(80%, 760px);
+  max-width: 100%;
+  min-width: 0;
 }
 
 .login-illustration-svg svg {
@@ -925,12 +922,9 @@
 }
 
 .student-login-img {
+  display: block;
   width: 100%;
   height: auto;
-  object-fit: contain;
-  mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 55%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 55%, transparent 100%);
-  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.2));
 }
 
 .login-blob {
@@ -1014,6 +1008,37 @@
   }
 }
 
+/* Below 1200px - scale the illustration down proportionally */
+@media (max-width: 1199px) {
+  .login-illustration-svg {
+    width: min(80%, 640px);
+  }
+}
+
+/* Below 768px - slightly larger relative share of the panel */
+@media (max-width: 767px) {
+  .login-illustration-svg {
+    width: min(85%, 600px);
+  }
+}
+
+/* Short viewports - reduce width (no letterbox gaps) so everything stays visible */
+@media (max-height: 900px) {
+  .login-illustration {
+    margin-top: 20px;
+  }
+
+  .login-illustration-svg {
+    width: min(80%, 580px);
+  }
+}
+
+@media (max-height: 780px) {
+  .login-illustration-svg {
+    width: min(80%, 460px);
+  }
+}
+
 @media (max-width: 640px) {
   .login-left-panel {
     padding: 24px 16px;
@@ -1041,7 +1066,7 @@
   }
 
   .login-illustration-svg {
-    max-width: 250px;
+    width: min(85%, 600px);
   }
 
   .login-blob-1 {
