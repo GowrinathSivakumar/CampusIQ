@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { ChevronRight, Sparkles } from 'lucide-react'
+import { Sparkles } from 'lucide-react'
 import QuickAccessCard from '../../components/QuickAccessCard'
 import KSRCELogo from '../../assets/KSRCE logo.jpg'
 import StuBrowseCompany from '../../assets/stu_browse_company.svg'
@@ -14,31 +13,31 @@ import './Dashboard.css'
 const quickAccessItems = [
   {
     title: 'Browse Companies',
-    description: 'Explore all recruiting companies and their details',
+    description: 'Explore all recruiting companies, view their details, open positions and eligibility criteria to shortlist your best matches.',
     icon: StuBrowseCompany,
     path: '/student/companies',
   },
   {
     title: 'Previous Drives',
-    description: 'View past placement drives with complete details',
+    description: 'View past placement drives with complete details including selection process, rounds conducted and final placements.',
     icon: StuPreviousDrive,
     path: '/student/drives',
   },
   {
     title: 'Preparation Guide',
-    description: 'Comprehensive placement preparation resources',
+    description: 'Access comprehensive placement preparation resources covering aptitude, reasoning and technical fundamentals.',
     icon: StuPreparationGuide,
     path: '/student/preparation',
   },
   {
     title: 'Interview Questions',
-    description: 'Practice common interview questions for technical and HR rounds',
+    description: 'Practice common interview questions for technical and HR rounds asked by top recruiting companies.',
     icon: StuInterviewQuestions,
     path: '/student/questions',
   },
   {
     title: 'AI Placement Mentor',
-    description: 'Get personalized guidance from AI mentor',
+    description: 'Get personalized guidance, resume feedback and mock interview support from your AI mentor anytime.',
     icon: StuAiIcon,
     path: '/student/ai',
   },
@@ -77,13 +76,6 @@ export default function Dashboard() {
       </div>
 
       <div className="student-dashboard-section">
-        <div className="student-dashboard-section-header">
-          <h2 className="student-dashboard-section-title">Quick Access</h2>
-          <Link to="/student/companies" className="student-dashboard-view-all">
-            View All
-            <ChevronRight size={16} />
-          </Link>
-        </div>
         <div className="student-dashboard-quick-access-top">
           {quickAccessItems.slice(0, 3).map((item) => (
             <QuickAccessCard
@@ -105,6 +97,13 @@ export default function Dashboard() {
               path={item.path}
             />
           ))}
+          <div className="quick-access-card placement-percentage-card">
+            <div className="placement-percentage-content">
+              <h3 className="placement-percentage-title">Placement Percentage</h3>
+              <div className="placement-percentage-value">94%</div>
+              <p className="placement-percentage-desc">of eligible students placed in the latest campus recruitment drive</p>
+            </div>
+          </div>
         </div>
       </div>
 
