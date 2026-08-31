@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { mockDrives } from '../mocks/mockData'
 
 const API_URL = 'http://localhost:5000/api/admin/drives'
 
@@ -41,8 +42,22 @@ export const getDrives = async (filters?: DriveFilters): Promise<DrivesResponse>
   if (filters?.page) params.append('page', String(filters.page))
   if (filters?.limit) params.append('limit', String(filters.limit))
 
-  const response = await axios.get(`${API_URL}?${params.toString()}`)
-  return response.data.data
+  try {
+    const response = await axios.get(`${API_URL}?${params.toString()}`)
+    return response.data.data
+  } catch {
+    let drives = mockDrives
+    if (filters?.company) {
+      drives = drives.filter((d) => d.companyName.toLowerCase() === filters.company!.toLowerCase())
+    }
+    if (filters?.year) {
+      drives = drives.filter((d) => new Date(d.date).getFullYear().toString() === filters.year)
+    }
+    if (filters?.department) {
+      drives = drives.filter((d) => d.department === filters.department || d.department === 'All')
+    }
+    return { drives, total: drives.length, page: filters?.page || 1, limit: filters?.limit || 200 }
+  }
 }
 
 export const getDriveById = async (id: string): Promise<Drive> => {

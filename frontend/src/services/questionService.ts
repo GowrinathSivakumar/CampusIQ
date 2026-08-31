@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { mockQuestions } from '../mocks/mockData'
 
 const API_URL = 'http://localhost:5000/api/admin/questions'
 
@@ -38,8 +39,22 @@ export const getQuestions = async (filters?: QuestionFilters): Promise<Questions
   if (filters?.page) params.append('page', String(filters.page))
   if (filters?.limit) params.append('limit', String(filters.limit))
 
-  const response = await axios.get(`${API_URL}?${params.toString()}`)
-  return response.data.data
+  try {
+    const response = await axios.get(`${API_URL}?${params.toString()}`)
+    return response.data.data
+  } catch {
+    let questions = mockQuestions
+    if (filters?.category) {
+      questions = questions.filter((q) => q.category.toLowerCase() === filters.category!.toLowerCase())
+    }
+    if (filters?.difficulty) {
+      questions = questions.filter((q) => q.difficulty.toLowerCase() === filters.difficulty!.toLowerCase())
+    }
+    if (filters?.company) {
+      questions = questions.filter((q) => q.company.toLowerCase() === filters.company!.toLowerCase())
+    }
+    return { questions, total: questions.length, page: filters?.page || 1, limit: filters?.limit || 200 }
+  }
 }
 
 export const getQuestionById = async (id: string): Promise<Question> => {

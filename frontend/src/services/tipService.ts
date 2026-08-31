@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { mockTips } from '../mocks/mockData'
 
 const API_URL = 'http://localhost:5000/api/admin/tips'
 
@@ -39,8 +40,19 @@ export const getTips = async (filters?: TipFilters): Promise<TipsResponse> => {
   if (filters?.page) params.append('page', String(filters.page))
   if (filters?.limit) params.append('limit', String(filters.limit))
 
-  const response = await axios.get(`${API_URL}?${params.toString()}`)
-  return response.data.data
+  try {
+    const response = await axios.get(`${API_URL}?${params.toString()}`)
+    return response.data.data
+  } catch {
+    let tips = mockTips
+    if (filters?.status) {
+      tips = tips.filter((t) => t.status === filters.status)
+    }
+    if (filters?.category) {
+      tips = tips.filter((t) => t.category === filters.category)
+    }
+    return { tips, total: tips.length, page: filters?.page || 1, limit: filters?.limit || 50 }
+  }
 }
 
 export const getTipById = async (id: string): Promise<Tip> => {

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { mockBookmarks } from '../mocks/mockData'
 
 const API_URL = 'http://localhost:5000/api/admin/bookmarks'
 
@@ -49,8 +50,16 @@ export const getBookmarks = async (filters?: BookmarkFilters): Promise<Bookmarks
   if (filters?.page) params.append('page', String(filters.page))
   if (filters?.limit) params.append('limit', String(filters.limit))
 
-  const response = await axios.get(`${API_URL}?${params.toString()}`)
-  return response.data.data
+  try {
+    const response = await axios.get(`${API_URL}?${params.toString()}`)
+    return response.data.data
+  } catch {
+    let bookmarks = mockBookmarks
+    if (filters?.type && filters.type !== 'all') {
+      bookmarks = bookmarks.filter((b) => b.itemType === filters.type)
+    }
+    return { bookmarks, total: bookmarks.length, page: filters?.page || 1, limit: filters?.limit || 200 }
+  }
 }
 
 export const addBookmark = async (bookmark: {

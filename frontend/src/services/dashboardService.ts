@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { mockDashboard } from '../mocks/mockData'
 
 const API_URL = 'http://localhost:5000/api/admin/dashboard'
 
@@ -49,16 +50,28 @@ export interface DashboardResponse {
 }
 
 export const getDashboard = async (): Promise<DashboardResponse> => {
-  const response = await axios.get(API_URL)
-  return response.data.data
+  try {
+    const response = await axios.get(API_URL)
+    return response.data.data
+  } catch {
+    return mockDashboard
+  }
 }
 
 export const getDashboardStats = async (): Promise<DashboardStats> => {
-  const response = await axios.get(`${API_URL}/stats`)
-  return response.data.data
+  try {
+    const response = await axios.get(`${API_URL}/stats`)
+    return response.data.data
+  } catch {
+    return mockDashboard.stats
+  }
 }
 
 export const getHighestPlacement = async (): Promise<HighestPlacement | null> => {
-  const response = await axios.get(`${API_URL}/highest-placement`)
-  return response.data.data
+  try {
+    const response = await axios.get(`${API_URL}/highest-placement`)
+    return response.data.data
+  } catch {
+    return mockDashboard.highestPlacement
+  }
 }

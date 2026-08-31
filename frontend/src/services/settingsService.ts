@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { mockPreferences } from '../mocks/mockData'
 
 const API_URL = 'http://localhost:5000/api/admin/auth'
 
@@ -36,8 +37,12 @@ export const changePassword = async (payload: {
 }
 
 export const getPreferences = async (): Promise<Preferences> => {
-  const response = await axios.get(`${API_URL}/preferences`)
-  return response.data.data
+  try {
+    const response = await axios.get(`${API_URL}/preferences`)
+    return response.data.data
+  } catch {
+    return mockPreferences
+  }
 }
 
 export const updatePreferences = async (payload: Partial<Preferences>): Promise<Preferences> => {

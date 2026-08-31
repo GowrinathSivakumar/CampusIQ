@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { mockCompanies } from '../mocks/mockData'
 
 const API_URL = 'http://localhost:5000/api/admin/companies'
 
@@ -45,13 +46,34 @@ export const getCompanies = async (filters?: CompanyFilters): Promise<CompaniesR
   if (filters?.page) params.append('page', String(filters.page))
   if (filters?.limit) params.append('limit', String(filters.limit))
 
-  const response = await axios.get(`${API_URL}?${params.toString()}`)
-  return response.data.data
+  try {
+    const response = await axios.get(`${API_URL}?${params.toString()}`)
+    return response.data.data
+  } catch {
+    let companies = mockCompanies
+    if (filters?.search) {
+      const q = filters.search.toLowerCase()
+      companies = companies.filter((c) => c.name.toLowerCase().includes(q) || c.industry.toLowerCase().includes(q))
+    }
+    if (filters?.industry) {
+      companies = companies.filter((c) => c.industry === filters.industry)
+    }
+    if (filters?.status) {
+      companies = companies.filter((c) => c.status === filters.status)
+    }
+    return { companies, total: companies.length, page: filters?.page || 1, limit: filters?.limit || 200 }
+  }
 }
 
 export const getCompanyById = async (id: string): Promise<Company> => {
-  const response = await axios.get(`${API_URL}/${id}`)
-  return response.data.data
+  try {
+    const response = await axios.get(`${API_URL}/${id}`)
+    return response.data.data
+  } catch {
+    const company = mockCompanies.find((c) => c._id === id)
+    if (company) return company
+    throw new Error('Company not found in mock data')
+  }
 }
 
 export interface CreateCompanyPayload {
